@@ -49,11 +49,11 @@ export const PROJECTS: Project[] = [
         showcaseDescription: "Iterating on layout and logic to achieve high-fidelity results for school owners.",
         process: {
             title: "The Process",
-            content: "We worked directly with our client—a professional jiu-jitsu practitioner & product manager who brought firsthand knowledge of how martial arts schools operate day-to-day. Their insights shaped everything from student enrollment flows to belt grading logic and class scheduling patterns. To build with even more empathy, I also started going to the gym myself to better understand the routines and mindset of students, parents, and instructors. Everything was built in Bubble, both the admin dashboard and the student-facing mobile app. We created relational data models for programs, classes, belts, and memberships, and integrated Stripe to manage subscriptions, cancellations, and failed payments through webhook events."
+            content: "I worked directly with my client—a professional jiu-jitsu practitioner & product manager who brought firsthand knowledge of how martial arts schools operate day-to-day. Their insights shaped everything from student enrollment flows to belt grading logic and class scheduling patterns. To build with even more empathy, I also started going to the gym myself to better understand the routines and mindset of students, parents, and instructors. Everything was built in Bubble, both the admin dashboard and the student-facing mobile app. I created relational data models for programs, classes, belts, and memberships, and integrated Stripe to manage subscriptions, cancellations, and failed payments through webhook events."
         },
         result: {
             title: "The Result",
-            content: "DojoHub dramatically simplified operations for martial arts schools, replacing scattered tools with one seamless platform. By automating class schedules, belt tracking, and recurring payments, we helped instructors reclaim hours of admin work each week. New dojos were able to fully onboard — including student setup, membership plans, and classes — in a fraction of the time it used to take.",
+            content: "DojoHub dramatically simplified operations for martial arts schools, replacing scattered tools with one seamless platform. By automating class schedules, belt tracking, and recurring payments, I helped instructors reclaim hours of admin work each week. New dojos were able to fully onboard — including student setup, membership plans, and classes — in a fraction of the time it used to take.",
             testimonial: {
                 text: "This saved us. We were drowning in spreadsheets. Now I can grade students, collect payments, and track everything from one place.",
                 author: "Alonso R.",
@@ -75,13 +75,29 @@ export const PROJECTS: Project[] = [
         slug: "oqool-core-hr",
         description: "BUILDING A MODERN HR & PAYROLL SYSTEM FOR GROWING COMPANIES",
         challenge: {
-            summary: "Oqool required a sophisticated yet intuitive interface to handle multi-country payroll complexities.",
-            points: ["Complexity", "Scalability", "Human-centricity"]
+            summary: "Oqool Core HR is a comprehensive HR and payroll platform designed to help companies manage employees, attendance, approvals, and payroll with clarity and control. I designed and built a flexible internal system that supports company-wide defaults, employee-specific rules, and multi-level approval workflows — all while staying compliant with UAE labour practices.",
+            points: [
+                "Designing a flexible approval workflow system that adapts to different company structures without overcomplication.",
+                "Handling employee-specific working hours alongside company-wide defaults without breaking payroll logic.",
+                "Separating company owners (CEO) from employees while still supporting executive approvals.",
+                "Ensuring payroll accuracy with attendance rules, late penalties, paid public holidays, and exportable reports."
+            ]
         },
-        roles: ["Product Design", "Design Systems", "UI/UX Audit"],
+        roles: ["Product Design", "Design Systems", "Bubble Development"],
         showcaseDescription: "Visual exploration of the employee lifecycle and payroll automation flows.",
-        process: { title: "Process", content: "Details about the design phase." },
-        result: { title: "Result", content: "Impact of the HR system." }
+        process: {
+            title: "The Process",
+            content: "I approached Oqool Core HR with a systems-first mindset. Starting with Figma, I mapped complex HR processes into simple, understandable interfaces. In Bubble, I implemented scalable data models for employees, work schedules, approvals, and payroll. Special attention was given to approval logic — introducing sequential approval flows, line-manager and department-based routing, and a toggle-based CEO approval mechanism. The result is a stable, predictable system that mirrors real-world HR operations."
+        },
+        result: {
+            title: "The Result",
+            content: "A production-ready HR and payroll system that empowers companies to manage employees, approvals, and payroll with confidence. Oqool Core HR delivers flexible approval workflows, accurate payroll calculations, UAE public holiday handling, and export-ready reports — all built as a scalable no-code solution."
+        },
+        mockups: [
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Dashboard" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Directory" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Info Popup" }
+        ]
     },
     {
         id: "03",

@@ -72,9 +72,6 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                         <FancyButton icon={ExternalLink} href="#">
                             Live Preview
                         </FancyButton>
-                        <FancyButton variant="outline" icon={FileText} href="#technical">
-                            Technical Scope
-                        </FancyButton>
                     </div>
                 </motion.div>
             </section>

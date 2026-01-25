@@ -224,10 +224,6 @@ export default function Home() {
                             <SocialsMenu isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
                         </div>
 
-                        <FancyButton href="/resume.pdf" variant="outline" icon={FileText}>
-                            Resume
-                        </FancyButton>
-
                         <FancyButton href="#toolkit" variant="ghost" icon={Layers}>
                             Toolkit
                         </FancyButton>
