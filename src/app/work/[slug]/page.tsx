@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
 import { AppCard } from "@/components/AppGrid";
+import { fadeInUp, fadeIn, scaleIn, viewportOptions } from "@/lib/animations";
 
 export default function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
@@ -93,7 +94,13 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                 </div>
 
                 {/* Narrative Grid: Challenge */}
-                <div className="flex flex-col gap-6">
+                <motion.div
+                    className="flex flex-col gap-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOptions}
+                    variants={fadeInUp}
+                >
                     <div className="p-6 md:p-10 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-8">
                         <div className="flex flex-col gap-4">
                             <div className="flex items-center gap-2">
@@ -114,7 +121,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                             ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Role Card */}
                 <div className="p-6 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-4">

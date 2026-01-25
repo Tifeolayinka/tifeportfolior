@@ -11,6 +11,7 @@ import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOp
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
+import { fadeInUp, fadeIn, scaleIn, viewportOptions } from "@/lib/animations";
 
 
 const TESTIMONIALS = [
@@ -241,7 +242,13 @@ export default function Home() {
             </div>
 
             {/* Testimonial Section */}
-            <section className="px-6 md:px-12 max-w-4xl mx-auto py-8">
+            <motion.section
+                className="px-6 md:px-12 max-w-4xl mx-auto py-8"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeInUp}
+            >
                 <div className="p-3 pb-4 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm backdrop-blur-sm">
                     <div className="flex items-center justify-between mb-4 px-2 pt-1">
                         <div className="flex items-center gap-2">
@@ -318,7 +325,7 @@ export default function Home() {
                         )}
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Work Section */}
             <section id="work" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
@@ -404,15 +411,37 @@ export default function Home() {
             </section>
 
             {/* Services Section (Stacked) */}
-            <section id="services" className="px-6 md:px-12 max-w-4xl mx-auto py-16 relative">
-                <div className="mb-12">
+            <motion.section
+                id="services"
+                className="px-6 md:px-12 max-w-4xl mx-auto py-16 relative"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeIn}
+            >
+                <motion.div className="mb-12" variants={fadeInUp}>
                     <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">What I offer</h2>
                     <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Design & Development support for ambitious founders.</p>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col gap-12">
+                <motion.div
+                    className="flex flex-col gap-12"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2,
+                                delayChildren: 0.2
+                            }
+                        }
+                    }}
+                >
                     {/* Card 1: Product Design */}
-                    <div className="sticky top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group">
+                    <motion.div
+                        className="sticky top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
+                        variants={scaleIn}
+                    >
                         <div>
                             <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter">Mobile and Web <br />Application Designs</h3>
                             <p className="text-white/80 text-[16px] md:text-[18px] max-w-md leading-relaxed">
@@ -428,10 +457,13 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 2: Nocode Dev */}
-                    <div className="sticky top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group">
+                    <motion.div
+                        className="sticky top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
+                        variants={scaleIn}
+                    >
                         <div>
                             <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter">Scalable Nocode <br />Development</h3>
                             <p className="text-white/80 text-[16px] md:text-[18px] max-w-md leading-relaxed">
@@ -447,10 +479,13 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 3: MBA & Strategy */}
-                    <div className="sticky top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group">
+                    <motion.div
+                        className="sticky top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
+                        variants={scaleIn}
+                    >
                         <div className="relative z-10">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[12px] font-medium mb-4">
                                 <BookOpen size={14} />
@@ -466,20 +501,42 @@ export default function Home() {
                         <div className="absolute top-1/2 -right-24 -translate-y-1/2 opacity-20 group-hover:opacity-40 transition-opacity duration-1000">
                             <Globe size={400} className="text-white" strokeWidth={0.5} />
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </motion.div>
+                </motion.div>
+            </motion.section>
 
             {/* Process Section: How Does This Work */}
-            <section id="process" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
-                <div className="mb-12">
+            <motion.section
+                id="process"
+                className="px-6 md:px-12 max-w-4xl mx-auto py-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeIn}
+            >
+                <motion.div className="mb-12" variants={fadeInUp}>
                     <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">How Does This Work</h2>
                     <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Steps required to get started.</p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.15,
+                                delayChildren: 0.1
+                            }
+                        }
+                    }}
+                >
                     {/* Step 1 */}
-                    <div className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500">
+                    <motion.div
+                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        variants={fadeInUp}
+                    >
                         <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
                             <img
                                 src="https://framerusercontent.com/images/ygffavWl0JnQH0JPhHtHytwNI.svg"
@@ -494,10 +551,13 @@ export default function Home() {
                                 Schedule a discovery call to discuss your project requirements and gain clarity on the vision.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Step 2 */}
-                    <div className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500">
+                    <motion.div
+                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        variants={fadeInUp}
+                    >
                         <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
                             <img
                                 src="https://framerusercontent.com/images/4EUw2Ek91XDGd0geMXeU0XFVs.svg"
@@ -512,10 +572,13 @@ export default function Home() {
                                 Receive a detailed document within 24 hours outlining the strategic approach and execution plan.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Step 3 */}
-                    <div className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500">
+                    <motion.div
+                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        variants={fadeInUp}
+                    >
                         <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
                             <img
                                 src="https://framerusercontent.com/images/6CTXrmORqGJmJexC3YyFb6OfzX4.svg"
@@ -530,9 +593,9 @@ export default function Home() {
                                 Once the deliverables are vetted and agreed upon, we commence the project lifecycle toward delivery.
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </motion.div>
+                </motion.div>
+            </motion.section>
 
             {/* Toolkit Section */}
             <section id="toolkit" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
