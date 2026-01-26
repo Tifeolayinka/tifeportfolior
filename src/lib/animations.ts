@@ -125,12 +125,12 @@ export const textReveal: Variants = {
 // Viewport options for scroll triggers
 export const viewportOptions = {
     once: true,
-    margin: "-100px",
-    amount: 0.3
+    margin: "-20px",
+    amount: 0.1
 };
 
 export const viewportOptionsRepeating = {
     once: false,
-    margin: "-50px",
-    amount: 0.2
+    margin: "-20px",
+    amount: 0.1
 };
