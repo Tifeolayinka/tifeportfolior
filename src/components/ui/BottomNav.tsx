@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Briefcase, User, Mail, Layers, Sparkles, MessageSquareQuote, LayoutGrid, Zap } from "lucide-react";
+import { Home, Briefcase, User, Mail, Layers, Sparkles, MessageSquareQuote, LayoutGrid, Zap, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -13,12 +13,12 @@ const navItems = [
     { name: "Process", href: "#process", icon: Zap },
     { name: "Toolkit", href: "#toolkit", icon: Layers },
     { name: "What they say", href: "#testimonials", icon: MessageSquareQuote },
-    { name: "Contact", href: "#contact", icon: Mail },
 ];
 
 export function BottomNav() {
     const [activeSection, setActiveSection] = useState("hero");
     const [isVisible, setIsVisible] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -148,7 +148,100 @@ export function BottomNav() {
                         </Link>
                     );
                 })}
+
+                {/* Hamburger Menu Button */}
+                <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="relative group p-1"
+                >
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300">
+                        <AnimatePresence mode="wait">
+                            {isMenuOpen ? (
+                                <motion.div
+                                    key="close"
+                                    initial={{ rotate: -90, opacity: 0 }}
+                                    animate={{ rotate: 0, opacity: 1 }}
+                                    exit={{ rotate: 90, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <X size={18} className="relative z-10" />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="menu"
+                                    initial={{ rotate: 90, opacity: 0 }}
+                                    animate={{ rotate: 0, opacity: 1 }}
+                                    exit={{ rotate: -90, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Menu size={18} className="relative z-10" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Tooltip */}
+                    <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-2.5 py-1.5 bg-black text-white dark:bg-white dark:text-black text-[11px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all transform group-hover:-translate-y-1 whitespace-nowrap pointer-events-none shadow-2xl">
+                        Menu
+                    </span>
+                </button>
             </motion.div>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-40"
+                            onClick={() => setIsMenuOpen(false)}
+                        />
+
+                        {/* Menu Panel */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                            className="fixed bottom-32 left-1/2 -translate-x-1/2 z-50 w-64 rounded-[24px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-2xl overflow-hidden"
+                        >
+                            <div className="p-2">
+                                <Link
+                                    href="/about"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center gap-3 px-4 py-3 rounded-[16px] text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
+                                >
+                                    <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
+                                        <User size={16} />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="text-[14px] font-medium">About</div>
+                                        <div className="text-[12px] text-zinc-500 dark:text-zinc-500">Learn more about me</div>
+                                    </div>
+                                </Link>
+
+                                <Link
+                                    href="/#contact"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center gap-3 px-4 py-3 rounded-[16px] text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
+                                >
+                                    <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
+                                        <Mail size={16} />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="text-[14px] font-medium">Contact</div>
+                                        <div className="text-[12px] text-zinc-500 dark:text-zinc-500">Get in touch</div>
+                                    </div>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
