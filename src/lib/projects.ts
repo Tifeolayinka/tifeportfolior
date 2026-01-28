@@ -49,16 +49,16 @@ export const PROJECTS: Project[] = [
         showcaseDescription: "Iterating on layout and logic to achieve high-fidelity results for school owners.",
         process: {
             title: "The Process",
-            content: "I worked directly with my client—a professional jiu-jitsu practitioner & product manager who brought firsthand knowledge of how martial arts schools operate day-to-day. Their insights shaped everything from student enrollment flows to belt grading logic and class scheduling patterns. To build with even more empathy, I also started going to the gym myself to better understand the routines and mindset of students, parents, and instructors. Everything was built in Bubble, both the admin dashboard and the student-facing mobile app. I created relational data models for programs, classes, belts, and memberships, and integrated Stripe to manage subscriptions, cancellations, and failed payments through webhook events."
+            content: "I worked directly with the client—a professional jiu-jitsu practitioner & product manager who brought firsthand knowledge of how martial arts schools operate day-to-day. Their insights shaped everything from student enrollment flows to belt grading logic and class scheduling patterns. To build with even more empathy, I also started going to the gym myself to better understand the routines and mindset of students, parents, and instructors. Everything was built in Bubble, both the admin dashboard and the student-facing mobile app. I created relational data models for programs, classes, belts, and memberships, and integrated Stripe to manage subscriptions, cancellations, and failed payments through webhook events."
         },
         result: {
             title: "The Result",
             content: "DojoHub dramatically simplified operations for martial arts schools, replacing scattered tools with one seamless platform. By automating class schedules, belt tracking, and recurring payments, I helped instructors reclaim hours of admin work each week. New dojos were able to fully onboard — including student setup, membership plans, and classes — in a fraction of the time it used to take.",
-            testimonial: {
+            /*testimonial: {
                 text: "This saved us. We were drowning in spreadsheets. Now I can grade students, collect payments, and track everything from one place.",
                 author: "Alonso R.",
                 role: "Founder"
-            }
+            }*/
         },
         mockups: [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Dojohub/543shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Student Information" },
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
         id: "02",
         title: "Oqool Core HR",
         category: "Design",
-        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png?q=80&w=1600&auto=format&fit=crop",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/405shots_so.png?q=80&w=1600&auto=format&fit=crop",
         slug: "oqool-core-hr",
         description: "BUILDING A MODERN HR & PAYROLL SYSTEM FOR GROWING COMPANIES",
         challenge: {
@@ -94,9 +94,13 @@ export const PROJECTS: Project[] = [
             content: "A production-ready HR and payroll system that empowers companies to manage employees, approvals, and payroll with confidence. Oqool Core HR delivers flexible approval workflows, accurate payroll calculations, UAE public holiday handling, and export-ready reports — all built as a scalable no-code solution."
         },
         mockups: [
-            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Dashboard" },
-            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Directory" },
-            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Main+image.png", name: "Employee Info Popup" }
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/405shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Employer Dashboard" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/269shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Employee Directory" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/435shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Employee Info Popup" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/768shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "AI Assitant" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/269shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Employee Listing" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Hr/249shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Project Details/Tasks Page" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Hr/591shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Leave Workflow" },
         ]
     },
     {
