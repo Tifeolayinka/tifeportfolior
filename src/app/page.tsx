@@ -11,7 +11,7 @@ import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOp
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
-import { fadeInUp, fadeIn, scaleIn, viewportOptions } from "@/lib/animations";
+import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/animations";
 
 
 const TESTIMONIALS = [
@@ -193,7 +193,10 @@ export default function Home() {
                     </div>
 
                     {/* Text Group */}
-                    <div className="flex flex-col gap-3">
+                    <motion.div
+                        className="flex flex-col gap-3"
+                        variants={textReveal}
+                    >
                         <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans">
                             I create beautiful <span className="text-zinc-900 dark:text-zinc-100">human-centric</span> interactions and <span className="text-zinc-900 dark:text-zinc-100">digital experiences</span> that feel premium and polished.
                         </div>
@@ -201,7 +204,7 @@ export default function Home() {
                         <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
                             I’m Tife, a Product Designer and Bubble Developer who designs and builds digital products end-to-end. For me, great products live at the intersection of clarity, usability, and functionality.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* Availability Badge */}
                     <div className="inline-flex items-center gap-2 mt-4">
@@ -375,7 +378,7 @@ export default function Home() {
                     )}>
                         {/* Dynamic Border Glow (Fancy) */}
                         <div className="absolute inset-[-2px] rounded-[28px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff8800,#ff0000,#ff8800)] animate-[spin_3s_linear_infinite] blur-[8px] opacity-20" />
+                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff8800,#ff0000,#ff8800)] opacity-20" />
                         </div>
 
                         {/* Moving Gradient Mesh */}

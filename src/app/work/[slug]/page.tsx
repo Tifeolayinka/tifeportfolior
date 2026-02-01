@@ -70,9 +70,11 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                     </div>
 
                     <div className="flex items-center gap-4 mt-2">
-                        <FancyButton icon={ExternalLink} href="#">
-                            Live Preview
-                        </FancyButton>
+                        {project.liveUrl && (
+                            <FancyButton icon={ExternalLink} href={project.liveUrl}>
+                                Live Preview
+                            </FancyButton>
+                        )}
                     </div>
                 </motion.div>
             </section>
@@ -127,7 +129,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                 <div className="p-6 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-4">
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-green-400" />
-                        <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">Our Role</h2>
+                        <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">My Role</h2>
                     </div>
                     <div className="flex flex-wrap gap-2">
                         {project.roles.map(role => (
