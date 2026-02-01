@@ -25,6 +25,20 @@ export const metadata: Metadata = {
   icons: {
     icon: "/avatar.jpg",
   },
+  openGraph: {
+    title: "Tife | Designer & Developer",
+    description: "Personal portfolio of a designer and no-code developer.",
+    url: "https://tife.dev",
+    siteName: "Tife Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tife | Designer & Developer",
+    description: "Personal portfolio of a designer and no-code developer.",
+    creator: "@tifeolayinka",
+  },
 };
 
 export default function RootLayout({
