@@ -22,6 +22,9 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   title: "Tife | Designer & Developer",
   description: "Personal portfolio of a designer and no-code developer.",
+  icons: {
+    icon: "/avatar.jpg",
+  },
 };
 
 export default function RootLayout({
