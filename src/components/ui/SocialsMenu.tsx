@@ -15,25 +15,25 @@ const socialLinks = [
         icon: <X size={18} />, // Using Lucide X icon or Twitter if preferred, user said "X"
         title: "X",
         handle: "@tife_olayinka",
-        href: "https://x.com/tifeolayinka",
+        href: "https://x.com/tifeo_layinka",
     },
     {
         icon: <Instagram size={18} />,
         title: "Instagram",
-        handle: "@tifeolayinka",
-        href: "https://instagram.com/tifeolayinka",
+        handle: "@tife_olayinka",
+        href: "https://instagram.com/tife_olayinka",
     },
     {
         icon: <Linkedin size={18} />,
         title: "Linkedin",
         handle: "@tifeolayinka",
-        href: "https://linkedin.com/in/tifeolayinka",
+        href: "https://linkedin.com/in/olayinka-boluwatife-",
     },
     {
         icon: <Mail size={18} />,
         title: "Email",
         handle: "hello@tifeolayinka.com",
-        href: "mailto:hello@tifeolayinka.com",
+        href: "mailto:boluolayinka1212@gmail.com",
     },
 ];
 
