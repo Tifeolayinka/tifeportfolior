@@ -37,7 +37,7 @@ export function WhatsAppWidget() {
     const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
     return (
-        <div className="fixed bottom-28 md:bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
+        <div className="fixed bottom-44 md:bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
