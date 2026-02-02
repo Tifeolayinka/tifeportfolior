@@ -807,9 +807,9 @@ export default function Home() {
                     </a>
 
                     <div className="flex justify-center gap-6">
-                        <a href="https://twitter.com/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Twitter size={20} /></a>
+                        <a href="https://twitter.com/tife_olayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Twitter size={20} /></a>
                         <a href="https://github.com/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Github size={20} /></a>
-                        <a href="https://linkedin.com/in/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Linkedin size={20} /></a>
+                        <a href="https://linkedin.com/in/olayinka-boluwatife-" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Linkedin size={20} /></a>
                         <a href="https://dribbble.com/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Dribbble size={20} /></a>
                     </div>
                 </div>
