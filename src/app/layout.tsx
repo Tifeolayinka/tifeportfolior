@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Inter, Inter_Tight } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -60,6 +61,7 @@ export default function RootLayout({
           {children}
           <WhatsAppWidget />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
