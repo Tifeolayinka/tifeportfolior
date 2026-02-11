@@ -188,7 +188,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
-                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">Creative Developer</p>
+                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">UI/UX Designer & Bubble Developer</p>
                         </div>
                     </div>
 
@@ -198,11 +198,11 @@ export default function Home() {
                         variants={textReveal}
                     >
                         <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans">
-                            I create beautiful <span className="text-zinc-900 dark:text-zinc-100">human-centric</span> interactions and <span className="text-zinc-900 dark:text-zinc-100">digital experiences</span> that feel premium and polished.
+                            I design and build web applications that work — combining <span className="text-zinc-900 dark:text-zinc-100">clean, conversion-focused UI</span> with <span className="text-zinc-900 dark:text-zinc-100">full-stack Bubble development</span>. From concept to live product, faster than traditional dev.
                         </div>
 
                         <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
-                            I’m Tife, a Product Designer and Bubble Developer who designs and builds digital products end-to-end. For me, great products live at the intersection of clarity, usability, and functionality.
+                            Most designers hand off mockups and hope for the best. I design and build in Bubble — which means I create interfaces that look polished, feel intuitive, and actually work at scale. No handoff gaps. No "can we build this?" conversations. Just shipped products.
                         </p>
                     </motion.div>
 
@@ -223,13 +223,13 @@ export default function Home() {
                             onMouseLeave={() => setIsConnectOpen(false)}
                         >
                             <FancyButton icon={Sparkles}>
-                                Connect
+                                Start Your Project
                             </FancyButton>
                             <SocialsMenu isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
                         </div>
 
-                        <FancyButton href="#toolkit" variant="ghost" icon={Layers}>
-                            Toolkit
+                        <FancyButton href="#work" variant="ghost" icon={Layers}>
+                            View Work
                         </FancyButton>
                     </div>
                 </motion.div>

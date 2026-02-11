@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
 import { AppCard } from "@/components/AppGrid";
+import { ImageZoom } from "@/components/ui/ImageZoom";
 import { fadeInUp, fadeIn, scaleIn, viewportOptions } from "@/lib/animations";
 
 export default function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -85,10 +86,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                 {/* Visual Reveal (Mirroring Testimonial/Video container) */}
                 <div className="rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3">
                     <div className="relative rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden aspect-video shadow-inner">
-                        <img
+                        <ImageZoom
                             src={project.image}
                             alt={project.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                         <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none rounded-[18px]" />
@@ -153,10 +154,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                                 <div key={idx} className="flex flex-col gap-3">
                                     <div className="rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3">
                                         <div className="relative rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden aspect-[4/3] shadow-inner">
-                                            <img
+                                            <ImageZoom
                                                 src={mockup.url}
                                                 alt={mockup.name}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full"
                                             />
                                             <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none rounded-[18px]" />
                                         </div>
