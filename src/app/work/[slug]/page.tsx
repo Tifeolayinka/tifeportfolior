@@ -4,7 +4,7 @@ import { use } from "react";
 import { PROJECTS } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote } from "lucide-react";
+import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, Lock, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
@@ -207,6 +207,22 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                             </div>
                         </div>
                     )}
+                </div>
+
+                {/* Request Access CTA */}
+                <div className="my-12 p-8 rounded-[24px] bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 flex flex-col items-center text-center gap-6">
+                    <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
+                        <Lock className="w-5 h-5 text-zinc-500" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <h3 className="text-[18px] font-semibold text-zinc-900 dark:text-zinc-100">Want to see the full case study?</h3>
+                        <p className="text-[14px] text-zinc-500 dark:text-zinc-400 max-w-sm">
+                            Get in touch to walk through the complete design process and unreleased features.
+                        </p>
+                    </div>
+                    <FancyButton href="/#contact" icon={MessageCircle}>
+                        Request Access
+                    </FancyButton>
                 </div>
 
                 {/* Next Project (Styled as AppCard) */}

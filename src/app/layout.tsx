@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter, Inter_Tight } from "next/font/google";
+import { Outfit, Inter, Inter_Tight, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import "./globals.css";
@@ -17,6 +17,12 @@ const inter = Inter({
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -49,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${inter.variable} ${interTight.variable} antialiased bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50`}
+        className={`${outfit.variable} ${inter.variable} ${interTight.variable} ${playfair.variable} antialiased bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50`}
       >
         <ThemeProvider
           attribute="class"

@@ -12,6 +12,7 @@ interface FancyButtonProps {
     onClick?: () => void;
     className?: string;
     variant?: "solid" | "outline" | "ghost";
+    target?: string;
 }
 
 export function FancyButton({
@@ -20,7 +21,8 @@ export function FancyButton({
     href,
     onClick,
     className,
-    variant = "solid"
+    variant = "solid",
+    target
 }: FancyButtonProps) {
 
     const baseStyles = "relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 group overflow-hidden";
@@ -42,7 +44,7 @@ export function FancyButton({
                     <Icon size={16} />
                 </motion.span>
             )}
-            <span className="relative z-10">{children}</span>
+            <span className="relative z-10 flex items-center gap-2">{children}</span>
             {variant === "solid" && (
                 <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
@@ -62,7 +64,7 @@ export function FancyButton({
 
     if (href) {
         return (
-            <Link href={href} passHref legacyBehavior={false}>
+            <Link href={href} target={target} passHref legacyBehavior={false}>
                 <motion.span {...wrapperProps} style={{ display: 'inline-flex', cursor: 'pointer' }}>
                     <Content />
                 </motion.span>

@@ -67,9 +67,31 @@ export default function AboutPage() {
                     </div>
 
                     {/* Intro Card */}
-                    <div className="p-6 md:p-8 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm">
+                    <div className="p-6 md:p-8 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm space-y-6">
                         <p className="text-[16px] md:text-[18px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                            I'm a designer and developer who believes great products live at the intersection of clarity, usability, and functionality. I design end-to-end experiences for web and mobile, and build them using no-code tools like Bubble. Currently pursuing an MBA in Procurement & Supply Chain Management to bring strategic thinking to digital product development.
+                            I'm Tife, a UI/UX designer and Bubble developer who helps founders and businesses ship faster without compromising quality.
+                        </p>
+
+                        <div className="text-[16px] md:text-[18px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            <p className="font-medium text-zinc-900 dark:text-zinc-200 mb-3">I offer three ways to work together:</p>
+                            <ul className="space-y-2">
+                                <li className="flex gap-2">
+                                    <span className="text-zinc-400 mt-1">•</span>
+                                    <span><span className="font-medium text-zinc-900 dark:text-zinc-200">Full-stack (Design + Bubble Development)</span> — for projects that need both, delivered by one person with no handoff friction</span>
+                                </li>
+                                <li className="flex gap-2">
+                                    <span className="text-zinc-400 mt-1">•</span>
+                                    <span><span className="font-medium text-zinc-900 dark:text-zinc-200">Design-only</span> — for teams with their own developers or non-Bubble platforms</span>
+                                </li>
+                                <li className="flex gap-2">
+                                    <span className="text-zinc-400 mt-1">•</span>
+                                    <span><span className="font-medium text-zinc-900 dark:text-zinc-200">Development-only</span> — for projects with existing designs that need expert Bubble implementation</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <p className="text-[16px] md:text-[18px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            My development background makes me a better designer (I design what's actually feasible). My design background makes me a better developer (I build with UX integrity). Whether you need one or both, you get someone who understands the full picture.
                         </p>
                     </div>
                 </motion.div>

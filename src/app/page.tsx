@@ -7,7 +7,7 @@ import { FancyButton } from "@/components/ui/FancyButton";
 import { AppGrid, AppCard } from "@/components/AppGrid";
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus } from "lucide-react";
+import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
@@ -40,12 +40,20 @@ const TESTIMONIALS = [
 
 const FAQ_DATA = [
     {
-        question: "What is your typical project timeline?",
-        answer: "Every project is unique, but a standard design-to-development MVP usually takes between 4 to 8 weeks. I prioritize speed without compromising the premium quality Tife is known for."
+        question: "Do I need to choose between design-only or design+development?",
+        answer: "No. We start with discovery and I'll recommend the best approach based on your needs, timeline, and budget. Many clients start with design-only and move to development once we've validated the direction."
     },
     {
-        question: "Do you offer post-launch support?",
-        answer: "Yes, I provide 30 days of complimentary post-launch support to ensure everything runs smoothly. I also offer monthly maintenance retainers for long-term partnerships."
+        question: "How long does a typical project take?",
+        answer: "Design-only: 2-4 weeks | Design + Development (MVP): 4-8 weeks | Complex platforms: 8-12+ weeks. We'll scope this during discovery."
+    },
+    {
+        question: "What if I already have designs?",
+        answer: "I can build from existing designs, but I'll review them first to flag anything difficult or expensive to implement in Bubble. This saves headaches later."
+    },
+    {
+        question: "Do you only work on Bubble projects?",
+        answer: "No. I offer:\n- Design + Development → Bubble-only (full-stack delivery)\n- Design-Only → Any platform (web, mobile, custom code)\n- Development-Only → Bubble-only (implementing existing designs)"
     },
     {
         question: "Can you help with existing projects?",
@@ -54,6 +62,10 @@ const FAQ_DATA = [
     {
         question: "How do you handle project communication?",
         answer: "I use Slack for daily async updates and Loom for walkthroughs. We'll also have weekly milestone syncs to ensure we're perfectly aligned on the vision."
+    },
+    {
+        question: "What happens after launch?",
+        answer: "I offer post-launch support packages (bug fixes, updates, optimization) and ongoing retainer work for feature additions and iterations."
     }
 ];
 
@@ -423,12 +435,12 @@ export default function Home() {
                 variants={fadeIn}
             >
                 <motion.div className="mb-12" variants={fadeInUp}>
-                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">What I offer</h2>
-                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Design & Development support for ambitious founders.</p>
+                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">Three Ways to Work Together</h2>
+                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">I offer flexible engagement models depending on where you are in your product journey.</p>
                 </motion.div>
 
                 <motion.div
-                    className="flex flex-col gap-12"
+                    className="flex flex-col gap-16"
                     variants={{
                         hidden: { opacity: 0 },
                         visible: {
@@ -440,73 +452,242 @@ export default function Home() {
                         }
                     }}
                 >
-                    {/* Card 1: Product Design */}
+                    {/* Service 1: Full-Stack Design + Bubble */}
                     <motion.div
-                        className="sticky top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
+                        className="sticky top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-10"
                         variants={scaleIn}
                     >
-                        <div>
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter">Mobile and Web <br />Application Designs</h3>
-                            <p className="text-white/80 text-[16px] md:text-[18px] max-w-md leading-relaxed">
-                                I design end-to-end product experiences for web and mobile applications, with a focus on clarity, structure, and real-world usability.
-                            </p>
-                            <FancyButton href="#contact" variant="ghost" className="mt-8 text-white hover:bg-white/10 border-white/20">Work with me →</FancyButton>
-                        </div>
-
-                        <div className="absolute -bottom-12 -right-12 flex gap-4 rotate-[-12deg] group-hover:rotate-[-8deg] transition-transform duration-700">
-                            {PROJECTS.filter(p => p.category === "Design").slice(0, 3).map((project, idx) => (
-                                <div key={idx} className="w-48 h-64 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden shadow-2xl">
-                                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                        <div className="relative z-10 flex flex-col h-full">
+                            <div className="mb-8">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium text-[12px] mb-4">
+                                    <Sparkles size={14} />
+                                    MOST POPULAR
                                 </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Card 2: Nocode Dev */}
-                    <motion.div
-                        className="sticky top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
-                        variants={scaleIn}
-                    >
-                        <div>
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter">Scalable Nocode <br />Development</h3>
-                            <p className="text-white/80 text-[16px] md:text-[18px] max-w-md leading-relaxed">
-                                Building complex, production-ready MVPs and internal tools using Bubble.io. Fast to market, without technical debt.
-                            </p>
-                            <FancyButton href="#contact" variant="ghost" className="mt-8 text-white hover:bg-white/10 border-white/20">Work with me →</FancyButton>
-                        </div>
-
-                        <div className="absolute -bottom-12 -right-12 flex gap-4 rotate-[8deg] group-hover:rotate-[12deg] transition-transform duration-700">
-                            {PROJECTS.filter(p => p.category === "Dev").slice(0, 3).map((project, idx) => (
-                                <div key={idx} className="w-48 h-64 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden shadow-2xl">
-                                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Card 3: MBA & Strategy */}
-                    <motion.div
-                        className="sticky top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-12 min-h-[450px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group"
-                        variants={scaleIn}
-                    >
-                        <div className="relative z-10">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[12px] font-medium mb-4">
-                                <BookOpen size={14} />
-                                Currently pursuing MBA @ Lead City University
+                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">Full-Stack Design <br />+ Bubble Development</h3>
                             </div>
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tighter">Operational <br />Digital Strategy</h3>
-                            <p className="text-white/80 text-[16px] md:text-[18px] max-w-md leading-relaxed">
-                                Applying MBA-level Procurement & Supply Chain principles to create optimized digital ecosystems that drive business efficiency.
-                            </p>
-                            <FancyButton href="#contact" variant="ghost" className="mt-8 text-white hover:bg-white/10 border-white/20">Work with me →</FancyButton>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <CheckCircle2 size={16} /> What you get
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "End-to-end product design (user research, flows, wireframes, high-fidelity UI)",
+                                            "Production-ready Bubble development (scalable, responsive, properly architected)",
+                                            "One person who owns both design and implementation — no handoff gaps"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <Sparkles size={16} /> Best For
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "Founders launching MVPs in Bubble",
+                                            "Startups building v1 web applications",
+                                            "Businesses automating internal operations",
+                                            "Projects that need speed without sacrificing quality"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
+                                <p className="text-[15px] text-white/90 italic leading-relaxed">
+                                    "I design what I can build, and I build what's been designed for real users. No 'can we actually build this?' conversations. No designer-developer miscommunication. Just shipped products."
+                                </p>
+                            </div>
+
+                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
+                                <div className="flex items-center gap-2 text-white/90">
+                                    <Clock size={16} />
+                                    <span className="text-[14px] font-medium">Timeline: 4-8 weeks for most MVPs</span>
+                                </div>
+                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
+                                    Let's Talk <ArrowRight size={16} className="ml-2" />
+                                </FancyButton>
+                            </div>
                         </div>
 
-                        <div className="absolute top-1/2 -right-24 -translate-y-1/2 opacity-20 group-hover:opacity-40 transition-opacity duration-1000">
-                            <Globe size={400} className="text-white" strokeWidth={0.5} />
+                        {/* Background Elements */}
+                        <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-[80px] pointer-events-none" />
+                        <div className="absolute top-1/2 -right-32 flex flex-col gap-4 opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none rotate-[-12deg]">
+                            {/* Decorative blurred blocks */}
+                            <div className="w-64 h-32 bg-white rounded-xl" />
+                            <div className="w-64 h-32 bg-white rounded-xl ml-12" />
                         </div>
                     </motion.div>
+
+                    {/* Service 2: UI/UX Only */}
+                    <motion.div
+                        className="sticky top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-20"
+                        variants={scaleIn}
+                    >
+                        <div className="relative z-10 flex flex-col h-full">
+                            <div className="mb-8">
+                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">UI/UX Design Only</h3>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <CheckCircle2 size={16} /> What you get
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "Conversion-focused product design (user flows, wireframes, high-fidelity mockups, prototypes)",
+                                            "Design systems and component libraries",
+                                            "Developer-ready handoff files (Figma with specs, annotations, style guide)"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <Sparkles size={16} /> Best For
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "Teams with in-house or contracted developers (any tech stack)",
+                                            "Products being built in custom code, React, Flutter, etc.",
+                                            "Companies that need expert UI/UX without development",
+                                            "Agencies white-labeling design work"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
+                                <p className="text-[15px] text-white/90 italic leading-relaxed">
+                                    "Even when I'm not building it, I design with implementation in mind. My development background means I design interfaces that are technically feasible, performance-optimized, and developer-friendly."
+                                </p>
+                            </div>
+
+                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
+                                <div className="flex items-center gap-2 text-white/90">
+                                    <Clock size={16} />
+                                    <span className="text-[14px] font-medium">Timeline: 2-4 weeks depending on scope</span>
+                                </div>
+                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
+                                    Let's Talk <ArrowRight size={16} className="ml-2" />
+                                </FancyButton>
+                            </div>
+                        </div>
+                        {/* Background Elements */}
+                        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-[80px] pointer-events-none" />
+                    </motion.div>
+
+                    {/* Service 3: Bubble Dev Only */}
+                    <motion.div
+                        className="sticky top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-30"
+                        variants={scaleIn}
+                    >
+                        <div className="relative z-10 flex flex-col h-full">
+                            <div className="mb-8">
+                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">Bubble Development Only</h3>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <CheckCircle2 size={16} /> What you get
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "Clean, scalable Bubble implementation of existing designs",
+                                            "Proper database architecture, workflows, and API integrations",
+                                            "Responsive layouts that match your mockups pixel-perfect",
+                                            "Performance optimization and Bubble best practices"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <Sparkles size={16} /> Best For
+                                    </h4>
+                                    <ul className="space-y-2">
+                                        {[
+                                            "Projects with finalized designs that need expert Bubble execution",
+                                            "Teams whose Bubble developer left mid-project",
+                                            "Agencies outsourcing Bubble builds",
+                                            "Startups wanting to rebuild/optimize existing Bubble apps"
+                                        ].map((item, i) => (
+                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
+                                <p className="text-[15px] text-white/90 italic leading-relaxed">
+                                    "I build with design integrity in mind. Your final product will match the mockups — no shortcuts, no 'close enough,' no compromises that ruin the UX. I also know when designs need adjustment for Bubble's constraints."
+                                </p>
+                            </div>
+
+                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
+                                <div className="flex items-center gap-2 text-white/90">
+                                    <Clock size={16} />
+                                    <span className="text-[14px] font-medium">Timeline: 3-6 weeks depending on complexity</span>
+                                </div>
+                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
+                                    Let's Talk <ArrowRight size={16} className="ml-2" />
+                                </FancyButton>
+                            </div>
+                        </div>
+                        {/* Background Elements */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-white/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+                    </motion.div>
+
+                    {/* Not Sure Which Path Fits? */}
+                    <motion.div
+                        className="rounded-[24px] bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left relative z-40"
+                        variants={fadeInUp}
+                    >
+                        <div className="flex flex-col gap-2 max-w-lg">
+                            <h3 className="text-[18px] font-semibold text-zinc-900 dark:text-zinc-100 flex items-center justify-center md:justify-start gap-2">
+                                <HelpCircle className="text-orange-500" size={20} /> Not Sure Which Path Fits?
+                            </h3>
+                            <p className="text-[15px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                Book a free 30-minute discovery call and I'll help you figure out the best approach based on your budget, timeline, existing assets, technical requirements, and business goals.
+                            </p>
+                        </div>
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="shrink-0 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 md:w-auto w-full justify-center whitespace-nowrap">
+                            Schedule Discovery Call
+                        </FancyButton>
+                    </motion.div>
+
                 </motion.div>
             </motion.section>
+
 
             {/* Process Section: How Does This Work */}
             <motion.section
@@ -523,7 +704,7 @@ export default function Home() {
                 </motion.div>
 
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     variants={{
                         hidden: { opacity: 0 },
                         visible: {
@@ -537,64 +718,205 @@ export default function Home() {
                 >
                     {/* Step 1 */}
                     <motion.div
-                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        className="flex flex-col gap-6 p-8 rounded-[24px] bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
                         variants={fadeInUp}
                     >
-                        <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
-                            <img
-                                src="https://framerusercontent.com/images/ygffavWl0JnQH0JPhHtHytwNI.svg"
-                                alt="Book a Discovery Call"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
+                        <div className="flex items-start justify-between">
+                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm">
+                                <Search className="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
+                            </div>
+                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-2">STEP 01</span>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1">Step 01</span>
-                            <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-1.5">Book a Discovery Call</h3>
-                            <p className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-                                Schedule a discovery call to discuss your project requirements and gain clarity on the vision.
-                            </p>
+
+                        <div>
+                            <h3 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Discovery & Strategy</h3>
+                            <span className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400">Week 1</span>
+                        </div>
+
+                        <div className="flex flex-col gap-6 mt-2">
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Discuss business goals, target users, and technical requirements",
+                                        "Audit existing flows, competitors, or internal tools",
+                                        "Deliver project brief outlining scope, timeline, and approach"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What you get</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Clear understanding of what we're building and why",
+                                        "Transparent pricing and milestones",
+                                        "Aligned expectations before work starts"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-400/50 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </motion.div>
 
                     {/* Step 2 */}
                     <motion.div
-                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        className="flex flex-col gap-6 p-8 rounded-[24px] bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
                         variants={fadeInUp}
                     >
-                        <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
-                            <img
-                                src="https://framerusercontent.com/images/4EUw2Ek91XDGd0geMXeU0XFVs.svg"
-                                alt="Receive Detailed Brief"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
+                        <div className="flex items-start justify-between">
+                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm">
+                                <PenTool className="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
+                            </div>
+                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-2">STEP 02</span>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1">Step 02</span>
-                            <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-1.5">Receive Detailed Brief</h3>
-                            <p className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-                                Receive a detailed document within 24 hours outlining the strategic approach and execution plan.
-                            </p>
+
+                        <div>
+                            <h3 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Design & Validation</h3>
+                            <span className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400">Week 2-3</span>
+                        </div>
+
+                        <div className="flex flex-col gap-6 mt-2">
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "User flows and wireframes first (logic before pixels)",
+                                        "High-fidelity UI design focused on usability and conversion",
+                                        "Review sessions to iterate and refine before development"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What you get</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Clickable prototypes or annotated mockups",
+                                        "Design system / component library",
+                                        "Sign-off before I write a single line of code"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-400/50 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </motion.div>
 
                     {/* Step 3 */}
                     <motion.div
-                        className="flex flex-col gap-6 p-6 rounded-xl bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        className="flex flex-col gap-6 p-8 rounded-[24px] bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
                         variants={fadeInUp}
                     >
-                        <div className="aspect-square rounded-lg bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-0 overflow-hidden">
-                            <img
-                                src="https://framerusercontent.com/images/6CTXrmORqGJmJexC3YyFb6OfzX4.svg"
-                                alt="Project Commencement"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
+                        <div className="flex items-start justify-between">
+                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm">
+                                <Code className="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
+                            </div>
+                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-2">STEP 03</span>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1">Step 03</span>
-                            <h3 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-1.5">Project Commencement</h3>
-                            <p className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-                                Once the deliverables are vetted and agreed upon, we commence the project lifecycle toward delivery.
-                            </p>
+
+                        <div>
+                            <h3 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Development & Launch</h3>
+                            <span className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400">Week 3-6+</span>
+                        </div>
+
+                        <div className="flex flex-col gap-6 mt-2">
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Build in Bubble with clean database structure and workflows",
+                                        "Implement responsive design, edge cases, and performance",
+                                        "Testing, revisions, and deployment to live environment"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What you get</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Fully functional web application",
+                                        "Documentation for future updates",
+                                        "Post-launch support (bug fixes, minor tweaks)"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-400/50 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Step 4 */}
+                    <motion.div
+                        className="flex flex-col gap-6 p-8 rounded-[24px] bg-zinc-50 dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 group hover:shadow-md transition-all duration-500"
+                        variants={fadeInUp}
+                    >
+                        <div className="flex items-start justify-between">
+                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm">
+                                <LineChart className="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
+                            </div>
+                            <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-2">STEP 04</span>
+                        </div>
+
+                        <div>
+                            <h3 className="text-[18px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Iteration & Growth</h3>
+                            <span className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400">Ongoing</span>
+                        </div>
+
+                        <div className="flex flex-col gap-6 mt-2">
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "Monitor user behavior and gather feedback",
+                                        "Identify friction points or feature gaps",
+                                        "Prioritize improvements based on business impact"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What you get</h4>
+                                <ul className="flex flex-col gap-2">
+                                    {[
+                                        "A partner who stays engaged beyond launch",
+                                        "Data-informed design decisions",
+                                        "Continuous product refinement"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-2.5 text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-400/50 mt-2 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </motion.div>
                 </motion.div>
@@ -789,8 +1111,16 @@ export default function Home() {
             {/* Contact Section */}
             <section id="contact" className="px-6 md:px-12 max-w-4xl mx-auto py-16 mb-20">
                 <div className="mb-12">
-                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">Let's work together</h2>
-                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Schedule a consultation or reach out via socials.</p>
+                    <h2 className="text-[24px] md:text-[32px] font-bold mb-2 text-zinc-900 dark:text-zinc-100 tracking-tight">Ready to Build?</h2>
+                    <p className="text-[16px] text-zinc-500 dark:text-zinc-400">Whether you need design, development, or both — let's talk about your project.</p>
+
+                    <div className="inline-flex items-center gap-2 mt-4 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span className="text-[12px] font-medium text-zinc-600 dark:text-zinc-400">Currently available for projects starting March 2026</span>
+                    </div>
                 </div>
 
                 <div className="mb-12 min-h-[700px]">
@@ -799,24 +1129,68 @@ export default function Home() {
                         style={{ width: "100%", height: "100%", overflow: "scroll" }}
                     />
                 </div>
-
-                <div className="p-10 rounded-3xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black text-center">
-                    <h2 className="text-2xl font-bold mb-4">Want to send a direct message?</h2>
-                    <a href="mailto:hello@tife.dev" className="inline-block px-8 py-3 rounded-full bg-white dark:bg-black text-black dark:text-white font-bold hover:scale-105 transition-transform mb-12">
-                        Say Hello
-                    </a>
-
-                    <div className="flex justify-center gap-6">
-                        <a href="https://twitter.com/tife_olayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Twitter size={20} /></a>
-                        <a href="https://github.com/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Github size={20} /></a>
-                        <a href="https://linkedin.com/in/olayinka-boluwatife-" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Linkedin size={20} /></a>
-                        <a href="https://dribbble.com/tifeolayinka" target="_blank" className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10 transition-colors"><Dribbble size={20} /></a>
-                    </div>
-                </div>
             </section>
 
-            <footer className="text-center text-zinc-500 text-sm pb-8">
-                <p>© {new Date().getFullYear()} Tife. All rights reserved.</p>
+            {/* Redesigned Footer Section */}
+            <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-24 pb-12">
+                {/* Large Serif Heading */}
+                <div className="mb-24 text-center md:text-left">
+                    <h2 className="text-[42px] md:text-[72px] leading-[1.1] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
+                        Designing with precision, <br />
+                        <span className="italic">building with purpose.</span>
+                    </h2>
+                </div>
+
+                {/* Footer Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24 border-t border-zinc-200 dark:border-white/5 pt-12">
+                    <div className="flex flex-col gap-4">
+                        <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Navigation</h4>
+                        <ul className="flex flex-col gap-2">
+                            <li><a href="#hero" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#work" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Work</a></li>
+                            <li><a href="#services" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Services</a></li>
+                            <li><a href="#process" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Process</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                        <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Connect</h4>
+                        <ul className="flex flex-col gap-2">
+                            <li><a href="mailto:hello@tife.dev" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
+                            <li><a href="https://cal.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Schedule Call</a></li>
+                            <li><a href="#contact" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Book Consultation</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                        <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Socials</h4>
+                        <ul className="flex flex-col gap-2">
+                            <li><a href="https://twitter.com/tife_olayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Twitter</a></li>
+                            <li><a href="https://github.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Github</a></li>
+                            <li><a href="https://linkedin.com/in/olayinka-boluwatife-" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">LinkedIn</a></li>
+                            <li><a href="https://dribbble.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Dribbble</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                        <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Legal</h4>
+                        <ul className="flex flex-col gap-2">
+                            <li><span className="text-[14px] text-zinc-600 dark:text-zinc-400">Privacy Policy</span></li>
+                            <li><span className="text-[14px] text-zinc-600 dark:text-zinc-400">Terms of Service</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-zinc-200 dark:border-white/5">
+                    <p className="text-[13px] text-zinc-500 dark:text-zinc-400">
+                        © {new Date().getFullYear()} Tife Olayinka. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                        <span className="text-[13px] text-zinc-500 dark:text-zinc-400">Built in Lagos, shipping worldwide</span>
+                    </div>
+                </div>
             </footer>
         </div>
     );
