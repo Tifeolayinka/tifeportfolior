@@ -1109,7 +1109,7 @@ export default function Home() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="px-6 md:px-12 max-w-4xl mx-auto py-16 mb-20">
+            <section id="contact" className="px-6 md:px-12 max-w-4xl mx-auto pt-16 pb-8">
                 <div className="mb-12">
                     <h2 className="text-[24px] md:text-[32px] font-bold mb-2 text-zinc-900 dark:text-zinc-100 tracking-tight">Ready to Build?</h2>
                     <p className="text-[16px] text-zinc-500 dark:text-zinc-400">Whether you need design, development, or both — let's talk about your project.</p>
@@ -1123,7 +1123,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="mb-12 min-h-[700px]">
+                <div className="mb-0 min-h-[700px]">
                     <div
                         id="my-cal-inline-project-consultation-1"
                         style={{ width: "100%", height: "100%", overflow: "scroll" }}
@@ -1132,7 +1132,7 @@ export default function Home() {
             </section>
 
             {/* Redesigned Footer Section */}
-            <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-24 pb-12">
+            <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-12 pb-12">
                 {/* Large Serif Heading */}
                 <div className="mb-24 text-center md:text-left">
                     <h2 className="text-[42px] md:text-[72px] leading-[1.1] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
