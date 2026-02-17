@@ -6,8 +6,69 @@ import { SocialsMenu } from "@/components/ui/SocialsMenu";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { AppGrid, AppCard } from "@/components/AppGrid";
 import { useState, useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { ServiceCard } from "@/components/ServiceCard";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
+
+const SERVICE_CARDS = [
+    {
+        title: <>Full-Stack Design <br />+ Bubble Development</>,
+        popular: true,
+        features: [
+            "End-to-end product design (user research, flows, wireframes, high-fidelity UI)",
+            "Production-ready Bubble development (scalable, responsive, properly architected)",
+            "One person who owns both design and implementation — no handoff gaps"
+        ],
+        bestFor: [
+            "Founders launching MVPs in Bubble",
+            "Startups building v1 web applications",
+            "Businesses automating internal operations",
+            "Projects that need speed without sacrificing quality"
+        ],
+        quote: "I design what I can build, and I build what's been designed for real users. No 'can we actually build this?' conversations. No designer-developer miscommunication. Just shipped products.",
+        timeline: "4-8 weeks for most MVPs",
+        bgClass: "bg-[#91a08d]",
+        darkBgClass: "dark:bg-[#2d3a2d]"
+    },
+    {
+        title: "UI/UX Design Only",
+        features: [
+            "Conversion-focused product design (user flows, wireframes, high-fidelity mockups, prototypes)",
+            "Design systems and component libraries",
+            "Developer-ready handoff files (Figma with specs, annotations, style guide)"
+        ],
+        bestFor: [
+            "Teams with in-house or contracted developers (any tech stack)",
+            "Products being built in custom code, React, Flutter, etc.",
+            "Companies that need expert UI/UX without development",
+            "Agencies white-labeling design work"
+        ],
+        quote: "Even when I'm not building it, I design with implementation in mind. My development background means I design interfaces that are technically feasible, performance-optimized, and developer-friendly.",
+        timeline: "2-4 weeks depending on scope",
+        bgClass: "bg-[#d9774d]",
+        darkBgClass: "dark:bg-[#4d2d2d]"
+    },
+    {
+        title: "Bubble Development Only",
+        features: [
+            "Clean, scalable Bubble implementation of existing designs",
+            "Proper database architecture, workflows, and API integrations",
+            "Responsive layouts that match your mockups pixel-perfect",
+            "Performance optimization and Bubble best practices"
+        ],
+        bestFor: [
+            "Projects with finalized designs that need expert Bubble execution",
+            "Teams whose Bubble developer left mid-project",
+            "Agencies outsourcing Bubble builds",
+            "Startups wanting to rebuild/optimize existing Bubble apps"
+        ],
+        quote: "I build with design integrity in mind. Your final product will match the mockups — no shortcuts, no 'close enough,' no compromises that ruin the UX. I also know when designs need adjustment for Bubble's constraints.",
+        timeline: "3-6 weeks depending on complexity",
+        bgClass: "bg-[#4a6fa5]",
+        darkBgClass: "dark:bg-[#1d2d44]"
+    }
+];
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
@@ -81,6 +142,17 @@ export default function Home() {
     const nextTestimonial = () => setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
     const prevTestimonial = () => setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
     const filteredProjects = PROJECTS.filter(p => activeFilter === 'All' || p.category === activeFilter);
+    const isDesktop = useMediaQuery("(min-width: 768px)");
+
+    const card1Ref = useRef(null);
+    const card2Ref = useRef(null);
+    const card3Ref = useRef(null);
+
+    const { scrollYProgress: scroll2 } = useScroll({ target: card2Ref, offset: ['start end', 'start start'] });
+    const { scrollYProgress: scroll3 } = useScroll({ target: card3Ref, offset: ['start end', 'start start'] });
+
+    const scale1 = useTransform(scroll2, [0, 1], [1, 0.9]);
+    const scale2 = useTransform(scroll3, [0, 1], [1, 0.9]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -440,7 +512,7 @@ export default function Home() {
                 </motion.div>
 
                 <motion.div
-                    className="flex flex-col gap-16"
+                    className="flex flex-col gap-16 relative"
                     variants={{
                         hidden: { opacity: 0 },
                         visible: {
@@ -452,220 +524,20 @@ export default function Home() {
                         }
                     }}
                 >
-                    {/* Service 1: Full-Stack Design + Bubble */}
-                    <motion.div
-                        className="sticky top-24 max-h-[85vh] md:max-h-none overflow-y-auto md:overflow-hidden scrollbar-hide rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between group z-10"
-                        variants={scaleIn}
-                    >
-                        <div className="relative z-10 flex flex-col h-full">
-                            <div className="mb-8">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium text-[12px] mb-4">
-                                    <Sparkles size={14} />
-                                    MOST POPULAR
-                                </div>
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">Full-Stack Design <br />+ Bubble Development</h3>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <CheckCircle2 size={16} /> What you get
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "End-to-end product design (user research, flows, wireframes, high-fidelity UI)",
-                                            "Production-ready Bubble development (scalable, responsive, properly architected)",
-                                            "One person who owns both design and implementation — no handoff gaps"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <Sparkles size={16} /> Best For
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "Founders launching MVPs in Bubble",
-                                            "Startups building v1 web applications",
-                                            "Businesses automating internal operations",
-                                            "Projects that need speed without sacrificing quality"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
-                                <p className="text-[15px] text-white/90 italic leading-relaxed">
-                                    "I design what I can build, and I build what's been designed for real users. No 'can we actually build this?' conversations. No designer-developer miscommunication. Just shipped products."
-                                </p>
-                            </div>
-
-                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
-                                <div className="flex items-center gap-2 text-white/90">
-                                    <Clock size={16} />
-                                    <span className="text-[14px] font-medium">Timeline: 4-8 weeks for most MVPs</span>
-                                </div>
-                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
-                                    Let's Talk <ArrowRight size={16} className="ml-2" />
-                                </FancyButton>
-                            </div>
-                        </div>
-
-                        {/* Background Elements */}
-                        <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-[80px] pointer-events-none" />
-                        <div className="absolute top-1/2 -right-32 flex flex-col gap-4 opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none rotate-[-12deg]">
-                            {/* Decorative blurred blocks */}
-                            <div className="w-64 h-32 bg-white rounded-xl" />
-                            <div className="w-64 h-32 bg-white rounded-xl ml-12" />
-                        </div>
-                    </motion.div>
-
-                    {/* Service 2: UI/UX Only */}
-                    <motion.div
-                        className="sticky top-28 max-h-[85vh] md:max-h-none overflow-y-auto md:overflow-hidden scrollbar-hide rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between group z-20"
-                        variants={scaleIn}
-                    >
-                        <div className="relative z-10 flex flex-col h-full">
-                            <div className="mb-8">
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">UI/UX Design Only</h3>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <CheckCircle2 size={16} /> What you get
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "Conversion-focused product design (user flows, wireframes, high-fidelity mockups, prototypes)",
-                                            "Design systems and component libraries",
-                                            "Developer-ready handoff files (Figma with specs, annotations, style guide)"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <Sparkles size={16} /> Best For
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "Teams with in-house or contracted developers (any tech stack)",
-                                            "Products being built in custom code, React, Flutter, etc.",
-                                            "Companies that need expert UI/UX without development",
-                                            "Agencies white-labeling design work"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
-                                <p className="text-[15px] text-white/90 italic leading-relaxed">
-                                    "Even when I'm not building it, I design with implementation in mind. My development background means I design interfaces that are technically feasible, performance-optimized, and developer-friendly."
-                                </p>
-                            </div>
-
-                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
-                                <div className="flex items-center gap-2 text-white/90">
-                                    <Clock size={16} />
-                                    <span className="text-[14px] font-medium">Timeline: 2-4 weeks depending on scope</span>
-                                </div>
-                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
-                                    Let's Talk <ArrowRight size={16} className="ml-2" />
-                                </FancyButton>
-                            </div>
-                        </div>
-                        {/* Background Elements */}
-                        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-[80px] pointer-events-none" />
-                    </motion.div>
-
-                    {/* Service 3: Bubble Dev Only */}
-                    <motion.div
-                        className="sticky top-32 max-h-[85vh] md:max-h-none overflow-y-auto md:overflow-hidden scrollbar-hide rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between group z-30"
-                        variants={scaleIn}
-                    >
-                        <div className="relative z-10 flex flex-col h-full">
-                            <div className="mb-8">
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tighter">Bubble Development Only</h3>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <CheckCircle2 size={16} /> What you get
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "Clean, scalable Bubble implementation of existing designs",
-                                            "Proper database architecture, workflows, and API integrations",
-                                            "Responsive layouts that match your mockups pixel-perfect",
-                                            "Performance optimization and Bubble best practices"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <Sparkles size={16} /> Best For
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            "Projects with finalized designs that need expert Bubble execution",
-                                            "Teams whose Bubble developer left mid-project",
-                                            "Agencies outsourcing Bubble builds",
-                                            "Startups wanting to rebuild/optimize existing Bubble apps"
-                                        ].map((item, i) => (
-                                            <li key={i} className="text-[15px] text-white/80 leading-snug flex items-start gap-2">
-                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/60 shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 mb-8">
-                                <p className="text-[15px] text-white/90 italic leading-relaxed">
-                                    "I build with design integrity in mind. Your final product will match the mockups — no shortcuts, no 'close enough,' no compromises that ruin the UX. I also know when designs need adjustment for Bubble's constraints."
-                                </p>
-                            </div>
-
-                            <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/10">
-                                <div className="flex items-center gap-2 text-white/90">
-                                    <Clock size={16} />
-                                    <span className="text-[14px] font-medium">Timeline: 3-6 weeks depending on complexity</span>
-                                </div>
-                                <FancyButton href="#contact" variant="ghost" className="text-white hover:bg-white/10 border-white/20 w-fit">
-                                    Let's Talk <ArrowRight size={16} className="ml-2" />
-                                </FancyButton>
-                            </div>
-                        </div>
-                        {/* Background Elements */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-white/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
-                    </motion.div>
+                    {SERVICE_CARDS.map((card, i) => {
+                        const targetScale = i === 0 ? scale1 : i === 1 ? scale2 : undefined;
+                        const ref = i === 0 ? card1Ref : i === 1 ? card2Ref : card3Ref;
+                        return (
+                            <ServiceCard
+                                key={i}
+                                {...card}
+                                index={i}
+                                ref={ref}
+                                scale={isDesktop ? targetScale : undefined}
+                                style={isDesktop ? { top: `calc(6rem + ${i * 1}rem)` } : undefined}
+                            />
+                        );
+                    })}
 
                     {/* Not Sure Which Path Fits? */}
                     <motion.div
