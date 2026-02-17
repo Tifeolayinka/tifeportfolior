@@ -33,8 +33,8 @@ export const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(({
     return (
         <motion.div
             ref={ref}
-            style={{ scale, ...style }}
-            className={`relative md:sticky h-auto md:h-auto overflow-visible md:overflow-hidden rounded-[32px] ${bgClass} ${darkBgClass} p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between group z-${(index + 1) * 10} origin-top`}
+            style={{ scale, zIndex: (index + 1) * 10, ...style }}
+            className={`relative md:sticky h-auto md:h-auto overflow-visible md:overflow-hidden rounded-[32px] ${bgClass} ${darkBgClass} p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between group origin-top`}
         >
             <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-8">
