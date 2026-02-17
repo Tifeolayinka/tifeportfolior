@@ -454,7 +454,7 @@ export default function Home() {
                 >
                     {/* Service 1: Full-Stack Design + Bubble */}
                     <motion.div
-                        className="sticky top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-10"
+                        className="relative md:sticky md:top-24 rounded-[32px] bg-[#91a08d] dark:bg-[#2d3a2d] p-8 md:p-10 h-auto md:min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group z-10"
                         variants={scaleIn}
                     >
                         <div className="relative z-10 flex flex-col h-full">
@@ -532,7 +532,7 @@ export default function Home() {
 
                     {/* Service 2: UI/UX Only */}
                     <motion.div
-                        className="sticky top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-20"
+                        className="relative md:sticky md:top-28 rounded-[32px] bg-[#d9774d] dark:bg-[#4d2d2d] p-8 md:p-10 h-auto md:min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group z-20"
                         variants={scaleIn}
                     >
                         <div className="relative z-10 flex flex-col h-full">
@@ -600,7 +600,7 @@ export default function Home() {
 
                     {/* Service 3: Bubble Dev Only */}
                     <motion.div
-                        className="sticky top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-10 min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group relative z-30"
+                        className="relative md:sticky md:top-32 rounded-[32px] bg-[#4a6fa5] dark:bg-[#1d2d44] p-8 md:p-10 h-auto md:min-h-[500px] shadow-2xl border border-white/10 flex flex-col justify-between overflow-hidden group z-30"
                         variants={scaleIn}
                     >
                         <div className="relative z-10 flex flex-col h-full">
