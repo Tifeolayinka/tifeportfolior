@@ -10,6 +10,24 @@ export function WhatsAppWidget() {
     // State to track if the user has manually interacted with the widget (opened/closed)
     const [hasInteracted, setHasInteracted] = useState(false);
 
+    const SERVICES = [
+        "Full-Stack + Bubble",
+        "UI/UX Design",
+        "Bubble Dev",
+        "Other"
+    ];
+
+    const BUDGETS = [
+        "< $1k",
+        "$1k - $3k",
+        "$3k - $5k",
+        "$5k+"
+    ];
+
+    const [selectedService, setSelectedService] = useState<string | null>(null);
+    const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
+    const [description, setDescription] = useState("");
+
     useEffect(() => {
         // Only auto-open if the user hasn't interacted with it yet
         if (!hasInteracted) {
@@ -33,7 +51,18 @@ export function WhatsAppWidget() {
 
     // Replace with your actual WhatsApp number
     const WHATSAPP_NUMBER = "+2348068159010";
-    const WHATSAPP_MESSAGE = "Hi Tife! I'd like to chat about a project.";
+
+    // Construct dynamic message based on selections
+    const isReady = selectedService && selectedBudget;
+
+    // Build the message parts
+    const baseMessage = `Hi Tife! I'd like to chat with you about ${selectedService} for my idea, my budget is ${selectedBudget}.`;
+    const descriptionText = description.trim() ? `\n\nContext: ${description.trim()}` : "";
+
+    const WHATSAPP_MESSAGE = isReady
+        ? `${baseMessage}${descriptionText}`
+        : "Hi Tife! I'd like to chat about a project.";
+
     const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
     return (
@@ -45,7 +74,7 @@ export function WhatsAppWidget() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="pointer-events-auto bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-2xl border border-zinc-200 dark:border-white/10 w-[320px] overflow-hidden"
+                        className="pointer-events-auto bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-2xl border border-zinc-200 dark:border-white/10 w-[340px] overflow-hidden"
                     >
                         {/* Header */}
                         <div className="bg-[#0f5c4c] dark:bg-[#0f4c3e] p-5 flex items-start justify-between relative overflow-hidden">
@@ -76,32 +105,115 @@ export function WhatsAppWidget() {
                             </button>
                         </div>
 
-                        {/* Body */}
-                        <div className="p-5 bg-zinc-50 dark:bg-[#111] relative min-h-[140px]">
-                            {/* Chat Bubble */}
+                        {/* Body - Lead Form */}
+                        <div className="p-5 bg-zinc-50 dark:bg-[#111] relative min-h-[140px] flex flex-col gap-5">
                             <motion.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2, duration: 0.4 }}
-                                className="bg-white dark:bg-[#222] p-3.5 rounded-2xl rounded-tl-sm shadow-sm border border-zinc-200 dark:border-white/5 max-w-[85%]"
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 }}
                             >
-                                <p className="text-[14px] text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                                    Hey there! 👋 How can I help you today?
+                                <p className="text-[14px] text-zinc-600 dark:text-zinc-400 font-medium mb-3">
+                                    What service are you looking for?
                                 </p>
-                                <span className="text-[10px] text-zinc-400 mt-1.5 block text-right">05:57 AM</span>
+                                <div className="flex flex-wrap gap-2">
+                                    {SERVICES.map((service) => (
+                                        <button
+                                            key={service}
+                                            onClick={() => setSelectedService(service)}
+                                            className={cn(
+                                                "px-3 py-1.5 rounded-full text-[13px] font-medium border transition-all duration-200",
+                                                selectedService === service
+                                                    ? "bg-[#0f5c4c] dark:bg-[#0f4c3e] border-[#0f5c4c] dark:border-[#0f4c3e] text-white shadow-md scale-105"
+                                                    : "bg-white dark:bg-[#222] border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-zinc-300 hover:border-[#0f5c4c]/50 hover:text-[#0f5c4c] dark:hover:text-[#4ade80]"
+                                            )}
+                                        >
+                                            {service}
+                                        </button>
+                                    ))}
+                                </div>
                             </motion.div>
+
+                            <AnimatePresence>
+                                {selectedService && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0, y: -10 }}
+                                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                                        exit={{ opacity: 0, height: 0, y: -10 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <p className="text-[14px] text-zinc-600 dark:text-zinc-400 font-medium mb-3 mt-1">
+                                            What is your estimated budget?
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {BUDGETS.map((budget) => (
+                                                <button
+                                                    key={budget}
+                                                    onClick={() => setSelectedBudget(budget)}
+                                                    className={cn(
+                                                        "px-3 py-1.5 rounded-full text-[13px] font-medium border transition-all duration-200",
+                                                        selectedBudget === budget
+                                                            ? "bg-[#0f5c4c] dark:bg-[#0f4c3e] border-[#0f5c4c] dark:border-[#0f4c3e] text-white shadow-md scale-105"
+                                                            : "bg-white dark:bg-[#222] border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-zinc-300 hover:border-[#0f5c4c]/50 hover:text-[#0f5c4c] dark:hover:text-[#4ade80]"
+                                                    )}
+                                                >
+                                                    {budget}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <AnimatePresence>
+                                {selectedService && selectedBudget && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0, y: -10 }}
+                                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                                        exit={{ opacity: 0, height: 0, y: -10 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <p className="text-[14px] text-zinc-600 dark:text-zinc-400 font-medium mb-2 mt-1 flex items-center justify-between">
+                                            <span>Tell me about your idea</span>
+                                            <span className="text-[11px] text-zinc-400 dark:text-zinc-500 font-normal">Optional</span>
+                                        </p>
+                                        <textarea
+                                            value={description}
+                                            onChange={(e) => setDescription(e.target.value)}
+                                            placeholder="A brief overview..."
+                                            className="w-full h-[60px] resize-none rounded-xl bg-white dark:bg-[#222] border border-zinc-200 dark:border-white/10 p-3 text-[13px] text-zinc-700 dark:text-zinc-300 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-[#0f5c4c] dark:focus:border-[#0f4c3e] transition-colors shadow-sm"
+                                        />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
 
                         {/* Footer */}
                         <div className="p-4 bg-white dark:bg-[#1a1a1a] border-t border-zinc-100 dark:border-white/5">
                             <a
-                                href={WHATSAPP_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] hover:bg-[#1fd963] active:scale-[0.98] transition-all rounded-full shadow-lg shadow-green-500/20 group"
+                                href={isReady ? WHATSAPP_URL : "#"}
+                                onClick={(e) => {
+                                    if (!isReady) e.preventDefault();
+                                }}
+                                target={isReady ? "_blank" : undefined}
+                                rel={isReady ? "noopener noreferrer" : undefined}
+                                className={cn(
+                                    "flex items-center justify-center gap-2 w-full py-3 rounded-full transition-all group",
+                                    isReady
+                                        ? "bg-[#25D366] hover:bg-[#1fd963] active:scale-[0.98] shadow-lg shadow-green-500/20"
+                                        : "bg-zinc-200 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 cursor-not-allowed"
+                                )}
                             >
-                                <Send size={18} className="text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                                <span className="text-white font-medium text-[14px]">Start Chat</span>
+                                <Send size={18} className={cn(
+                                    isReady ? "text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" : "opacity-50"
+                                )} />
+                                <span className={cn(
+                                    "font-medium text-[14px]",
+                                    isReady ? "text-white" : "opacity-50"
+                                )}>
+                                    {isReady ? "Start Chat" : "Select options to continue"}
+                                </span>
                             </a>
                         </div>
                     </motion.div>
