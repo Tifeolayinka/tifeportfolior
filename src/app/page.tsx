@@ -13,7 +13,7 @@ import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOp
 
 const SERVICE_CARDS = [
     {
-        title: <>Full-Stack Design <br />+ Bubble Development</>,
+        title: <>Product Consulting <br />& Build</>,
         popular: true,
         features: [
             "End-to-end product design (user research, flows, wireframes, high-fidelity UI)",
@@ -26,7 +26,7 @@ const SERVICE_CARDS = [
             "Businesses automating internal operations",
             "Projects that need speed without sacrificing quality"
         ],
-        quote: "I design what I can build, and I build what's been designed for real users. No 'can we actually build this?' conversations. No designer-developer miscommunication. Just shipped products.",
+        quote: "End-to-end engagement — from understanding the problem to shipping the product. I assess your needs, recommend the right approach, and execute it. Could be Bubble, could be Next.js and Supabase, could be a hybrid. You get one person who thinks and builds.",
         timeline: "4-8 weeks for most MVPs",
         bgClass: "bg-[#91a08d]",
         darkBgClass: "dark:bg-[#2d3a2d]"
@@ -50,7 +50,7 @@ const SERVICE_CARDS = [
         darkBgClass: "dark:bg-[#4d2d2d]"
     },
     {
-        title: "Bubble Development Only",
+        title: "Development Only",
         features: [
             "Clean, scalable Bubble implementation of existing designs",
             "Proper database architecture, workflows, and API integrations",
@@ -63,7 +63,7 @@ const SERVICE_CARDS = [
             "Agencies outsourcing Bubble builds",
             "Startups wanting to rebuild/optimize existing Bubble apps"
         ],
-        quote: "I build with design integrity in mind. Your final product will match the mockups — no shortcuts, no 'close enough,' no compromises that ruin the UX. I also know when designs need adjustment for Bubble's constraints.",
+        quote: "You have designs, I'll build them. Bubble, custom code, or both. Clean architecture, proper workflows, no shortcuts.",
         timeline: "3-6 weeks depending on complexity",
         bgClass: "bg-[#4a6fa5]",
         darkBgClass: "dark:bg-[#1d2d44]"
@@ -77,29 +77,75 @@ import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/an
 
 const TESTIMONIALS = [
     {
-        name: "Chad D.",
-        role: "FOUNDER",
-        company: "ChiaDigital",
-        text: "Working with Tife has been an excellent experience. He contributed to a few projects that demanded quick turnarounds and creative problem-solving. His strong design sense and attention to user experience made him an indispensable asset to our team.",
-        avatar: "CD"
+        name: "Shehriar",
+        role: "Founder",
+        company: "Bibaflow",
+        text: "Tife supported us in the development of our task management software by analyzing gaps in the existing system and proposing technically sound solutions to address missing features. He helped translate our real-life workflows into functional system logic. His input improved both usability and system completeness. Overall, working with him was fast and efficient, with clear progress made in each phase of development. Constant communication—through regular check-ins, technical discussions, and feedback loops—was a key factor in delivering a well-implemented and fully functional project.",
+        avatar: "SH"
     },
     {
-        name: "Alex Rivera",
-        role: "CEO",
-        company: "TechFlow",
-        text: "Tife is a rare talent who understands both the aesthetic and functional sides of a product. Our MVP was delivered in record time with zero friction.",
-        avatar: "AR"
+        name: "Gursimran T.",
+        role: "Founder",
+        company: "Recrewer",
+        text: "Tife brings clarity before code. He focuses on user flow, priorities, and build-ready design before opening Bubble, which saves time and avoids rework. His blend of UI/UX judgment, product thinking, and Bubble execution makes him especially valuable for founders building real products. I’d confidently recommend Tife to anyone who values clear thinking and disciplined delivery.",
+        avatar: "GT"
     },
     {
-        name: "Sarah Chen",
-        role: "DESIGN LEAD",
-        company: "Orbit",
-        text: "The attention to detail in Tife's work is exceptional. The Bubble.io implementation was clean, scalable, and beautifully designed beyond expectations.",
-        avatar: "SC"
+        name: "JJ Englert",
+        role: "Founder",
+        company: "Nocodealliance",
+        text: "Love working with Tife. Very talented, stands by his work, and is quick to respond!",
+        avatar: "JE"
+    },
+    {
+        name: "Nick Apps",
+        role: "Product Manager",
+        company: "",
+        text: "Tife has a great eye for design, works quickly and easy to work alongside. He built a marketplace and custom CMS for us in Bubble. I look forward to working with him again.",
+        avatar: "NA"
+    },
+    {
+        name: "Yoann Demont",
+        role: "CEO, Founder",
+        company: "Alteam",
+        text: "Tife is a good developer. He excels in using low-code tools such as Bubble.io and Webflow. I will work with him again.",
+        avatar: "YD"
+    },
+    {
+        name: "Ho T.",
+        role: "Founder",
+        company: "Westres",
+        text: "Tife was a responsible and efficient developer. It was our first Bubble project and he patiently helped us through the whole process from development to deployment to ensure we rolled out our application successfully. He was knowledgeable and skillful in Bubble development and OpenAI integration. His communication skills were good and was always able to come back with useful information and help with our understanding of how everything works. We have no hesitation in recommending him.",
+        avatar: "HT"
+    },
+    {
+        name: "Ho T.",
+        role: "Founder",
+        company: "Westres",
+        text: "Tife is an efficient and hard working developer. Communication with him was seamless and he could deliver results timely and in good quality.",
+        avatar: "HT"
+    },
+    {
+        name: "Gabe F.",
+        role: "",
+        company: "",
+        text: "Tife did an amazing job and was on point for us regarding our automation needs. Anything via API, JSON and bubble he was able to assist with.",
+        avatar: "GF"
+    },
+    {
+        name: "Steve T.",
+        role: "",
+        company: "Clickpoint Consulting",
+        text: "Great work! Proactive approach and excellent understanding of product design. Unfortunately, due to financial constraints from the client, we have had to close this project... however, we will certainly consider using Tife again. Highly recommend.",
+        avatar: "ST"
     }
 ];
 
 const FAQ_DATA = [
+    {
+        question: "Do you have a preferred technology stack?",
+        answer: "No — and that's intentional. Bubble is the right call for fast MVPs, internal tools, and marketplaces. Custom code (Next.js, Supabase, React) is right when you need AI integrations, complex logic, or a specific infrastructure. I make that recommendation during Discovery, based on your budget, timeline, and product requirements. You're never getting a solution shaped around my preferences."
+    },
     {
         question: "Do I need to choose between design-only or design+development?",
         answer: "No. We start with discovery and I'll recommend the best approach based on your needs, timeline, and budget. Many clients start with design-only and move to development once we've validated the direction."
@@ -272,7 +318,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
-                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">UI/UX Designer & Bubble Developer</p>
+                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">Product & Technology Consultant</p>
                         </div>
                     </div>
 
@@ -282,11 +328,11 @@ export default function Home() {
                         variants={textReveal}
                     >
                         <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans">
-                            I design and build web applications that work — combining <span className="text-zinc-900 dark:text-zinc-100">clean, conversion-focused UI</span> with <span className="text-zinc-900 dark:text-zinc-100">full-stack Bubble development</span>. From concept to live product, faster than traditional dev.
+                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100">strategy, design, and development</span> using whatever technology fits the problem.
                         </div>
 
                         <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
-                            Most designers hand off mockups and hope for the best. I design and build in Bubble — which means I create interfaces that look polished, feel intuitive, and actually work at scale. No handoff gaps. No "can we build this?" conversations. Just shipped products.
+                            Most consultants hand you a strategy deck and disappear. I stay through design, build, and launch. Whether that's Bubble, custom code, or AI-assisted development — the decision is always driven by what's right for your product, not what's easy for me.
                         </p>
                     </motion.div>
 
@@ -610,6 +656,7 @@ export default function Home() {
                                 <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
                                 <ul className="flex flex-col gap-2">
                                     {[
+                                        "Technology recommendation — I tell you what to build on and why, before we start",
                                         "Discuss business goals, target users, and technical requirements",
                                         "Audit existing flows, competitors, or internal tools",
                                         "Deliver project brief outlining scope, timeline, and approach"
@@ -797,8 +844,8 @@ export default function Home() {
             {/* Toolkit Section */}
             <section id="toolkit" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
                 <div className="mb-8">
-                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">Toolkit & Ecosystem</h2>
-                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">The tools and side quests that fuel my process.</p>
+                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">How I Build</h2>
+                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">The tools change depending on the problem. The standard doesn't.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -841,10 +888,9 @@ export default function Home() {
                         <div className="flex flex-col rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden">
                             {[
                                 { title: "Figma", level: "Design", icon: "https://framerusercontent.com/images/KNDBQgO9SSkq40okizEwxHnaWX0.png?scale-down-to=512&width=924&height=922" },
-                                { title: "Bubble.io", level: "Nocode Development", icon: "https://cdn.worldvectorlogo.com/logos/bubble-1.svg" },
-                                { title: "Antigravity", level: "AI Agentic Coding", icon: "https://framerusercontent.com/images/1O8iDfBqd2TjluDNoqfCeUsjpk0.png?width=400&height=400" },
-                                { title: "Cursor", level: "AI Coding", icon: "https://framerusercontent.com/images/vvLhMVjzhvu2UZjYsSxFTAfLfI.jpg?width=225&height=225" },
-                                { title: "After Effects", level: "Animation", icon: "https://framerusercontent.com/images/mdQQ9G6bOn4VoU4G9T2Zm601p24.png?width=400&height=400" },
+                                { title: "Cursor / Lovable", level: "AI-Assisted Development", icon: "https://framerusercontent.com/images/vvLhMVjzhvu2UZjYsSxFTAfLfI.jpg?width=225&height=225" },
+                                { title: "Next.js + Supabase", level: "Custom Full-Stack", icon: "https://framerusercontent.com/images/1O8iDfBqd2TjluDNoqfCeUsjpk0.png?width=400&height=400" },
+                                { title: "Bubble.io", level: "No-Code Development", icon: "https://cdn.worldvectorlogo.com/logos/bubble-1.svg" },
                             ].map((item, i, arr) => (
                                 <div key={item.title} className={cn("flex items-center gap-3 p-3 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors group cursor-default", i !== arr.length - 1 && "border-b border-zinc-200 dark:border-white/5")}>
                                     <div className="w-8 h-8 rounded-[4px] bg-white dark:bg-zinc-800/50 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm overflow-hidden p-1.5">
@@ -991,7 +1037,7 @@ export default function Home() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-[12px] font-medium text-zinc-600 dark:text-zinc-400">Currently available for projects starting March 2026</span>
+                        <span className="text-[12px] font-medium text-zinc-600 dark:text-zinc-400">Currently available for new consulting engagements</span>
                     </div>
                 </div>
 
@@ -1008,8 +1054,8 @@ export default function Home() {
                 {/* Large Serif Heading */}
                 <div className="mb-24 text-center md:text-left">
                     <h2 className="text-[42px] md:text-[72px] leading-[1.1] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
-                        Designing with precision, <br />
-                        <span className="italic">building with purpose.</span>
+                        Right problem. Right tools. <br />
+                        <span className="italic">Right product.</span>
                     </h2>
                 </div>
 
