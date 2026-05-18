@@ -1027,7 +1027,7 @@ export default function Home() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="px-6 md:px-12 max-w-4xl mx-auto pt-16 pb-8">
+            <section id="contact" className="px-6 md:px-12 max-w-4xl mx-auto pt-16 pb-28 md:pb-8">
                 <div className="mb-12">
                     <h2 className="text-[24px] md:text-[32px] font-bold mb-2 text-zinc-900 dark:text-zinc-100 tracking-tight">Ready to Build?</h2>
                     <p className="text-[16px] text-zinc-500 dark:text-zinc-400">Whether you need design, development, or both — let's talk about your project.</p>
@@ -1050,11 +1050,12 @@ export default function Home() {
             </section>
 
             {/* Redesigned Footer Section */}
-            <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-12 pb-12">
+            <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-12 pb-36 md:pb-12">
                 {/* Large Serif Heading */}
                 <div className="mb-24 text-center md:text-left">
-                    <h2 className="text-[42px] md:text-[72px] leading-[1.1] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
-                        Right problem. Right tools. <br />
+                    <h2 className="text-[32px] sm:text-[42px] md:text-[72px] leading-[1.15] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
+                        Right problem. <br className="sm:hidden" />
+                        Right tools. <br />
                         <span className="italic">Right product.</span>
                     </h2>
                 </div>

@@ -66,7 +66,7 @@ export function WhatsAppWidget() {
     const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
     return (
-        <div className="fixed bottom-44 md:bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
+        <div className="fixed bottom-24 md:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -74,7 +74,7 @@ export function WhatsAppWidget() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="pointer-events-auto bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-2xl border border-zinc-200 dark:border-white/10 w-[340px] overflow-hidden"
+                        className="pointer-events-auto bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-2xl border border-zinc-200 dark:border-white/10 w-[calc(100vw-2rem)] sm:w-[340px] max-w-[340px] overflow-hidden"
                     >
                         {/* Header */}
                         <div className="bg-[#0f5c4c] dark:bg-[#0f4c3e] p-5 flex items-start justify-between relative overflow-hidden">
