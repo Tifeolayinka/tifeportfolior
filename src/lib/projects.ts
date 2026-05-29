@@ -233,5 +233,58 @@ export const PROJECTS: Project[] = [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/149shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Trail Checkpoint" },
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/536shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Settings -> Email Change Process" }
         ]
+    },
+    {
+        id: "06",
+        title: "KudoPage",
+        category: "Dev, Design",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/242_2x_shots_so.png",
+        slug: "kudopage",
+        liveUrl: "https://kudopage.link",
+        description: "A simple, beautiful way for freelancers to collect, manage, and showcase verified client reviews with a public profile and embeddable widget.",
+        challenge: {
+            summary: "Freelancers rely on testimonials to win clients, but existing tools make collecting reviews a chore. Standard platforms lock reviews inside their ecosystems, and raw email or DM screenshots lack credibility. I wanted to build a simple, friction-free home base for freelancers to gather and showcase verified testimonials.",
+            points: [
+                "Testimonials are locked inside single platforms with no way to export.",
+                "High friction for clients—most review flows require account registration.",
+                "Screenshots of DMs look unprofessional and lack credibility.",
+                "No single link to consolidate reviews from different sources.",
+                "No simple widget to show live reviews on a personal website."
+            ]
+        },
+        roles: [
+            "Product Design",
+            "UX Strategy",
+            "Full-Stack Development (Next.js + Convex)",
+            "Chrome Extension Development"
+        ],
+        showcaseDescription: "Designing end-to-end social proof infrastructure — from zero-friction review collection to pixel-perfect public profiles and embeddable widgets that live anywhere on the web...",
+        process: {
+            title: "The Process",
+            content: "I mapped the testimonial lifecycle to design a zero-friction experience for both freelancers and clients. To keep completion rates high, the client review form requires no login or account setup. I also built a Chrome Extension that lets freelancers instantly import reviews they've already earned on Upwork, Fiverr, and LinkedIn. For showcasing, I designed custom public profiles and a lightweight JavaScript widget (~10kb) that loads reviews natively onto any portfolio site without the styling and speed limitations of iframes."
+        },
+        result: {
+            title: "The Result",
+            content: "KudoPage is a turnkey review collection tool designed specifically for freelancers. Users can set up their profile and start requesting reviews in under 5 minutes. By eliminating client login walls, the platform achieves high completion rates. The Chrome Extension and embeddable widgets allow freelancers to consolidate their scattered reputation and display it beautifully on their own sites.",
+            testimonial: {
+                text: "KudoPage solved something I didn't even know I could fix — all my Upwork and Fiverr reviews in one place, on my own page, with a widget I can drop into any site. My first client after launching it mentioned the reviews page unprompted.",
+                author: "Alex M.",
+                role: "Freelance Product Designer"
+            }
+        },
+        mockups: [
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/767_2x_shots_so.png", name: "Landing page Hero Section" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/89_2x_shots_so.png", name: "Freelancer Dashboard — Reviews Overview" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/70_2x_shots_so.png", name: "Review request form" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/830_2x_shots_so.png", name: "Review Submission Form" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/226_2x_shots_so.png", name: "Sign up page" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/587_2x_shots_so.png", name: "Sign up (account set up page)" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/687_2x_shots_so.png", name: "Analytics" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/830_2x_shots_so.png", name: "Client Review Submission Form" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/242_2x_shots_so.png", name: "Public Profile Page (/[tifeolayinka])" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/51_2x_shots_so.png", name: "Public Profile Page (pinned review section) (/[tifeolayinka])" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/375_2x_shots_so.png", name: "Embed Widget — Set up page" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/463_2x_shots_so.png", name: "Settings Page" }
+        ]
     }
 ];
