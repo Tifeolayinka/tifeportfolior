@@ -326,11 +326,17 @@ export default function HomeClient() {
     }, [isMuted]);
 
     return (
-        <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
+        <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white relative overflow-hidden">
             <BottomNav />
 
+            {/* Premium Background Glows */}
+            <div className="absolute top-0 left-0 right-0 h-[600px] overflow-hidden pointer-events-none z-0">
+                <div className="absolute top-[-15%] left-[-15%] w-[60%] aspect-square rounded-full bg-orange-500/[0.04] dark:bg-orange-500/[0.07] blur-[130px] animate-[pulse_10s_infinite_ease-in-out]" />
+                <div className="absolute top-[20%] right-[-15%] w-[50%] aspect-square rounded-full bg-violet-500/[0.04] dark:bg-violet-500/[0.07] blur-[130px] animate-[pulse_15s_infinite_ease-in-out]" />
+            </div>
+
             {/* Unified Header & Hero Wrapper */}
-            <div className="pt-10 md:pt-20 pb-12 px-6 md:px-12 max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between items-start relative gap-8 md:gap-0">
+            <div className="pt-10 md:pt-20 pb-12 px-6 md:px-12 max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between items-start relative gap-8 md:gap-0 z-10">
 
                 {/* Left Side: Hero Group */}
                 <motion.div
@@ -357,16 +363,26 @@ export default function HomeClient() {
                         </div>
                     </div>
 
+                    {/* Headline */}
+                    <div className="flex flex-col gap-2">
+                        <h1 className="text-[38px] md:text-[56px] leading-[1.1] font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 font-sans">
+                            Build the right product, <br />
+                            <span className="bg-gradient-to-r from-orange-500 via-rose-500 to-violet-500 bg-clip-text text-transparent dark:from-orange-400 dark:via-rose-400 dark:to-violet-400 font-bold">
+                                the right way.
+                            </span>
+                        </h1>
+                    </div>
+
                     {/* Text Group */}
                     <motion.div
                         className="flex flex-col gap-3"
                         variants={textReveal}
                     >
-                        <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans">
-                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100">strategy, design, and development</span> using whatever technology fits the problem.
+                        <div className="text-[17px] md:text-[19px] leading-[1.6] font-medium text-zinc-500 dark:text-zinc-400 tracking-tight font-sans font-normal">
+                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100 font-medium">strategy, design, and development</span> using whatever technology fits the problem.
                         </div>
 
-                        <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
+                        <p className="text-[14px] leading-relaxed text-zinc-500 dark:text-zinc-500 max-w-[500px]">
                             Most consultants hand you a strategy deck and disappear. I stay through design, build, and launch. Whether that's Bubble, custom code, or AI-assisted development — the decision is always driven by what's right for your product, not what's easy for me.
                         </p>
                     </motion.div>
@@ -409,8 +425,8 @@ export default function HomeClient() {
                 </div>
             </div>
 
-            {/* Scrollable Visuals Gallery (Above the fold visual showcase) */}
-            <div className="w-full overflow-hidden py-4 select-none mb-12">
+            {/* Scrollable Visuals Gallery (Above the fold visual showcase - infinite marquee) */}
+            <div className="w-full overflow-hidden py-4 select-none mb-12 relative z-10">
                 <style>{`
                     .scrollbar-none::-webkit-scrollbar {
                         display: none;
@@ -419,41 +435,93 @@ export default function HomeClient() {
                         -ms-overflow-style: none;
                         scrollbar-width: none;
                     }
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+                    .animate-marquee {
+                        display: flex;
+                        width: max-content;
+                        animation: marquee 35s linear infinite;
+                    }
+                    .animate-marquee:hover {
+                        animation-play-state: paused;
+                    }
                 `}</style>
                 <div className="max-w-4xl mx-auto px-6 md:px-12 mb-6">
                     <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Selected Works Showcase</span>
                 </div>
                 
-                {/* Horizontal scroll container that bleeds off the right edge */}
-                <div className="flex gap-6 overflow-x-auto px-6 md:px-[max(1.5rem,calc((100vw-56rem)/2))] pb-6 scrollbar-none snap-x snap-mandatory">
-                    {HERO_VISUALS.map((visual, idx) => (
-                        <Link 
-                            key={idx}
-                            href={`/work/${visual.slug}`}
-                            className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
-                        >
-                            <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
-                                <img
-                                    src={visual.image}
-                                    alt={visual.title}
-                                    className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
-                                />
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                                
-                                {/* Text overlay visible on hover */}
-                                <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                                    <div className="flex flex-col gap-0.5">
-                                        <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
-                                        <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                {/* Infinite scrolling marquee wrapper */}
+                <div className="flex overflow-hidden scrollbar-none snap-x snap-mandatory">
+                    <div className="flex animate-marquee">
+                        {/* First replica */}
+                        <div className="flex gap-6 shrink-0 pr-6">
+                            {HERO_VISUALS.map((visual, idx) => (
+                                <Link 
+                                    key={`marquee-1-${idx}`}
+                                    href={`/work/${visual.slug}`}
+                                    className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
+                                >
+                                    <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
+                                        <img
+                                            src={visual.image}
+                                            alt={visual.title}
+                                            className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
+                                        />
+                                        {/* Overlay Gradient */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                        
+                                        {/* Text overlay visible on hover */}
+                                        <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                                            <div className="flex flex-col gap-0.5">
+                                                <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
+                                                <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                                            </div>
+                                            <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                                                View Case <ArrowRight size={12} />
+                                            </span>
+                                        </div>
                                     </div>
-                                    <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
-                                        View Case <ArrowRight size={12} />
-                                    </span>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
+                                </Link>
+                            ))}
+                        </div>
+                        {/* Second replica for seamless infinite loop */}
+                        <div className="flex gap-6 shrink-0 pr-6" aria-hidden="true">
+                            {HERO_VISUALS.map((visual, idx) => (
+                                <Link 
+                                    key={`marquee-2-${idx}`}
+                                    href={`/work/${visual.slug}`}
+                                    className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
+                                >
+                                    <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
+                                        <img
+                                            src={visual.image}
+                                            alt={visual.title}
+                                            className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
+                                        />
+                                        {/* Overlay Gradient */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                        
+                                        {/* Text overlay visible on hover */}
+                                        <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                                            <div className="flex flex-col gap-0.5">
+                                                <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
+                                                <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                                            </div>
+                                            <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                                                View Case <ArrowRight size={12} />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
