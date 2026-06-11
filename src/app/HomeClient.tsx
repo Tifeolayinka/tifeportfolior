@@ -175,6 +175,45 @@ const FAQ_DATA = [
     }
 ];
 
+const HERO_VISUALS = [
+    {
+        title: "Dojohub CRM",
+        category: "Management App UI & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Dojohub/543shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "dojohub-crm"
+    },
+    {
+        title: "DemmyPay",
+        category: "Mobile Payments Design",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Demmypay/417shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "demmypay"
+    },
+    {
+        title: "KudoPage",
+        category: "Reviews Platform UI & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/242_2x_shots_so.png",
+        slug: "kudopage"
+    },
+    {
+        title: "Oqool Core HR",
+        category: "Enterprise HR Portal Design",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/405shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "oqool-core-hr"
+    },
+    {
+        title: "TrailHead App",
+        category: "Retirement Planner UX & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/742shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "trailhead"
+    },
+    {
+        title: "Recrewer",
+        category: "Hiring Platform UX & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Recrewer/115shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "recrewer"
+    }
+];
+
 export default function HomeClient() {
     const [isConnectOpen, setIsConnectOpen] = useState(false);
     const [activeFilter, setFilter] = useState<'All' | 'Design' | 'Dev'>('All');
@@ -367,6 +406,54 @@ export default function HomeClient() {
 
                 <div className="md:hidden absolute top-8 right-6">
                     <TopNav />
+                </div>
+            </div>
+
+            {/* Scrollable Visuals Gallery (Above the fold visual showcase) */}
+            <div className="w-full overflow-hidden py-4 select-none mb-12">
+                <style>{`
+                    .scrollbar-none::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .scrollbar-none {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
+                `}</style>
+                <div className="max-w-4xl mx-auto px-6 md:px-12 mb-6">
+                    <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Selected Works Showcase</span>
+                </div>
+                
+                {/* Horizontal scroll container that bleeds off the right edge */}
+                <div className="flex gap-6 overflow-x-auto px-6 md:px-[max(1.5rem,calc((100vw-56rem)/2))] pb-6 scrollbar-none snap-x snap-mandatory">
+                    {HERO_VISUALS.map((visual, idx) => (
+                        <Link 
+                            key={idx}
+                            href={`/work/${visual.slug}`}
+                            className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
+                        >
+                            <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
+                                <img
+                                    src={visual.image}
+                                    alt={visual.title}
+                                    className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
+                                />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                
+                                {/* Text overlay visible on hover */}
+                                <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                                    <div className="flex flex-col gap-0.5">
+                                        <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
+                                        <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                                    </div>
+                                    <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                                        View Case <ArrowRight size={12} />
+                                    </span>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
 
@@ -836,71 +923,7 @@ export default function HomeClient() {
                 </motion.div>
             </motion.section>
 
-            {/* Toolkit Section */}
-            <section id="toolkit" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
-                <div className="mb-8">
-                    <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">How I Build</h2>
-                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400">The tools change depending on the problem. The standard doesn't.</p>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="p-3 pb-4 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-4 px-2 pt-1">
-                            <Sparkles size={14} className="text-zinc-400" />
-                            <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-300">Fun Projects</span>
-                        </div>
-                        <div className="flex flex-col rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden">
-                            {[
-                                { title: "Smart Media Renderer", type: "Bubble Plugin", icon: <Layout size={16} className="text-blue-500" />, href: "https://bubble.io/plugin/smart-media-renderer-1688636514755x145344316825403400" },
-                                { title: "Password Validator", type: "Bubble Plugin", icon: <Box size={16} className="text-purple-500" />, href: "https://bubble.io/plugin/password-validator-by-tife-1688636514755x145344316825403400" },
-                                { title: "Image Comparison", type: "Bubble Plugin", icon: <Layers size={16} className="text-orange-500" />, href: "https://bubble.io/plugin/image-comparison-slider-1688636514755x145344316825403400" },
-                                { title: "Satisfaction Slider", type: "Bubble Plugin", icon: <Sparkles size={16} className="text-yellow-500" />, href: "https://bubble.io/plugin/satisfaction-slider-1688636514755x145344316825403400" },
-                                { title: "Jobby", type: "Bubble Template", icon: <Globe size={16} className="text-blue-400" />, href: "https://bubble.io/template/jobby---job-board--management-1718023450912x771649232938369000" },
-                            ].map((item, i, arr) => (
-                                <Link
-                                    key={item.title}
-                                    href={item.href}
-                                    target="_blank"
-                                    className={cn("flex items-center gap-3 p-3 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors group", i !== arr.length - 1 && "border-b border-zinc-200 dark:border-white/5")}
-                                >
-                                    <div className="w-8 h-8 rounded-[4px] bg-white dark:bg-zinc-800/50 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm overflow-hidden">
-                                        {item.icon}
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-[13px] font-medium text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">{item.title}</span>
-                                        <span className="text-[11px] text-zinc-500 dark:text-zinc-400">{item.type}</span>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="p-3 pb-4 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm backdrop-blur-sm">
-                        <div className="flex items-center gap-2 mb-4 px-2 pt-1">
-                            <Layers size={14} className="text-zinc-400" />
-                            <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-300">Stack</span>
-                        </div>
-                        <div className="flex flex-col rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden">
-                            {[
-                                { title: "Figma", level: "Design", icon: "https://framerusercontent.com/images/KNDBQgO9SSkq40okizEwxHnaWX0.png?scale-down-to=512&width=924&height=922" },
-                                { title: "Cursor / Lovable", level: "AI-Assisted Development", icon: "https://framerusercontent.com/images/vvLhMVjzhvu2UZjYsSxFTAfLfI.jpg?width=225&height=225" },
-                                { title: "Next.js + Supabase", level: "Custom Full-Stack", icon: "https://framerusercontent.com/images/1O8iDfBqd2TjluDNoqfCeUsjpk0.png?width=400&height=400" },
-                                { title: "Bubble.io", level: "No-Code Development", icon: "https://cdn.worldvectorlogo.com/logos/bubble-1.svg" },
-                            ].map((item, i, arr) => (
-                                <div key={item.title} className={cn("flex items-center gap-3 p-3 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors group cursor-default", i !== arr.length - 1 && "border-b border-zinc-200 dark:border-white/5")}>
-                                    <div className="w-8 h-8 rounded-[4px] bg-white dark:bg-zinc-800/50 border border-zinc-100 dark:border-white/5 flex items-center justify-center shadow-sm overflow-hidden p-1.5">
-                                        <img src={item.icon} alt={item.title} className="w-full h-full object-contain" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-[13px] font-medium text-zinc-900 dark:text-zinc-200">{item.title}</span>
-                                        <span className="text-[11px] text-zinc-500 dark:text-zinc-400">{item.level}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* FAQ Section */}
             <section id="faq" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
