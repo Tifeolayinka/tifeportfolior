@@ -326,17 +326,11 @@ export default function HomeClient() {
     }, [isMuted]);
 
     return (
-        <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white relative overflow-hidden">
+        <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
             <BottomNav />
 
-            {/* Premium Background Glows */}
-            <div className="absolute top-0 left-0 right-0 h-[600px] overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-15%] left-[-15%] w-[60%] aspect-square rounded-full bg-orange-500/[0.04] dark:bg-orange-500/[0.07] blur-[130px] animate-[pulse_10s_infinite_ease-in-out]" />
-                <div className="absolute top-[20%] right-[-15%] w-[50%] aspect-square rounded-full bg-violet-500/[0.04] dark:bg-violet-500/[0.07] blur-[130px] animate-[pulse_15s_infinite_ease-in-out]" />
-            </div>
-
             {/* Unified Header & Hero Wrapper */}
-            <div className="pt-10 md:pt-20 pb-12 px-6 md:px-12 max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between items-start relative gap-8 md:gap-0 z-10">
+            <div className="pt-10 md:pt-20 pb-12 px-6 md:px-12 max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between items-start relative gap-8 md:gap-0">
 
                 {/* Left Side: Hero Group */}
                 <motion.div
@@ -363,26 +357,16 @@ export default function HomeClient() {
                         </div>
                     </div>
 
-                    {/* Headline */}
-                    <div className="flex flex-col gap-2">
-                        <h1 className="text-[38px] md:text-[56px] leading-[1.1] font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 font-sans">
-                            Build the right product, <br />
-                            <span className="bg-gradient-to-r from-orange-500 via-rose-500 to-violet-500 bg-clip-text text-transparent dark:from-orange-400 dark:via-rose-400 dark:to-violet-400 font-bold">
-                                the right way.
-                            </span>
-                        </h1>
-                    </div>
-
                     {/* Text Group */}
                     <motion.div
                         className="flex flex-col gap-3"
                         variants={textReveal}
                     >
-                        <div className="text-[17px] md:text-[19px] leading-[1.6] font-medium text-zinc-500 dark:text-zinc-400 tracking-tight font-sans font-normal">
-                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100 font-medium">strategy, design, and development</span> using whatever technology fits the problem.
+                        <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans font-normal">
+                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100 font-medium font-sans">strategy, design, and development</span> using whatever technology fits the problem.
                         </div>
 
-                        <p className="text-[14px] leading-relaxed text-zinc-500 dark:text-zinc-500 max-w-[500px]">
+                        <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
                             Most consultants hand you a strategy deck and disappear. I stay through design, build, and launch. Whether that's Bubble, custom code, or AI-assisted development — the decision is always driven by what's right for your product, not what's easy for me.
                         </p>
                     </motion.div>
