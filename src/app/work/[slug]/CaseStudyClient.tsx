@@ -3,7 +3,7 @@
 import { PROJECTS } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, Lock, MessageCircle } from "lucide-react";
+import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, Lock, MessageCircle, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
@@ -68,12 +68,28 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4 mt-2">
-                        {project.liveUrl && (
-                            <FancyButton icon={ExternalLink} href={project.liveUrl}>
+                    <div className="flex flex-wrap items-center gap-4 mt-2">
+                        {project.liveUrls && project.liveUrls.length > 0 ? (
+                            project.liveUrls.map((link, idx) => {
+                                const IconComponent = link.platform === "ios" || link.platform === "android"
+                                    ? Smartphone
+                                    : Globe;
+                                return (
+                                    <FancyButton
+                                        key={idx}
+                                        icon={IconComponent}
+                                        href={link.url}
+                                        target="_blank"
+                                    >
+                                        {link.label}
+                                    </FancyButton>
+                                );
+                            })
+                        ) : project.liveUrl && project.liveUrl !== "#" ? (
+                            <FancyButton icon={ExternalLink} href={project.liveUrl} target="_blank">
                                 Live Preview
                             </FancyButton>
-                        )}
+                        ) : null}
                     </div>
                 </motion.div>
             </section>
@@ -124,19 +140,40 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                     </div>
                 </motion.div>
 
-                {/* Role Card */}
-                <div className="p-6 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-4">
-                    <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                        <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">My Role</h2>
+                {/* Role & What I Worked On Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Role Card */}
+                    <div className="p-6 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-4">
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
+                            <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">My Role</h2>
+                        </div>
+                        <div className="flex flex-wrap gap-2 content-start">
+                            {project.roles.map(role => (
+                                <span key={role} className="px-4 py-1.5 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 text-[12px] font-medium text-zinc-600 dark:text-zinc-400">
+                                    {role}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                        {project.roles.map(role => (
-                            <span key={role} className="px-4 py-1.5 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 text-[12px] font-medium text-zinc-600 dark:text-zinc-400">
-                                {role}
-                            </span>
-                        ))}
-                    </div>
+
+                    {/* What I Worked On Card */}
+                    {project.whatIWorkedOn && project.whatIWorkedOn.length > 0 && (
+                        <div className="p-6 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm flex flex-col gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.6)]" />
+                                <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">What I worked on</h2>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                {project.whatIWorkedOn.map((item, idx) => (
+                                    <div key={idx} className="flex gap-3">
+                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700 shrink-0" />
+                                        <p className="text-[14px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Technical Showcase */}

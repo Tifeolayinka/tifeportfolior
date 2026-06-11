@@ -2,6 +2,7 @@ export interface Project {
     id: string;
     title: string;
     liveUrl?: string;
+    liveUrls?: { label: string; url: string; platform: "web" | "ios" | "android" }[];
     category: string;
     image: string;
     slug: string;
@@ -11,6 +12,7 @@ export interface Project {
         points: string[];
     };
     roles: string[];
+    whatIWorkedOn?: string[];
     showcaseDescription: string;
     process: {
         title: string;
@@ -36,7 +38,11 @@ export const PROJECTS: Project[] = [
         category: "Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/Dojohub+main.png?q=80&w=1600&auto=format&fit=crop",
         slug: "dojohub-crm",
-        liveUrl: "#",
+        liveUrl: "https://dojohubcrm.com",
+        liveUrls: [
+            { label: "Visit Website", url: "https://dojohubcrm.com", platform: "web" },
+            { label: "App Store", url: "https://apps.apple.com/us/app/dojohub/id6760246625", platform: "ios" }
+        ],
         description: "HELPING MARTIAL ARTS SCHOOLS GROW & STREAMLINE OPERATIONS USING A CUSTOM MANAGEMENT APP",
         challenge: {
             summary: "DojoHub was built to help martial arts schools streamline operations and scale with ease. From belt tracking to recurring payments, it provides everything a modern dojo needs — with a beautiful admin dashboard for staff and a convenient mobile app for students and parents. Whether it's signing up for a membership, booking a class, or tracking belt progress, DojoHub combines the flexibility of no-code development with a deep understanding of martial arts school workflows.",
@@ -48,6 +54,13 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Visual Identity", "UX Strategy", "Bubble Development"],
+        whatIWorkedOn: [
+            "Product (web & mobile app) UI & UX",
+            "Relational database & system architecture",
+            "Class scheduling & belt tracking workflows",
+            "Stripe subscription & payment integrations",
+            "Client onboarding flow optimization"
+        ],
         showcaseDescription: "Iterating on layout and logic to achieve high-fidelity results for school owners.",
         process: {
             title: "The Process",
@@ -87,6 +100,13 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Design Systems", "Bubble Development"],
+        whatIWorkedOn: [
+            "Core HR & payroll dashboard UI & UX",
+            "Design system & component library development",
+            "Multi-level sequential approval logic",
+            "Work schedule & attendance tracking engine",
+            "UAE labour compliance system architecture"
+        ],
         showcaseDescription: "Visual exploration of the employee lifecycle and payroll automation flows.",
         process: {
             title: "The Process",
@@ -125,6 +145,13 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["UX Strategy", "Bubble Development", "System Architecture"],
+        whatIWorkedOn: [
+            "User journey mapping & wireframing",
+            "Contractor & employer dashboard UI & UX",
+            "Flexible contract & offer creation workflows",
+            "Role-based access control & permissions",
+            "Interview scheduling & notification system"
+        ],
         showcaseDescription: "High-level overview of the hiring pipeline and candidate scoring systems.",
         process: {
             title: "The Process",
@@ -163,6 +190,13 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Mobile App Design", "Visual Identity", "UX Research"],
+        whatIWorkedOn: [
+            "B2B and B2C mobile app UI & UX",
+            "Brand Identity refresh (took a part)",
+            "Visual identity & design system design",
+            "Custom icon pack design",
+            "UX Research & wallet-based payment flows"
+        ],
         showcaseDescription: "Mobile-first interface designs focused on quick-action payment flows.",
         process: {
             title: "The Process",
@@ -212,6 +246,13 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Data Visualization", "Bubble Development"],
+        whatIWorkedOn: [
+            "Retirement projection UI & UX",
+            "Data visualization & interactive charts",
+            "Design system development",
+            "Mobile app development in Bubble",
+            "Habit-building user flow design"
+        ],
         showcaseDescription: "Interactive charts and retirement projection tools tailored for clarity.",
         process: {
             title: "The Process",
@@ -241,6 +282,9 @@ export const PROJECTS: Project[] = [
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/242_2x_shots_so.png",
         slug: "kudopage",
         liveUrl: "https://kudopage.link",
+        liveUrls: [
+            { label: "Visit Website", url: "https://kudopage.link", platform: "web" }
+        ],
         description: "A simple, beautiful way for freelancers to collect, manage, and showcase verified client reviews with a public profile and embeddable widget.",
         challenge: {
             summary: "Freelancers rely on testimonials to win clients, but existing tools make collecting reviews a chore. Standard platforms lock reviews inside their ecosystems, and raw email or DM screenshots lack credibility. I wanted to build a simple, friction-free home base for freelancers to gather and showcase verified testimonials.",
@@ -257,6 +301,13 @@ export const PROJECTS: Project[] = [
             "UX Strategy",
             "Full-Stack Development (Next.js + Convex)",
             "Chrome Extension Development"
+        ],
+        whatIWorkedOn: [
+            "Brand Identity refresh (took a part)",
+            "Landing page redesign",
+            "Product (web app) UI & UX",
+            "Design system development",
+            "Icon pack design"
         ],
         showcaseDescription: "Designing end-to-end social proof infrastructure — from zero-friction review collection to pixel-perfect public profiles and embeddable widgets that live anywhere on the web...",
         process: {
