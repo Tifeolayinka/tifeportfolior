@@ -648,7 +648,7 @@ export default function HomeClient() {
 
                         <div className="relative z-10">
                             <a
-                                href="mailto:boluolayinka1212@gmail.com?subject=Free%20teardown%20request"
+                                href="mailto:hello@tifeolayinka.com?subject=Free%20teardown%20request"
                                 className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-zinc-100 hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors group/link"
                             >
                                 Get a free teardown
@@ -1295,7 +1295,7 @@ export default function HomeClient() {
                     <div className="flex flex-col gap-4">
                         <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Connect</h4>
                         <ul className="flex flex-col gap-2">
-                            <li><a href="mailto:boluolayinka1212@gmail.com" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
+                            <li><a href="mailto:hello@tifeolayinka.com" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
                             <li><a href="https://cal.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Schedule Call</a></li>
                             <li><a href="#contact" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Book Consultation</a></li>
                         </ul>

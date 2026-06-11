@@ -33,7 +33,7 @@ const socialLinks = [
         icon: <Mail size={18} />,
         title: "Email",
         handle: "hello@tifeolayinka.com",
-        href: "mailto:boluolayinka1212@gmail.com",
+        href: "mailto:hello@tifeolayinka.com",
     },
 ];
 
