@@ -90,11 +90,11 @@ const TESTIMONIALS = [
         avatar: "GT"
     },
     {
-        name: "JJ Englert",
+        name: "Ho T.",
         role: "Founder",
-        company: "Nocodealliance",
-        text: "Love working with Tife. Very talented, stands by his work, and is quick to respond!",
-        avatar: "JE"
+        company: "Westres",
+        text: "Tife was a responsible and efficient developer. It was our first Bubble project and he patiently helped us through the whole process from development to deployment to ensure we rolled out our application successfully. He was knowledgeable and skillful in Bubble development and OpenAI integration. His communication skills were good and was always able to come back with useful information and help with our understanding of how everything works. We have no hesitation in recommending him.",
+        avatar: "HT"
     },
     {
         name: "Nick Apps",
@@ -103,41 +103,6 @@ const TESTIMONIALS = [
         text: "Tife has a great eye for design, works quickly and easy to work alongside. He built a marketplace and custom CMS for us in Bubble. I look forward to working with him again.",
         avatar: "NA"
     },
-    {
-        name: "Yoann Demont",
-        role: "CEO, Founder",
-        company: "Alteam",
-        text: "Tife is a good developer. He excels in using low-code tools such as Bubble.io and Webflow. I will work with him again.",
-        avatar: "YD"
-    },
-    {
-        name: "Ho T.",
-        role: "Founder",
-        company: "Westres",
-        text: "Tife was a responsible and efficient developer. It was our first Bubble project and he patiently helped us through the whole process from development to deployment to ensure we rolled out our application successfully. He was knowledgeable and skillful in Bubble development and OpenAI integration. His communication skills were good and was always able to come back with useful information and help with our understanding of how everything works. We have no hesitation in recommending him.",
-        avatar: "HT"
-    },
-    {
-        name: "Ho T.",
-        role: "Founder",
-        company: "Westres",
-        text: "Tife is an efficient and hard working developer. Communication with him was seamless and he could deliver results timely and in good quality.",
-        avatar: "HT"
-    },
-    {
-        name: "Gabe F.",
-        role: "",
-        company: "",
-        text: "Tife did an amazing job and was on point for us regarding our automation needs. Anything via API, JSON and bubble he was able to assist with.",
-        avatar: "GF"
-    },
-    {
-        name: "Steve T.",
-        role: "",
-        company: "Clickpoint Consulting",
-        text: "Great work! Proactive approach and excellent understanding of product design. Unfortunately, due to financial constraints from the client, we have had to close this project... however, we will certainly consider using Tife again. Highly recommend.",
-        avatar: "ST"
-    }
 ];
 
 const FAQ_DATA = [
@@ -214,13 +179,51 @@ const HERO_VISUALS = [
     }
 ];
 
+const HERO_VISUALS_ROW2 = [
+    {
+        title: "Recrewer",
+        category: "Hiring Platform UX & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Recrewer/762shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "recrewer"
+    },
+    {
+        title: "Dojohub CRM",
+        category: "Management App UI & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Dojohub/714shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "dojohub-crm"
+    },
+    {
+        title: "KudoPage",
+        category: "Reviews Platform UI & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/kudopage/587_2x_shots_so.png",
+        slug: "kudopage"
+    },
+    {
+        title: "TrailHead App",
+        category: "Retirement Planner UX & Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/231shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "trailhead"
+    },
+    {
+        title: "DemmyPay",
+        category: "Mobile Payments Design",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Demmypay/645shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "demmypay"
+    },
+    {
+        title: "Oqool Core HR",
+        category: "Enterprise HR Portal Design",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Hr/591shots_so.png?q=80&w=1600&auto=format&fit=crop",
+        slug: "oqool-core-hr"
+    }
+];
+
 export default function HomeClient() {
-    const [isConnectOpen, setIsConnectOpen] = useState(false);
     const [activeFilter, setFilter] = useState<'All' | 'Design' | 'Dev'>('All');
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+    const [isMuted, setIsMuted] = useState(true);
     const [videoError, setVideoError] = useState(false);
     const [videoLoading, setVideoLoading] = useState(true);
-    const [isMuted, setIsMuted] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
     const filteredProjects = PROJECTS.filter(p => activeFilter === 'All' || p.category.includes(activeFilter));
     const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -238,43 +241,23 @@ export default function HomeClient() {
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
-
-        // Set initial muted state
         video.muted = isMuted;
-
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    video.play().catch((err) => {
-                        console.error("Video play failed:", err);
-                    });
-                } else {
-                    video.pause();
-                }
+                if (entry.isIntersecting) { video.play().catch(() => {}); }
+                else { video.pause(); }
             },
             { threshold: 0.5 }
         );
-
         observer.observe(video);
-
-        const handleLoadedData = () => {
-            setVideoLoading(false);
-        };
-
-        const handleError = () => {
-            setVideoError(true);
-            setVideoLoading(false);
-        };
-
-        video.addEventListener('loadeddata', handleLoadedData);
-        video.addEventListener('error', handleError);
-
-        return () => {
-            observer.disconnect();
-            video.removeEventListener('loadeddata', handleLoadedData);
-            video.removeEventListener('error', handleError);
-        };
+        video.addEventListener('loadeddata', () => setVideoLoading(false));
+        video.addEventListener('error', () => { setVideoError(true); setVideoLoading(false); });
+        return () => { observer.disconnect(); };
     }, []);
+
+    useEffect(() => {
+        if (videoRef.current) videoRef.current.muted = isMuted;
+    }, [isMuted]);
 
     // Advanced Cal.com Embed Initialization
     useEffect(() => {
@@ -318,12 +301,6 @@ export default function HomeClient() {
         }
     }, []);
 
-    // Sync muted state with video element
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.muted = isMuted;
-        }
-    }, [isMuted]);
 
     return (
         <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
@@ -353,7 +330,7 @@ export default function HomeClient() {
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
-                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">Product & Technology Consultant</p>
+                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">Product Designer & Engineer</p>
                         </div>
                     </div>
 
@@ -362,12 +339,12 @@ export default function HomeClient() {
                         className="flex flex-col gap-3"
                         variants={textReveal}
                     >
-                        <div className="text-[21px] leading-[1.6] font-medium text-zinc-400 dark:text-zinc-500 tracking-tight font-sans font-normal">
-                            I help founders and businesses build the right product, the right way — <span className="text-zinc-900 dark:text-zinc-100 font-medium font-sans">strategy, design, and development</span> using whatever technology fits the problem.
+                        <div className="text-[21px] leading-[1.6] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight font-sans font-normal">
+                            I help founders <span className="font-semibold font-sans">ship products that work,</span> in weeks, not quarters.
                         </div>
 
                         <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
-                            Most consultants hand you a strategy deck and disappear. I stay through design, build, and launch. Whether that's Bubble, custom code, or AI-assisted development — the decision is always driven by what's right for your product, not what's easy for me.
+                            Strategy, design, and development from one person who stays through launch. Bubble, custom code, or AI-assisted, chosen for your product, not my convenience. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.
                         </p>
                     </motion.div>
 
@@ -382,19 +359,12 @@ export default function HomeClient() {
 
                     {/* Actions Row */}
                     <div className="flex items-center gap-4 mt-6">
-                        <div
-                            className="relative"
-                            onMouseEnter={() => setIsConnectOpen(true)}
-                            onMouseLeave={() => setIsConnectOpen(false)}
-                        >
-                            <FancyButton icon={Sparkles}>
-                                Start Your Project
-                            </FancyButton>
-                            <SocialsMenu isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
-                        </div>
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                            Book a free 30-min discovery call
+                        </FancyButton>
 
                         <FancyButton href="#work" variant="ghost" icon={Layers}>
-                            View Work
+                            See the work
                         </FancyButton>
                     </div>
                 </motion.div>
@@ -427,12 +397,28 @@ export default function HomeClient() {
                             transform: translateX(-50%);
                         }
                     }
+                    @keyframes marquee-reverse {
+                        0% {
+                            transform: translateX(-50%);
+                        }
+                        100% {
+                            transform: translateX(0);
+                        }
+                    }
                     .animate-marquee {
                         display: flex;
                         width: max-content;
                         animation: marquee 35s linear infinite;
                     }
                     .animate-marquee:hover {
+                        animation-play-state: paused;
+                    }
+                    .animate-marquee-reverse {
+                        display: flex;
+                        width: max-content;
+                        animation: marquee-reverse 40s linear infinite;
+                    }
+                    .animate-marquee-reverse:hover {
                         animation-play-state: paused;
                     }
                 `}</style>
@@ -507,93 +493,91 @@ export default function HomeClient() {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Testimonial Section */}
-            <motion.section
-                className="px-6 md:px-12 max-w-4xl mx-auto py-8"
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOptions}
-                variants={fadeInUp}
-            >
-                <div className="p-3 pb-4 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm backdrop-blur-sm">
-                    <div className="flex items-center justify-between mb-4 px-2 pt-1">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2.5 h-2.5 rounded-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.6)]" />
-                            <div className="flex flex-col">
-                                <h2 className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 leading-none">Testimonial</h2>
-                                <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">Ho T. • Founder</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                            <span className="text-[10px] font-semibold text-zinc-600 dark:text-zinc-400 tracking-wider">LIVE</span>
-                        </div>
-                    </div>
-
-                    <div className="relative rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden aspect-video group shadow-inner">
-                        {videoError ? (
-                            <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-800/50 p-8">
-                                <div className="text-center">
-                                    <p className="text-[14px] text-zinc-500 dark:text-zinc-400 mb-2">Video unavailable</p>
-                                    <p className="text-[12px] text-zinc-400 dark:text-zinc-500">The testimonial video could not be loaded.</p>
-                                </div>
-                            </div>
-                        ) : (
-                            <>
-                                {videoLoading && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/50 z-10">
-                                        <div className="flex flex-col items-center gap-2">
-                                            <div className="w-8 h-8 border-2 border-zinc-300 dark:border-zinc-600 border-t-zinc-900 dark:border-t-zinc-100 rounded-full animate-spin" />
-                                            <span className="text-[12px] text-zinc-500 dark:text-zinc-400">Loading video...</span>
+                {/* Reverse scrolling marquee row */}
+                <div className="flex overflow-hidden scrollbar-none mt-4">
+                    <div className="flex animate-marquee-reverse">
+                        {/* First replica */}
+                        <div className="flex gap-6 shrink-0 pr-6">
+                            {HERO_VISUALS_ROW2.map((visual, idx) => (
+                                <Link
+                                    key={`marquee-r2-1-${idx}`}
+                                    href={`/work/${visual.slug}`}
+                                    className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
+                                >
+                                    <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
+                                        <img
+                                            src={visual.image}
+                                            alt={visual.title}
+                                            className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                        <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                                            <div className="flex flex-col gap-0.5">
+                                                <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
+                                                <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                                            </div>
+                                            <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                                                View Case <ArrowRight size={12} />
+                                            </span>
                                         </div>
                                     </div>
-                                )}
-                                <video
-                                    ref={videoRef}
-                                    src="https://www.dropbox.com/scl/fi/yw0qecltes8m24g35xlnu/VIDEO-FOR-TIFE.mp4?rlkey=dnxoimcvgvjo93kss7bi69fnj&raw=1"
-                                    className="w-full h-full object-cover"
-                                    muted={isMuted}
-                                    loop
-                                    playsInline
-                                    preload="metadata"
-                                    onError={() => setVideoError(true)}
-                                    onLoadedData={() => setVideoLoading(false)}
-                                />
-                            </>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-                        <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none rounded-[18px]" />
-                        {!videoError && (
-                            <>
-                                <button
-                                    onClick={() => {
-                                        setIsMuted(!isMuted);
-                                        if (videoRef.current) {
-                                            videoRef.current.muted = !isMuted;
-                                        }
-                                    }}
-                                    className="absolute top-4 right-4 p-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-all duration-200 group/btn z-20"
-                                    aria-label={isMuted ? "Unmute video" : "Mute video"}
+                                </Link>
+                            ))}
+                        </div>
+                        {/* Second replica for seamless infinite loop */}
+                        <div className="flex gap-6 shrink-0 pr-6" aria-hidden="true">
+                            {HERO_VISUALS_ROW2.map((visual, idx) => (
+                                <Link
+                                    key={`marquee-r2-2-${idx}`}
+                                    href={`/work/${visual.slug}`}
+                                    className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
                                 >
-                                    {isMuted ? (
-                                        <VolumeX className="w-4 h-4 text-white/90 group-hover/btn:text-white" />
-                                    ) : (
-                                        <Volume2 className="w-4 h-4 text-white/90 group-hover/btn:text-white" />
-                                    )}
-                                </button>
-                                <div className="absolute bottom-4 left-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10">
-                                        <div className="w-1 h-1 rounded-full bg-white animate-ping" />
+                                    <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
+                                        <img
+                                            src={visual.image}
+                                            alt={visual.title}
+                                            className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                        <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                                            <div className="flex flex-col gap-0.5">
+                                                <span className="text-[13px] font-bold text-white uppercase tracking-wider">{visual.title}</span>
+                                                <span className="text-[11px] text-zinc-300">{visual.category}</span>
+                                            </div>
+                                            <span className="text-[11px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                                                View Case <ArrowRight size={12} />
+                                            </span>
+                                        </div>
                                     </div>
-                                    <span className="text-[10px] font-medium text-white/80 tracking-tight">Watching testimonial</span>
-                                </div>
-                            </>
-                        )}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </motion.section>
+            </div>
+
+            {/* Proof Bar */}
+            <div className="w-full border-y border-zinc-200 dark:border-white/5 bg-white dark:bg-[#111111] py-3 px-6 md:px-12 overflow-x-auto scrollbar-none">
+                <div className="flex items-center justify-center gap-0 max-w-4xl mx-auto flex-wrap md:flex-nowrap">
+                    {[
+                        "6+ years experience",
+                        "10+ web & mobile apps shipped",
+                        "Clients in UK, US, Canada, UAE, Australia & Nigeria",
+                    ].map((item, i, arr) => (
+                        <div key={i} className="flex items-center gap-0 shrink-0">
+                            <span className="text-[12px] font-medium text-zinc-500 dark:text-zinc-400 whitespace-nowrap px-4 py-0.5">
+                                {item}
+                            </span>
+                            {i < arr.length - 1 && (
+                                <span className="text-zinc-300 dark:text-zinc-700 select-none">·</span>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Testimonial video section — unmounted, re-add when video is properly hosted */}
 
             {/* Work Section */}
             <section id="work" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
@@ -632,8 +616,8 @@ export default function HomeClient() {
                         />
                     ))}
 
-                    <div className={cn(
-                        "group relative flex flex-col items-center justify-center text-center gap-4 w-full",
+                    <div id="teardown" className={cn(
+                        "group relative flex flex-col justify-between gap-6 w-full",
                         "p-8",
                         "rounded-[28px]",
                         "bg-white dark:bg-[#1a1a1a]",
@@ -641,42 +625,128 @@ export default function HomeClient() {
                         "transition-all duration-500 overflow-hidden shadow-sm",
                         "hover:shadow-xl hover:scale-[1.01]"
                     )}>
-                        {/* Dynamic Border Glow (Fancy) */}
-                        <div className="absolute inset-[-2px] rounded-[28px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff8800,#ff0000,#ff8800)] opacity-20" />
-                        </div>
-
                         {/* Moving Gradient Mesh */}
                         <motion.div
-                            animate={{
-                                x: [0, 20, 0],
-                                y: [0, -20, 0],
-                                scale: [1, 1.1, 1]
-                            }}
+                            animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
                             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-1/2 -left-1/2 w-full h-full bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-[80px] pointer-events-none"
+                            className="absolute -top-1/2 -right-1/2 w-full h-full bg-zinc-500/5 dark:bg-zinc-500/10 rounded-full blur-[80px] pointer-events-none"
                         />
 
-                        <div className="relative z-10 flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 rounded-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:border-orange-500/50 transition-all duration-500">
-                                <Plus className="text-zinc-400 dark:text-zinc-500 group-hover:text-orange-500 transition-colors" size={24} />
+                        <div className="relative z-10 flex flex-col gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 flex items-center justify-center">
+                                <Search className="text-zinc-500 dark:text-zinc-400" size={18} />
                             </div>
-                            <div className="flex flex-col gap-1">
-                                <span className="text-[15px] font-semibold text-zinc-900 dark:text-zinc-100">Your Project Here</span>
-                                <span className="text-[12px] text-zinc-500 dark:text-zinc-400 max-w-[180px]">
-                                    Reserve this spot for our next big collaboration.
+                            <div className="flex flex-col gap-2">
+                                <span className="text-[15px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
+                                    Not ready for a project?<br />Get a free teardown.
                                 </span>
+                                <p className="text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                    Send me your app or landing page and I'll record a 10-minute video audit — what's costing you users, and what I'd fix first. No call, no pitch.
+                                </p>
                             </div>
-                            <FancyButton href="#contact" className="mt-2 h-10 px-8 rounded-full text-[12px] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-lg group-hover:scale-105 transition-transform">
-                                Reserve Spot
-                            </FancyButton>
                         </div>
 
-                        {/* Decorative Dash Border (Always visible but subtle) */}
+                        <div className="relative z-10">
+                            <a
+                                href="mailto:boluolayinka1212@gmail.com?subject=Free%20teardown%20request"
+                                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-zinc-100 hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors group/link"
+                            >
+                                Get a free teardown
+                                <ArrowRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
+                            </a>
+                        </div>
+
                         <div className="absolute inset-2 rounded-[22px] border border-dashed border-zinc-200 dark:border-white/5 pointer-events-none" />
                     </div>
                 </AppGrid>
             </section>
+
+            {/* Experience Section — hidden for now */}
+            {false && <motion.section
+                className="px-6 md:px-12 max-w-4xl mx-auto py-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeInUp}
+            >
+                <div className="mb-10">
+                    <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Experience</span>
+                </div>
+                <div className="flex flex-col">
+                    {[
+                        { role: "Senior Product Engineer", company: "Shipfast.agency", period: "2024 – Present" },
+                        { role: "Freelance Product Engineer", company: "Independent", period: "2024 – Present" },
+                        { role: "Senior UI/UX Designer", company: "Concise Software Solutions", period: "2022 – 2024" },
+                        { role: "UX/UI Designer", company: "Momentumgroup.tech", period: "2021 – 2022" },
+                        { role: "User Experience Designer", company: "Studiare", period: "2021" },
+                        { role: "UI/UX Designer", company: "Ajuda Benefits", period: "2021" },
+                        { role: "User Interface Designer", company: "Objective Deck", period: "2021" },
+                    ].map((item, i) => (
+                        <div key={i} className="group">
+                            <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_1fr_auto] items-center py-5 gap-x-4">
+                                <span className="text-[15px] md:text-[17px] font-normal text-zinc-800 dark:text-zinc-100 leading-snug">
+                                    {item.role}
+                                </span>
+                                <span className="hidden md:block text-[15px] md:text-[17px] font-normal text-zinc-500 dark:text-zinc-400">
+                                    {item.company}
+                                </span>
+                                <span className="text-[13px] md:text-[15px] font-normal text-zinc-400 dark:text-zinc-500 tabular-nums text-right whitespace-nowrap">
+                                    {item.period}
+                                </span>
+                                <span className="md:hidden text-[12px] text-zinc-400 dark:text-zinc-500 mt-0.5 col-span-2">
+                                    {item.company}
+                                </span>
+                            </div>
+                            <div className="h-px bg-zinc-200 dark:bg-zinc-800" />
+                        </div>
+                    ))}
+                </div>
+            </motion.section>}
+
+            {/* About Section */}
+            <motion.section
+                id="about"
+                className="px-6 md:px-12 max-w-4xl mx-auto py-20"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeInUp}
+            >
+                <div className="grid grid-cols-1 md:grid-cols-[280px_1fr_1fr] gap-10 md:gap-12 items-start">
+                    {/* Left: display heading */}
+                    <h2 className="font-serif text-[32px] md:text-[38px] leading-[1.15] font-normal text-zinc-900 dark:text-zinc-100 tracking-tight">
+                        Designer who builds.<br className="hidden md:block" /> Engineer who designs.
+                    </h2>
+
+                    {/* Middle column */}
+                    <div className="flex flex-col gap-6 font-mono text-[13px] leading-[1.85] text-zinc-600 dark:text-zinc-400">
+                        <p>
+                            I design and build products end-to-end — from blank canvas to something users actually open. Strategy, wireframes, high-fidelity UI, and the code to bring it to life. In that order, without switching hands.
+                        </p>
+                        <p>
+                            10+ products shipped for founders across the UK, US, Canada, UAE, Australia, and Nigeria. Some were MVPs built in weeks. Some were complex platforms rebuilt from scratch. All of them required someone who could think in product logic and execute in real tools.
+                        </p>
+                    </div>
+
+                    {/* Right column */}
+                    <div className="flex flex-col gap-6 font-mono text-[13px] leading-[1.85] text-zinc-600 dark:text-zinc-400">
+                        <p>
+                            The stack follows the problem — Bubble for speed, Next.js and Supabase when you need to own the infrastructure, AI-assisted builds when timeline is the constraint. The decision is always yours to understand, never mine to hide.
+                        </p>
+                        <p>
+                            One person from brief to launch means no handoff gaps, no lost context, no account manager standing between you and the work.
+                        </p>
+                        {/* Signature */}
+                        <div className="mt-4 flex justify-end">
+                            <svg viewBox="0 0 180 48" className="w-36 opacity-40 dark:opacity-30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 36 C20 20, 35 12, 50 24 C65 36, 72 16, 88 18 C104 20, 110 34, 126 28 C142 22, 155 14, 172 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M16 42 C30 38, 60 44, 90 40 C120 36, 150 42, 168 38" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.5"/>
+                                <path d="M4 32 C18 28, 40 30, 55 22" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.4"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </motion.section>
 
             {/* Services Section (Stacked) */}
             <motion.section
@@ -977,6 +1047,33 @@ export default function HomeClient() {
 
 
 
+            {/* Toolkit Decision Framework */}
+            <motion.section
+                className="px-6 md:px-12 max-w-4xl mx-auto py-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOptions}
+                variants={fadeInUp}
+            >
+                <div className="mb-8">
+                    <span className="text-[11px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Stack</span>
+                    <h2 className="text-[17px] font-semibold mt-2 text-zinc-900 dark:text-zinc-100">How I decide what to build with</h2>
+                </div>
+                <div className="flex flex-col divide-y divide-zinc-100 dark:divide-white/5 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm overflow-hidden">
+                    {[
+                        { tool: "Bubble", when: "When speed to market matters more than infrastructure control. Most MVPs." },
+                        { tool: "Next.js + Supabase", when: "When you need custom logic, scale, or own your stack from day one." },
+                        { tool: "AI-assisted (Cursor, Claude Code)", when: "To compress build timelines on custom work without cutting corners." },
+                        { tool: "Hybrid", when: "When the right answer is Bubble for the app and custom code for the heavy lifting." },
+                    ].map((row, i) => (
+                        <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-1 md:gap-6 px-8 py-5">
+                            <span className="text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">{row.tool}</span>
+                            <span className="text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{row.when}</span>
+                        </div>
+                    ))}
+                </div>
+            </motion.section>
+
             {/* FAQ Section */}
             <section id="faq" className="px-6 md:px-12 max-w-4xl mx-auto py-16">
                 <div className="mb-12">
@@ -1031,6 +1128,61 @@ export default function HomeClient() {
                 <div className="max-w-4xl mx-auto px-6 md:px-12 mb-8">
                     <h2 className="text-[17px] font-semibold mb-1 text-zinc-900 dark:text-zinc-100">Founders Who Scaled</h2>
                     <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Kind words from partners and clients I've built with.</p>
+                </div>
+
+                {/* Video testimonial */}
+                <div className="max-w-4xl mx-auto px-6 md:px-12 mb-10">
+                    <div className="p-3 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm">
+                        <div className="flex items-center justify-between mb-3 px-2 pt-1">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.6)]" />
+                                <div className="flex flex-col">
+                                    <span className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 leading-none">Video Testimonial</span>
+                                    <span className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">Ho T. · Founder, Westres</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                                <span className="text-[10px] font-semibold text-zinc-600 dark:text-zinc-400 tracking-wider">LIVE</span>
+                            </div>
+                        </div>
+                        <div className="relative rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden aspect-video group shadow-inner">
+                            {videoError ? (
+                                <div className="w-full h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/50">
+                                    <p className="text-[13px] text-zinc-400 dark:text-zinc-500">Video unavailable</p>
+                                </div>
+                            ) : (
+                                <>
+                                    {videoLoading && (
+                                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/50 z-10">
+                                            <div className="w-8 h-8 border-2 border-zinc-300 dark:border-zinc-600 border-t-zinc-900 dark:border-t-zinc-100 rounded-full animate-spin" />
+                                        </div>
+                                    )}
+                                    <video
+                                        ref={videoRef}
+                                        src="https://www.dropbox.com/scl/fi/yw0qecltes8m24g35xlnu/VIDEO-FOR-TIFE.mp4?rlkey=dnxoimcvgvjo93kss7bi69fnj&raw=1"
+                                        className="w-full h-full object-cover"
+                                        muted={isMuted}
+                                        loop
+                                        playsInline
+                                        preload="metadata"
+                                    />
+                                    <button
+                                        onClick={() => setIsMuted(!isMuted)}
+                                        className="absolute top-4 right-4 p-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-all duration-200 z-20"
+                                        aria-label={isMuted ? "Unmute video" : "Mute video"}
+                                    >
+                                        {isMuted
+                                            ? <VolumeX className="w-4 h-4 text-white/90" />
+                                            : <Volume2 className="w-4 h-4 text-white/90" />
+                                        }
+                                    </button>
+                                </>
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none rounded-[18px]" />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="relative w-full overflow-hidden py-4">
@@ -1098,6 +1250,15 @@ export default function HomeClient() {
                         </span>
                         <span className="text-[12px] font-medium text-zinc-600 dark:text-zinc-400">Currently available for new consulting engagements</span>
                     </div>
+
+                    <div className="flex items-center gap-4 mt-6">
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                            Book a free 30-min discovery call
+                        </FancyButton>
+                        <a href="#teardown" className="text-[14px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">
+                            Or get a free teardown first
+                        </a>
+                    </div>
                 </div>
 
                 <div className="mb-0 min-h-[700px]">
@@ -1134,7 +1295,7 @@ export default function HomeClient() {
                     <div className="flex flex-col gap-4">
                         <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Connect</h4>
                         <ul className="flex flex-col gap-2">
-                            <li><a href="mailto:hello@tife.dev" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
+                            <li><a href="mailto:boluolayinka1212@gmail.com" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
                             <li><a href="https://cal.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Schedule Call</a></li>
                             <li><a href="#contact" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Book Consultation</a></li>
                         </ul>
