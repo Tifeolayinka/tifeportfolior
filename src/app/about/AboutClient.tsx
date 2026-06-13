@@ -47,7 +47,7 @@ export default function AboutClient() {
                                     Tife Olayinka
                                 </h1>
                                 <p className="text-[16px] text-white/90 mb-4">
-                                    Product Designer & Bubble Developer
+                                    Product Designer & Engineer
                                 </p>
                                 <div className="flex items-center gap-4 text-[14px] text-white/80">
                                     <div className="flex items-center gap-2">

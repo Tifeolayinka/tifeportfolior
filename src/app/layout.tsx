@@ -28,16 +28,16 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://tifeolayinka.com"),
   title: {
-    default: "Tife Olayinka | Designer & Developer",
+    default: "Tife Olayinka | Product Designer & Engineer",
     template: "%s | Tife Olayinka",
   },
-  description: "Personal portfolio of Tife Olayinka, a Product Designer & Bubble Developer helping businesses build products from strategy to launch.",
+  description: "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
   icons: {
     icon: "/avatar.jpg",
   },
   openGraph: {
-    title: "Tife Olayinka | Designer & Developer",
-    description: "Personal portfolio of Tife Olayinka, a Product Designer & Bubble Developer helping businesses build products from strategy to launch.",
+    title: "Tife Olayinka | Product Designer & Engineer",
+    description: "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
     url: "https://tifeolayinka.com",
     siteName: "Tife Olayinka Portfolio",
     locale: "en_US",
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tife Olayinka | Designer & Developer",
-    description: "Personal portfolio of Tife Olayinka, a Product Designer & Bubble Developer helping businesses build products from strategy to launch.",
+    title: "Tife Olayinka | Product Designer & Engineer",
+    description: "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
     creator: "@tifeolayinka",
     images: ["/opengraph-image.png"],
   },
@@ -85,7 +85,7 @@ export default function RootLayout({
     "name": "Tife Olayinka",
     "url": "https://tifeolayinka.com",
     "image": "https://piton-digital.s3.eu-north-1.amazonaws.com/Portfolio+Image.JPG",
-    "jobTitle": "Product Designer & Bubble Developer",
+    "jobTitle": "Product Designer & Engineer",
     "worksFor": {
       "@type": "Organization",
       "name": "Shipfast.agency"
@@ -96,7 +96,7 @@ export default function RootLayout({
       "https://linkedin.com/in/olayinka-boluwatife-",
       "https://dribbble.com/tifeolayinka"
     ],
-    "description": "I help founders and businesses build the right product, the right way — strategy, design, and development.",
+    "description": "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
     "knowsAbout": [
       "Product Design",
       "Bubble Development",

@@ -10,6 +10,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ServiceCard } from "@/components/ServiceCard";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
+import Cal, { getCalApi } from "@calcom/embed-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
@@ -259,46 +260,11 @@ export default function HomeClient() {
         if (videoRef.current) videoRef.current.muted = isMuted;
     }, [isMuted]);
 
-    // Advanced Cal.com Embed Initialization
     useEffect(() => {
-        (function (C: any, A: string, L: string) {
-            let p = function (a: any, ar: any) { a.q.push(ar); };
-            let d = C.document;
-            C.Cal = C.Cal || function () {
-                let cal = C.Cal;
-                let ar = arguments;
-                if (!cal.loaded) {
-                    cal.ns = {};
-                    cal.q = cal.q || [];
-                    d.head.appendChild(d.createElement("script")).src = A;
-                    cal.loaded = true;
-                }
-                if (ar[0] === L) {
-                    const api: any = function () { p(api, arguments); };
-                    const namespace = ar[1];
-                    api.q = api.q || [];
-                    if (typeof namespace === "string") {
-                        cal.ns[namespace] = cal.ns[namespace] || api;
-                        p(cal.ns[namespace], ar);
-                        p(cal, ["initNamespace", namespace]);
-                    } else p(cal, ar);
-                    return;
-                } p(cal, ar);
-            };
-        })(window, "https://app.cal.com/embed/embed.js", "init");
-
-        const cal = (window as any).Cal;
-        if (cal) {
-            cal("init", "project-consultation-1", { origin: "https://app.cal.com" });
-
-            cal.ns["project-consultation-1"]("inline", {
-                elementOrSelector: "#my-cal-inline-project-consultation-1",
-                config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
-                calLink: "tifeolayinka/project-consultation-1",
-            });
-
-            cal.ns["project-consultation-1"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
-        }
+        (async function () {
+            const cal = await getCalApi({ namespace: "free-app-consultation-business" });
+            cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+        })();
     }, []);
 
 
@@ -1262,9 +1228,11 @@ export default function HomeClient() {
                 </div>
 
                 <div className="mb-0 min-h-[700px]">
-                    <div
-                        id="my-cal-inline-project-consultation-1"
+                    <Cal
+                        namespace="free-app-consultation-business"
+                        calLink="tifeolayinka/free-app-consultation-business"
                         style={{ width: "100%", height: "100%", overflow: "scroll" }}
+                        config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
                     />
                 </div>
             </section>
