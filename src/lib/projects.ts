@@ -27,6 +27,7 @@ export interface Project {
             role: string;
         };
     };
+    metrics?: { label: string; value: string }[];
     fullDescription?: string;
     mockups?: { url: string; name: string }[];
 }
@@ -54,6 +55,12 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Visual Identity", "UX Strategy", "Bubble Development"],
+        metrics: [
+            { label: "Admin time saved", value: "20+ hrs/week" },
+            { label: "Platforms", value: "Web + iOS" },
+            { label: "Stack", value: "Bubble + Stripe" },
+            { label: "Scope", value: "End-to-end" },
+        ],
         whatIWorkedOn: [
             "Product (web & mobile app) UI & UX",
             "Relational database & system architecture",
@@ -109,6 +116,12 @@ export const PROJECTS: Project[] = [
             "Full-Stack Development (Next.js + Convex)",
             "Chrome Extension Development"
         ],
+        metrics: [
+            { label: "Built in", value: "1 week" },
+            { label: "Setup time", value: "Under 5 min" },
+            { label: "Stack", value: "Next.js + Convex" },
+            { label: "Extras", value: "Chrome Extension + Widget" },
+        ],
         whatIWorkedOn: [
             "Brand Identity refresh (took a part)",
             "Landing page redesign",
@@ -163,6 +176,12 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Design Systems", "Bubble Development"],
+        metrics: [
+            { label: "Employees managed", value: "120+" },
+            { label: "Shipped in", value: "12 weeks" },
+            { label: "Stack", value: "Figma + Bubble" },
+            { label: "Compliance", value: "UAE labour law" },
+        ],
         whatIWorkedOn: [
             "Core HR & payroll dashboard UI & UX",
             "Design system & component library development",
@@ -208,6 +227,12 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["UX Strategy", "Bubble Development", "System Architecture"],
+        metrics: [
+            { label: "User roles", value: "3 (Contractor, Employer, Admin)" },
+            { label: "Approach", value: "Design-first" },
+            { label: "Stack", value: "Figma + Bubble" },
+            { label: "Scope", value: "Full hiring lifecycle" },
+        ],
         whatIWorkedOn: [
             "User journey mapping & wireframing",
             "Contractor & employer dashboard UI & UX",
@@ -253,6 +278,12 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Mobile App Design", "Visual Identity", "UX Research"],
+        metrics: [
+            { label: "Transaction volume", value: "$1B+" },
+            { label: "Audience", value: "B2B + B2C" },
+            { label: "Platform", value: "Mobile" },
+            { label: "Market", value: "Nigeria" },
+        ],
         whatIWorkedOn: [
             "B2B and B2C mobile app UI & UX",
             "Brand Identity refresh (took a part)",
@@ -309,6 +340,12 @@ export const PROJECTS: Project[] = [
             ]
         },
         roles: ["Product Design", "Data Visualization", "Bubble Development"],
+        metrics: [
+            { label: "Built in", value: "2 weeks" },
+            { label: "Platform", value: "Mobile" },
+            { label: "Stack", value: "Bubble" },
+            { label: "Focus", value: "Data visualization" },
+        ],
         whatIWorkedOn: [
             "Retirement projection UI & UX",
             "Data visualization & interactive charts",

@@ -3,7 +3,7 @@
 import { PROJECTS } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, Lock, MessageCircle, Smartphone } from "lucide-react";
+import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, MessageCircle, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
@@ -109,6 +109,18 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                         <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 pointer-events-none rounded-[18px]" />
                     </div>
                 </div>
+
+                {/* Key Metrics Bar */}
+                {project.metrics && project.metrics.length > 0 && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-[24px] bg-zinc-200 dark:bg-white/5 border border-zinc-200 dark:border-white/5 overflow-hidden shadow-sm">
+                        {project.metrics.map((metric, idx) => (
+                            <div key={idx} className="bg-white dark:bg-[#1a1a1a] px-6 py-5 flex flex-col gap-1">
+                                <span className="text-[11px] font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">{metric.label}</span>
+                                <span className="text-[15px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">{metric.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
 
                 {/* Narrative Grid: Challenge */}
                 <motion.div
@@ -244,20 +256,22 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                     )}
                 </div>
 
-                {/* Request Access CTA */}
-                <div className="my-12 p-8 rounded-[24px] bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 flex flex-col items-center text-center gap-6">
-                    <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
-                        <Lock className="w-5 h-5 text-zinc-500" />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <h3 className="text-[18px] font-semibold text-zinc-900 dark:text-zinc-100">Want to see the full case study?</h3>
-                        <p className="text-[14px] text-zinc-500 dark:text-zinc-400 max-w-sm">
-                            Get in touch to walk through the complete design process and unreleased features.
+                {/* CTA */}
+                <div className="my-12 p-8 md:p-10 rounded-[24px] bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                    <div className="flex flex-col gap-2 max-w-md">
+                        <h3 className="text-[18px] font-semibold text-zinc-900 dark:text-zinc-100">Like what you see?</h3>
+                        <p className="text-[14px] text-zinc-500 dark:text-zinc-400">
+                            Let's talk about building something like this for your business.
                         </p>
                     </div>
-                    <FancyButton href="/#contact" icon={MessageCircle}>
-                        Request Access
-                    </FancyButton>
+                    <div className="flex items-center gap-3 shrink-0">
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                            Book a free call
+                        </FancyButton>
+                        <a href="mailto:hello@tifeolayinka.com" className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">
+                            or email me
+                        </a>
+                    </div>
                 </div>
 
                 {/* Next Project (Styled as AppCard) */}
