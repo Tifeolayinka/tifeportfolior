@@ -15,6 +15,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
 import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/animations";
+import { FallingWords } from "@/components/FallingWords";
 
 const SERVICE_CARDS = [
     {
@@ -1239,13 +1240,9 @@ export default function HomeClient() {
 
             {/* Redesigned Footer Section */}
             <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-12 pb-36 md:pb-12">
-                {/* Large Serif Heading */}
-                <div className="mb-24 text-center md:text-left">
-                    <h2 className="text-[32px] sm:text-[42px] md:text-[72px] leading-[1.15] font-playfair tracking-tight text-zinc-900 dark:text-zinc-100">
-                        Right problem. <br className="sm:hidden" />
-                        Right tools. <br />
-                        <span className="italic">Right product.</span>
-                    </h2>
+                {/* Interactive Falling Word Blocks */}
+                <div className="mb-24 rounded-[24px] bg-zinc-50 dark:bg-[#111] border border-zinc-200 dark:border-white/5 overflow-hidden">
+                    <FallingWords />
                 </div>
 
                 {/* Footer Grid */}

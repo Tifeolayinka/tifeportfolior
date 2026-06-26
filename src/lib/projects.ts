@@ -324,6 +324,61 @@ export const PROJECTS: Project[] = [
 
     {
         id: "06",
+        title: "BibaFlow",
+        category: "Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/ChatGPT+Image+Jun+26%2C+2026%2C+10_53_29+PM.png",
+        slug: "bibaflow",
+        liveUrl: "#",
+        description: "Replaced a tangle of spreadsheets, chat apps, and SaaS tools with one operational workspace — built around how the team actually works, with a subscription layer ready to scale into a commercial product.",
+        challenge: {
+            summary: "Growing teams often end up managing work across spreadsheets, chat applications, and multiple SaaS products that were never designed to work together. Tasks become scattered, project visibility disappears, and tracking time or accountability requires constant manual follow-up. The client wanted a single internal platform that reflected how their team actually worked — rather than forcing them to adapt to generic project management software.",
+            points: [
+                "Designing a workspace that could serve both company owners and team members without overwhelming either user type.",
+                "Creating a flexible project and task management system that could support different workflows while remaining simple enough for everyday use.",
+                "Building native time tracking and focus workflows directly into task management instead of relying on external productivity tools.",
+                "Creating a permission model that gave owners complete operational visibility while keeping the experience clean for team members.",
+                "Architecting the platform to support multiple companies and subscription-based access from day one, so the internal tool could eventually evolve into a commercial SaaS product."
+            ]
+        },
+        roles: ["Bubble Development", "System Architecture", "Backend Workflows", "Stripe Integration", "Database Design"],
+        metrics: [
+            { label: "Stack", value: "Bubble + Stripe" },
+            { label: "Architecture", value: "Multi-company" },
+            { label: "Core modules", value: "6" },
+            { label: "Scope", value: "Internal → SaaS" },
+        ],
+        whatIWorkedOn: [
+            "Project and task management workflows",
+            "Role-based authentication & permissions",
+            "Company workspaces & team management",
+            "Time tracking & focus sessions",
+            "Notification system",
+            "Stripe subscription & billing integration",
+            "Backend workflow automation",
+            "Responsive application development"
+        ],
+        showcaseDescription: "A centralized operational workspace built around team workflow — from task management and time tracking to team collaboration and subscription billing.",
+        process: {
+            title: "The Solution",
+            content: "Working closely with the client, I mapped the team's existing operational workflow before translating it into a centralized internal platform. Every feature was designed around how the business already operated rather than introducing unnecessary complexity. Projects, tasks, time tracking, team collaboration, notifications, and billing were consolidated into one workspace — giving the business complete visibility across daily operations.\n\nThe platform was built with scalability in mind from the beginning. Multi-company architecture, role-based permissions, and Stripe-powered subscriptions ensure the system can grow beyond an internal operations tool and transition into a fully commercial SaaS product without requiring a complete rebuild."
+        },
+        result: {
+            title: "The Outcome",
+            content: "BibaFlow replaced multiple disconnected tools with a single operational workspace that the team now uses to manage projects, collaborate, and track work more efficiently. Leadership gained real-time visibility into projects, workloads, and productivity, while team members benefit from a simpler and more focused workflow.\n\nMore importantly, the business now owns software built around its own processes rather than adapting its processes to fit generic software. With a scalable architecture already in place, the platform is positioned to expand across additional teams and evolve into a subscription-based SaaS product."
+        },
+        mockups: [
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/ChatGPT+Image+Jun+26%2C+2026%2C+10_53_29+PM.png", name: "App Overview" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/957shots_so.png", name: "Dashboard" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/533shots_so+(1).png", name: "Performance Report Tab" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/798shots_so.png", name: "Event Management / Calendar" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/41shots_so.png", name: "Budget & Resources" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/89shots_so.png", name: "Focus Sessions & Time Tracking" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/562shots_so.png", name: "Task Management" },
+            { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/578shots_so+(1).png", name: "Project Management Timeline" },
+        ]
+    },
+    {
+        id: "07",
         title: "TrailHead",
         category: "Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/Main+image.png",
