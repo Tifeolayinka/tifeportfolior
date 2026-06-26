@@ -178,6 +178,12 @@ const HERO_VISUALS = [
         category: "Hiring Platform UX & Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Recrewer/115shots_so.png?q=80&w=1600&auto=format&fit=crop",
         slug: "recrewer"
+    },
+    {
+        title: "BibaFlow",
+        category: "Operational Workspace Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/957shots_so.png",
+        slug: "bibaflow"
     }
 ];
 
@@ -217,6 +223,12 @@ const HERO_VISUALS_ROW2 = [
         category: "Enterprise HR Portal Design",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Hr/591shots_so.png?q=80&w=1600&auto=format&fit=crop",
         slug: "oqool-core-hr"
+    },
+    {
+        title: "BibaFlow",
+        category: "Operational Workspace Dev",
+        image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/562shots_so.png",
+        slug: "bibaflow"
     }
 ];
 
