@@ -76,11 +76,11 @@ export const PROJECTS: Project[] = [
         result: {
             title: "The Outcome",
             content: "DojoHub replaced a mess of spreadsheets and group chats with one cohesive platform, giving school owners back over 20 hours of admin work per week. Instructors could manage class schedules, track belt promotions, and process payments from a single dashboard. New dojos were able to fully onboard — including student setup, membership plans, and class scheduling — in a fraction of the time. The platform shipped across web and iOS, handling the full lifecycle from student enrollment to recurring billing.",
-            /*testimonial: {
+            testimonial: {
                 text: "This saved us. We were drowning in spreadsheets. Now I can grade students, collect payments, and track everything from one place.",
                 author: "Alonso R.",
                 role: "Founder"
-            }*/
+            }
         },
         mockups: [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Dojohub/543shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Student Information" },
@@ -247,7 +247,12 @@ export const PROJECTS: Project[] = [
         },
         result: {
             title: "The Outcome",
-            content: "Recrewer replaced the fragmented freelance hiring process with a unified, trust-based platform. Employers gained a structured way to discover talent, manage interviews, issue offers, and handle contracts — all from one dashboard. Contractors secured a professional environment with clear expectations and transparent processes. The structured approach to hiring eliminated the gut-feel decision-making that leads to bad hires and gave both sides the confidence and clarity that scattered tools never could."
+            content: "Recrewer replaced the fragmented freelance hiring process with a unified, trust-based platform. Employers gained a structured way to discover talent, manage interviews, issue offers, and handle contracts — all from one dashboard. Contractors secured a professional environment with clear expectations and transparent processes. The structured approach to hiring eliminated the gut-feel decision-making that leads to bad hires and gave both sides the confidence and clarity that scattered tools never could.",
+            testimonial: {
+                text: "Tife brings clarity before code. He focuses on user flow, priorities, and build-ready design before opening Bubble, which saves time and avoids rework. His blend of UI/UX judgment, product thinking, and Bubble execution makes him especially valuable for founders building real products. I'd confidently recommend Tife to anyone who values clear thinking and disciplined delivery.",
+                author: "Gursimran T.",
+                role: "Founder, Recrewer"
+            }
         },
         mockups: [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Recrewer/115shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Talent Discovery & Matching" },
@@ -364,7 +369,12 @@ export const PROJECTS: Project[] = [
         },
         result: {
             title: "The Outcome",
-            content: "BibaFlow replaced multiple disconnected tools with a single operational workspace that the team now uses to manage projects, collaborate, and track work more efficiently. Leadership gained real-time visibility into projects, workloads, and productivity, while team members benefit from a simpler and more focused workflow.\n\nMore importantly, the business now owns software built around its own processes rather than adapting its processes to fit generic software. With a scalable architecture already in place, the platform is positioned to expand across additional teams and evolve into a subscription-based SaaS product."
+            content: "BibaFlow replaced multiple disconnected tools with a single operational workspace that the team now uses to manage projects, collaborate, and track work more efficiently. Leadership gained real-time visibility into projects, workloads, and productivity, while team members benefit from a simpler and more focused workflow.\n\nMore importantly, the business now owns software built around its own processes rather than adapting its processes to fit generic software. With a scalable architecture already in place, the platform is positioned to expand across additional teams and evolve into a subscription-based SaaS product.",
+            testimonial: {
+                text: "Tife supported us in the development of our task management software by analyzing gaps in the existing system and proposing technically sound solutions to address missing features. He helped translate our real-life workflows into functional system logic. His input improved both usability and system completeness. Overall, working with him was fast and efficient, with clear progress made in each phase of development. Constant communication—through regular check-ins, technical discussions, and feedback loops—was a key factor in delivering a well-implemented and fully functional project.",
+                author: "Shehriar",
+                role: "Founder, Bibaflow"
+            }
         },
         mockups: [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/ChatGPT+Image+Jun+26%2C+2026%2C+10_53_29+PM.png", name: "App Overview" },
