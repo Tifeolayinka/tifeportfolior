@@ -328,7 +328,7 @@ export const PROJECTS: Project[] = [
         category: "Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/ChatGPT+Image+Jun+26%2C+2026%2C+10_53_29+PM.png",
         slug: "bibaflow",
-        liveUrl: "#",
+        liveUrl: "https://bibaflow.io",
         description: "Replaced a tangle of spreadsheets, chat apps, and SaaS tools with one operational workspace — built around how the team actually works, with a subscription layer ready to scale into a commercial product.",
         challenge: {
             summary: "Growing teams often end up managing work across spreadsheets, chat applications, and multiple SaaS products that were never designed to work together. Tasks become scattered, project visibility disappears, and tracking time or accountability requires constant manual follow-up. The client wanted a single internal platform that reflected how their team actually worked — rather than forcing them to adapt to generic project management software.",
