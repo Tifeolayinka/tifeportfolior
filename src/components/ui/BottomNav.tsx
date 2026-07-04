@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Briefcase, User, Mail, Layers, Sparkles, MessageSquareQuote, LayoutGrid, Zap, Menu, X } from "lucide-react";
+import { Home, Briefcase, User, Mail, Layers, Sparkles, MessageSquareQuote, LayoutGrid, Zap, Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -76,7 +76,7 @@ export function BottomNav() {
                         <span className="text-[12px] font-medium text-white/90 whitespace-nowrap">
                             Viewing <span className="text-white font-bold">{activeItem.name}</span>
                         </span>
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-white/40"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+                        <ArrowUpRight size={10} strokeWidth={3} className="text-white/40" />
                     </motion.div>
                 )}
             </AnimatePresence>
