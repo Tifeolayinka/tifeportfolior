@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Briefcase, User, Mail, Layers, Sparkles, MessageSquareQuote, LayoutGrid, Zap, Menu, X, ArrowUpRight } from "lucide-react";
+import { Home, Briefcase, User, Mail, Layers, MessageSquareQuote, LayoutGrid, Zap, Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";

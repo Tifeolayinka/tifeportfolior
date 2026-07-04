@@ -1,5 +1,5 @@
 import { motion, MotionValue } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, Sparkles } from "lucide-react";
+import { ArrowRight, ListChecks, Clock, Star, Target } from "lucide-react";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { forwardRef } from "react";
 
@@ -40,7 +40,7 @@ export const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(({
                 <div className="mb-8">
                     {popular && (
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium text-[12px] mb-4">
-                            <Sparkles size={14} />
+                            <Star size={14} />
                             MOST POPULAR
                         </div>
                     )}
@@ -50,7 +50,7 @@ export const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
                         <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                            <CheckCircle2 size={16} /> What you get
+                            <ListChecks size={16} /> What you get
                         </h4>
                         <ul className="space-y-2">
                             {features.map((item, i) => (
@@ -63,7 +63,7 @@ export const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(({
                     </div>
                     <div>
                         <h4 className="text-[14px] font-bold text-white/90 uppercase tracking-widest mb-3 flex items-center gap-2">
-                            <Sparkles size={16} /> Best For
+                            <Target size={16} /> Best For
                         </h4>
                         <ul className="space-y-2">
                             {bestFor.map((item, i) => (

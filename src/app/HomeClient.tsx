@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ServiceCard } from "@/components/ServiceCard";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { Github, Linkedin, Twitter, Dribbble, Sparkles, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
+import { Github, Linkedin, Twitter, Dribbble, Calendar, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -338,7 +338,7 @@ export default function HomeClient() {
 
                     {/* Actions Row */}
                     <div className="flex items-center gap-4 mt-6">
-                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Calendar}>
                             Book a free 30-min discovery call
                         </FancyButton>
 
@@ -1078,7 +1078,7 @@ export default function HomeClient() {
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                     className="text-zinc-400"
                                 >
-                                    <Sparkles size={18} />
+                                    <Plus size={18} />
                                 </motion.div>
                             </button>
                             <AnimatePresence>
@@ -1231,7 +1231,7 @@ export default function HomeClient() {
                     </div>
 
                     <div className="flex items-center gap-4 mt-6">
-                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Calendar}>
                             Book a free 30-min discovery call
                         </FancyButton>
                         <a href="#teardown" className="text-[14px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">

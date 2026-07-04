@@ -7,7 +7,7 @@ import {
     Calendar, AlertTriangle, Users, EyeOff, Box, Briefcase, 
     CheckCircle2, FileText, CreditCard, LayoutDashboard, Image as ImageIcon, 
     GitMerge, Wrench, Truck, Stethoscope, Building, ShoppingCart, 
-    Plus, Minus, ShieldCheck, ArrowRight, FileSpreadsheet, Link2Off, Sparkles, Activity
+    Plus, Minus, ShieldCheck, ArrowRight, FileSpreadsheet, Link2Off, UserPlus, Activity
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -367,7 +367,7 @@ export default function AppsClient() {
                         {/* Reserved Testimonial */}
                         <div className="p-8 rounded-3xl bg-zinc-950/40 border border-dashed border-white/10 flex flex-col gap-6 relative group">
                             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                                <Sparkles className="w-5 h-5 text-zinc-600 group-hover:text-white transition-colors" />
+                                <UserPlus className="w-5 h-5 text-zinc-600 group-hover:text-white transition-colors" />
                             </div>
                             <p className="text-[16px] text-zinc-500 leading-relaxed italic">
                                 "This spot is reserved. Book a call and let's build something worth talking about."

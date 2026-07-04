@@ -3,7 +3,7 @@
 import { PROJECTS } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Sparkles, FileText, Globe, Quote, MessageCircle, Smartphone } from "lucide-react";
+import { ArrowLeft, ExternalLink, Calendar, FileText, Globe, Quote, MessageCircle, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { FancyButton } from "@/components/ui/FancyButton";
 import { TopNav } from "@/components/ui/TopNav";
@@ -265,7 +265,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                         </p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
-                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Sparkles}>
+                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Calendar}>
                             Book a free call
                         </FancyButton>
                         <a href="mailto:hello@tifeolayinka.com" className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">
