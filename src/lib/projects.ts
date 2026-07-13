@@ -439,5 +439,54 @@ export const PROJECTS: Project[] = [
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/149shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Trail Checkpoint" },
             { url: "https://piton-digital.s3.eu-north-1.amazonaws.com/Trailhead/536shots_so.png?q=80&w=1600&auto=format&fit=crop", name: "Settings -> Email Change Process" }
         ]
+    },
+    {
+        id: "08",
+        title: "No-Code Alliance",
+        category: "Design",
+        image: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/xezhxyablz4heeqckth5.webp",
+        slug: "no-code-alliance",
+        liveUrl: "https://nocodealliance.org/",
+        liveUrls: [
+            { label: "Visit Website", url: "https://nocodealliance.org/", platform: "web" }
+        ],
+        description: "A global community platform empowering no-code developers, designers, and entrepreneurs with resources, networking, and expert insights.",
+        challenge: {
+            summary: "No-Code Alliance needed a modern, intuitive, and highly functional UI design for their website. The goal was to create a user-friendly experience that effectively engages the no-code community, provides easy access to educational content, and fosters collaboration. The existing design lacked the visual clarity and structure needed for seamless navigation.",
+            points: [
+                "The existing platform lacked the visual structure and clarity needed for intuitive user navigation.",
+                "Fostering community collaboration and active engagement required a more modern and welcoming user experience.",
+                "Providing streamlined, structured access to a vast library of educational content and resources without overwhelming users.",
+                "Ensuring full responsiveness and high usability across all screen sizes and device types."
+            ]
+        },
+        roles: ["UI/UX Design", "Visual Identity", "UX Strategy", "Responsive Design"],
+        metrics: [
+            { label: "Focus", value: "Community & Education" },
+            { label: "Scope", value: "UI/UX Design" },
+            { label: "Deliverables", value: "Web & Mobile UI" },
+            { label: "Format", value: "Responsive Web" }
+        ],
+        whatIWorkedOn: [
+            "Information architecture & user journey mapping",
+            "High-fidelity website UI design & layout exploration",
+            "Design system creation including typography & color palette",
+            "Responsive design optimizations for mobile & tablet viewports"
+        ],
+        showcaseDescription: "A clean, modern, and highly accessible user interface crafted to foster collaboration and learning within the global no-code community.",
+        process: {
+            title: "The Solution",
+            content: "I focused on designing a clean, well-structured UI that enhances accessibility, usability, and engagement. Using a modern no-code design approach, I crafted intuitive layouts, clear navigation, and visually appealing interfaces that reflect the collaborative and innovative spirit of the no-code movement."
+        },
+        result: {
+            title: "The Outcome",
+            content: "The final No-Code Alliance website UI features: Modern, engaging UI design tailored for no-code professionals; Intuitive layout & seamless navigation for a frictionless user experience; Strategic content hierarchy to highlight key resources and community initiatives; Responsive design ensuring accessibility across all devices."
+        },
+        mockups: [
+            { url: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/xezhxyablz4heeqckth5.webp", name: "Landing Page Hero & Core Content Section" },
+            { url: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/n0raauxxi1ekjfi7mgyr.webp", name: "Community Directory & Engagement View" },
+            { url: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/y6bz45pv4hg7q9d9vjhf.webp", name: "Resource Library & Article Detail Layout" },
+            { url: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/ghc8latlech8foswn1dc.webp", name: "Mobile App Screen Mockups & Responsiveness" }
+        ]
     }
 ];

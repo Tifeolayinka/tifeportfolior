@@ -184,6 +184,12 @@ const HERO_VISUALS = [
         category: "Operational Workspace Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/957shots_so.png",
         slug: "bibaflow"
+    },
+    {
+        title: "No-Code Alliance",
+        category: "Community Platform UI",
+        image: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/xezhxyablz4heeqckth5.webp",
+        slug: "no-code-alliance"
     }
 ];
 
@@ -229,6 +235,12 @@ const HERO_VISUALS_ROW2 = [
         category: "Operational Workspace Dev",
         image: "https://piton-digital.s3.eu-north-1.amazonaws.com/Bibaflow/562shots_so.png",
         slug: "bibaflow"
+    },
+    {
+        title: "No-Code Alliance",
+        category: "Community Platform UI",
+        image: "https://media.contra.com/image/upload/fl_progressive/q_auto:best/n0raauxxi1ekjfi7mgyr.webp",
+        slug: "no-code-alliance"
     }
 ];
 
@@ -337,7 +349,7 @@ export default function HomeClient() {
                     </div>
 
                     {/* Actions Row */}
-                    <div className="flex items-center gap-4 mt-6">
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
                         <FancyButton href="https://cal.com/tifeolayinka" target="_blank" icon={Calendar}>
                             Book a free 30-min discovery call
                         </FancyButton>
