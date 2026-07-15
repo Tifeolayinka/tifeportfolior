@@ -265,7 +265,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                         </p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
-                        <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" icon={Calendar}>
+                        <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
                             Book a free call
                         </FancyButton>
                         <a href="mailto:hello@tifeolayinka.com" className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">
