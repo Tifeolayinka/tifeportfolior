@@ -36,10 +36,10 @@ export default function AppsClient() {
                         </div>
                         Tife Olayinka
                     </Link>
-                    <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="text-[13px] px-5 py-2 h-auto hidden md:flex" icon={Calendar}>
+                    <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" className="text-[13px] px-5 py-2 h-auto hidden md:flex" icon={Calendar}>
                         Book a Call
                     </FancyButton>
-                    <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="text-[13px] px-4 py-1.5 h-auto md:hidden">
+                    <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" className="text-[13px] px-4 py-1.5 h-auto md:hidden">
                         Book a Call
                     </FancyButton>
                 </div>
@@ -75,7 +75,7 @@ export default function AppsClient() {
                         </motion.p>
                         
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
-                            <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="w-full sm:w-auto text-[15px] px-8 py-4 shadow-orange-500/20" icon={Calendar}>
+                            <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" className="w-full sm:w-auto text-[15px] px-8 py-4 shadow-orange-500/20" icon={Calendar}>
                                 Book a Free 30-Min Call
                             </FancyButton>
                             <span className="text-[13px] text-zinc-500 flex items-center gap-1.5">
@@ -404,7 +404,7 @@ export default function AppsClient() {
                             <p className="text-[16px] text-zinc-400 leading-relaxed max-w-lg">
                                 Every business is different — final pricing depends on the scope, complexity and number of users. Book a free call and I'll give you an exact quote within 24 hours.
                             </p>
-                            <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="mt-4 text-[16px] px-10 py-5 bg-white text-black hover:bg-zinc-200" icon={Calendar}>
+                            <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" className="mt-4 text-[16px] px-10 py-5 bg-white text-black hover:bg-zinc-200" icon={Calendar}>
                                 Get a Free Quote
                             </FancyButton>
                             
@@ -495,7 +495,7 @@ export default function AppsClient() {
                         <p className="text-[18px] text-zinc-400 max-w-2xl leading-relaxed mb-8">
                             Book a free 30-minute call. I'll show you exactly what a custom app would look like for your business — no pitch, no obligation, just clarity.
                         </p>
-                        <FancyButton href="https://cal.com/tifeolayinka" target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white border-none shadow-xl shadow-orange-500/20 text-[16px] px-10 py-5" icon={Calendar}>
+                        <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business?layout=mobile" target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white border-none shadow-xl shadow-orange-500/20 text-[16px] px-10 py-5" icon={Calendar}>
                             Book My Free Call
                         </FancyButton>
                         <div className="mt-8 flex items-center justify-center gap-2">
