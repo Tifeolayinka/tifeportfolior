@@ -4,14 +4,16 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ImageZoomProps {
     src: string;
     alt: string;
     className?: string;
+    priority?: boolean;
 }
 
-export function ImageZoom({ src, alt, className }: ImageZoomProps) {
+export function ImageZoom({ src, alt, className, priority = false }: ImageZoomProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -21,10 +23,15 @@ export function ImageZoom({ src, alt, className }: ImageZoomProps) {
                 onClick={() => setIsOpen(true)}
                 layoutId={`image-${src}`}
             >
-                <motion.img
+                <Image
                     src={src}
                     alt={alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    priority={priority}
+                    loading={priority ? "eager" : "lazy"}
+                    fetchPriority={priority ? "high" : "low"}
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Hover Overlay Hint */}
@@ -56,10 +63,12 @@ export function ImageZoom({ src, alt, className }: ImageZoomProps) {
                             className="relative w-full h-full max-w-7xl max-h-screen flex items-center justify-center"
                             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image wrapper (optional, but standard behavior usually allows closing on background)
                         >
-                            <motion.img
+                            <Image
                                 src={src}
                                 alt={alt}
-                                className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                                fill
+                                sizes="100vw"
+                                className="object-contain rounded-lg shadow-2xl"
                             />
                         </motion.div>
                     </motion.div>

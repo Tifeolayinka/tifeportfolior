@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Send, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export function WhatsAppWidget() {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     // State to track if the user has manually interacted with the widget (opened/closed)
     const [hasInteracted, setHasInteracted] = useState(false);
@@ -64,6 +66,8 @@ export function WhatsAppWidget() {
         : "Hi Tife! I'd like to chat about a project.";
 
     const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+    if (pathname.startsWith("/work/")) return null;
 
     return (
         <div className="fixed bottom-24 md:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
