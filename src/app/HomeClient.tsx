@@ -10,12 +10,18 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ServiceCard } from "@/components/ServiceCard";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Github, Linkedin, Twitter, Dribbble, Calendar, FileText, Layers, BookOpen, Layout, Box, Smartphone, Globe, Volume2, VolumeX, Plus, Search, PenTool, Code, LineChart, CheckCircle2, Check, Clock, ArrowRight, HelpCircle } from "lucide-react";
-import Cal, { getCalApi } from "@calcom/embed-react";
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
 import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/animations";
-import { FallingWords } from "@/components/FallingWords";
+import { LazyBookingCalendar } from "@/components/LazyBookingCalendar";
+
+const FallingWords = dynamic(
+    () => import("@/components/FallingWords").then((module) => module.FallingWords),
+    { ssr: false },
+);
 
 const SERVICE_CARDS = [
     {
@@ -285,14 +291,6 @@ export default function HomeClient() {
         if (videoRef.current) videoRef.current.muted = isMuted;
     }, [isMuted]);
 
-    useEffect(() => {
-        (async function () {
-            const cal = await getCalApi({ namespace: "free-app-consultation-business" });
-            cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
-        })();
-    }, []);
-
-
     return (
         <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
             <BottomNav />
@@ -302,7 +300,7 @@ export default function HomeClient() {
 
                 {/* Left Side: Hero Group */}
                 <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     className="flex flex-col gap-6 max-w-[500px]"
@@ -312,9 +310,12 @@ export default function HomeClient() {
                         <div className="relative group p-[2px] rounded-full overflow-hidden">
                             <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-60 blur-[2px]" />
                             <div className="relative w-12 h-12 rounded-full bg-white dark:bg-zinc-900 overflow-hidden border border-white/20">
-                                <img
+                                <Image
                                     src="https://piton-digital.s3.eu-north-1.amazonaws.com/Portfolio+Image.JPG"
                                     alt="Tife Olayinka"
+                                    fill
+                                    priority
+                                    sizes="48px"
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                                 />
                             </div>
@@ -429,9 +430,13 @@ export default function HomeClient() {
                                     className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
                                 >
                                     <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
-                                        <img
+                                        <Image
                                             src={visual.image}
                                             alt={visual.title}
+                                            fill
+                                            loading="lazy"
+                                            fetchPriority="low"
+                                            sizes="(max-width: 767px) 256px, 396px"
                                             className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
                                         />
                                         {/* Overlay Gradient */}
@@ -460,9 +465,13 @@ export default function HomeClient() {
                                     className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
                                 >
                                     <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
-                                        <img
+                                        <Image
                                             src={visual.image}
                                             alt={visual.title}
+                                            fill
+                                            loading="lazy"
+                                            fetchPriority="low"
+                                            sizes="(max-width: 767px) 256px, 396px"
                                             className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
                                         />
                                         {/* Overlay Gradient */}
@@ -497,9 +506,13 @@ export default function HomeClient() {
                                     className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
                                 >
                                     <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
-                                        <img
+                                        <Image
                                             src={visual.image}
                                             alt={visual.title}
+                                            fill
+                                            loading="lazy"
+                                            fetchPriority="low"
+                                            sizes="(max-width: 767px) 256px, 396px"
                                             className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -525,9 +538,13 @@ export default function HomeClient() {
                                     className="snap-start shrink-0 relative group w-[280px] md:w-[420px] aspect-[4/3] rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm p-3 transition-all duration-500 hover:scale-[1.01] hover:shadow-lg"
                                 >
                                     <div className="relative w-full h-full rounded-[18px] bg-zinc-50 dark:bg-[#222222] border border-zinc-200 dark:border-white/5 overflow-hidden shadow-inner">
-                                        <img
+                                        <Image
                                             src={visual.image}
                                             alt={visual.title}
+                                            fill
+                                            loading="lazy"
+                                            fetchPriority="low"
+                                            sizes="(max-width: 767px) 256px, 396px"
                                             className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.03]"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -1252,14 +1269,7 @@ export default function HomeClient() {
                     </div>
                 </div>
 
-                <div className="mb-0 min-h-[700px]">
-                    <Cal
-                        namespace="free-app-consultation-business"
-                        calLink="tifeolayinka/free-app-consultation-business"
-                        style={{ width: "100%", height: "100%", overflow: "scroll" }}
-                        config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
-                    />
-                </div>
+                <LazyBookingCalendar />
             </section>
 
             {/* Redesigned Footer Section */}

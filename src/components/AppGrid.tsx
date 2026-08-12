@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useMagneticEffect } from "@/hooks/useMagneticEffect";
 
@@ -46,13 +47,21 @@ export function AppCard({ title, description, className, image, href = "#" }: Ap
                     "relative w-full aspect-[4/3] rounded-[22px] overflow-hidden mb-1",
                     "bg-zinc-200 dark:bg-zinc-800"
                 )}>
-                    <motion.img
-                        src={image}
-                        alt={title}
-                        className="w-full h-full object-cover"
+                    <motion.div
+                        className="h-full w-full"
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    />
+                    >
+                        <Image
+                            src={image}
+                            alt={title}
+                            fill
+                            loading="lazy"
+                            fetchPriority="low"
+                            sizes="(max-width: 767px) calc(100vw - 60px), 390px"
+                            className="object-cover"
+                        />
+                    </motion.div>
 
                     <motion.div
                         className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"

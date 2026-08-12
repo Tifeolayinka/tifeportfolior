@@ -1,29 +1,13 @@
 import type { Metadata } from "next";
-import { Outfit, Inter, Inter_Tight, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import Script from "next/script";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -110,7 +94,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${inter.variable} ${interTight.variable} ${playfair.variable} antialiased bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50`}
+        className={`${inter.variable} antialiased bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50`}
       >
         <script
           type="application/ld+json"
