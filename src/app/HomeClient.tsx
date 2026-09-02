@@ -40,8 +40,8 @@ const SERVICE_CARDS = [
         ],
         quote: "End-to-end engagement — from understanding the problem to shipping the product. I assess your needs, recommend the right approach, and execute it. Could be Bubble, could be Next.js and Supabase, could be a hybrid. You get one person who thinks and builds.",
         timeline: "4-8 weeks for most MVPs",
-        bgClass: "bg-[#91a08d]",
-        darkBgClass: "dark:bg-[#2d3a2d]"
+        bgClass: "bg-zinc-900",
+        darkBgClass: "dark:bg-zinc-900"
     },
     {
         title: "UI/UX Design Only",
@@ -58,8 +58,8 @@ const SERVICE_CARDS = [
         ],
         quote: "Even when I'm not building it, I design with implementation in mind. My development background means I design interfaces that are technically feasible, performance-optimized, and developer-friendly.",
         timeline: "2-4 weeks depending on scope",
-        bgClass: "bg-[#d9774d]",
-        darkBgClass: "dark:bg-[#4d2d2d]"
+        bgClass: "bg-zinc-900",
+        darkBgClass: "dark:bg-zinc-900"
     },
     {
         title: "Development Only",
@@ -77,8 +77,8 @@ const SERVICE_CARDS = [
         ],
         quote: "You have designs, I'll build them. Bubble, custom code, or both. Clean architecture, proper workflows, no shortcuts.",
         timeline: "3-6 weeks depending on complexity",
-        bgClass: "bg-[#4a6fa5]",
-        darkBgClass: "dark:bg-[#1d2d44]"
+        bgClass: "bg-zinc-900",
+        darkBgClass: "dark:bg-zinc-900"
     }
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Cal = dynamic(() => import("@calcom/embed-react"), {
     ssr: false,
@@ -15,39 +15,20 @@ function CalendarPlaceholder() {
 }
 
 export function LazyBookingCalendar() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [shouldLoad, setShouldLoad] = useState(false);
+    const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (!entry.isIntersecting) return;
-                setShouldLoad(true);
-                observer.disconnect();
-            },
-            { rootMargin: "500px 0px" },
-        );
-
-        observer.observe(container);
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        if (!shouldLoad) return;
-
         void import("@calcom/embed-react").then(({ getCalApi }) =>
             getCalApi({ namespace: "free-app-consultation-business" }).then((cal) => {
                 cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+                setReady(true);
             }),
         );
-    }, [shouldLoad]);
+    }, []);
 
     return (
-        <div ref={containerRef} className="mb-0 min-h-[700px]">
-            {shouldLoad ? (
+        <div className="mb-0 min-h-[700px]">
+            {ready ? (
                 <Cal
                     namespace="free-app-consultation-business"
                     calLink="tifeolayinka/free-app-consultation-business"
