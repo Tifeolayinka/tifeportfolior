@@ -3,6 +3,7 @@ import { ProjectImage } from "@/components/ui/ProjectImage";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LazyBookingCalendar } from "@/components/LazyBookingCalendar";
 
 type CaseStudyImageProps = {
     src: string;
@@ -162,6 +163,19 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
                         </blockquote>
                     ) : null}
                 </article>
+
+                {/* Booking CTA */}
+                <section className="mt-24 pt-16 border-t border-zinc-200 dark:border-white/10">
+                    <div className="mb-10 text-center">
+                        <h2 className="text-[22px] font-bold leading-[1.15] tracking-[-0.01em] text-zinc-950 dark:text-[#f2eee5] md:text-[26px] mb-3">
+                            Want something like this?
+                        </h2>
+                        <p className="text-[15px] leading-[1.7] text-zinc-500 dark:text-[#99958e] max-w-md mx-auto">
+                            Book a free 30-minute call and I'll show you exactly what a custom app would look like for your business.
+                        </p>
+                    </div>
+                    <LazyBookingCalendar />
+                </section>
 
                 <footer className="mt-24 flex items-center justify-between border-t border-zinc-200 py-6 text-[12px] text-zinc-500 dark:border-white/10 dark:text-[#817d76]">
                     <span>© {new Date().getFullYear()} Tife Olayinka</span>

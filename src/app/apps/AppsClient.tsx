@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { fadeInUp, viewportOptions } from "@/lib/animations";
+import { LazyBookingCalendar } from "@/components/LazyBookingCalendar";
 
 export default function AppsClient() {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -473,6 +474,30 @@ export default function AppsClient() {
                                 </AnimatePresence>
                             </div>
                         ))}
+                    </div>
+                </motion.section>
+
+                {/* 8b. EMBEDDED BOOKING CALENDAR */}
+                <motion.section
+                    className="flex flex-col gap-10 max-w-4xl mx-auto w-full"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOptions}
+                    variants={fadeInUp}
+                >
+                    <div className="text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+                            Book your free call
+                        </h2>
+                        <p className="text-[16px] text-zinc-400 max-w-xl mx-auto">
+                            Pick a time that works for you — 30 minutes, no pitch, just clarity on what a custom app would look like for your business.
+                        </p>
+                    </div>
+
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/40 backdrop-blur-sm p-4 md:p-8">
+                        {/* Subtle glow behind the calendar */}
+                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[60%] h-40 bg-orange-500/15 blur-[80px] rounded-full pointer-events-none" />
+                        <LazyBookingCalendar />
                     </div>
                 </motion.section>
 
