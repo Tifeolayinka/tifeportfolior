@@ -8,23 +8,23 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Tife Olayinka | Product Designer & Engineer",
-    description: "I help founders and businesses build the right product, the right way — strategy, design, and development.",
+    title: "Book a Strategy Call | Tife Olayinka",
+    description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
     url: "https://tifeolayinka.com",
     images: [
       {
-        url: "/opengraph-image.png?v=2",
+        url: "/opengraph-image.png?v=3",
         width: 1024,
         height: 523,
-        alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
+        alt: "Book a strategy call - Tife Olayinka",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tife Olayinka | Product Designer & Engineer",
-    description: "I help founders and businesses build the right product, the right way — strategy, design, and development.",
-    images: ["/opengraph-image.png?v=2"],
+    title: "Book a Strategy Call | Tife Olayinka",
+    description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
+    images: ["/opengraph-image.png?v=3"],
   },
 };
 

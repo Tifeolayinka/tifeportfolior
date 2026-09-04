@@ -38,10 +38,10 @@ export default function AppsClient() {
                         Tife Olayinka
                     </Link>
                     <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="text-[13px] px-5 py-2 h-auto hidden md:flex" icon={Calendar}>
-                        Book a Call
+                        Book a strategy call
                     </FancyButton>
                     <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="text-[13px] px-4 py-1.5 h-auto md:hidden">
-                        Book a Call
+                        Book a strategy call
                     </FancyButton>
                 </div>
             </header>
@@ -77,7 +77,7 @@ export default function AppsClient() {
                         
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
                             <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="w-full sm:w-auto text-[15px] px-8 py-4 shadow-orange-500/20" icon={Calendar}>
-                                Book a Free 30-Min Call
+                                Book a strategy call
                             </FancyButton>
                             <span className="text-[13px] text-zinc-500 flex items-center gap-1.5">
                                 <ShieldCheck size={14} className="text-emerald-500" /> No pitch, just clarity.
@@ -487,7 +487,7 @@ export default function AppsClient() {
                 >
                     <div className="text-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                            Book your free call
+                            Book a strategy call
                         </h2>
                         <p className="text-[16px] text-zinc-400 max-w-xl mx-auto">
                             Pick a time that works for you — 30 minutes, no pitch, just clarity on what a custom app would look like for your business.
@@ -518,10 +518,10 @@ export default function AppsClient() {
                             Ready to replace <br className="hidden md:block"/> the spreadsheets?
                         </h2>
                         <p className="text-[18px] text-zinc-400 max-w-2xl leading-relaxed mb-8">
-                            Book a free 30-minute call. I'll show you exactly what a custom app would look like for your business — no pitch, no obligation, just clarity.
+                            Book a strategy call. I'll show you exactly what a custom app would look like for your business — no pitch, no obligation, just clarity.
                         </p>
                         <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white border-none shadow-xl shadow-orange-500/20 text-[16px] px-10 py-5" icon={Calendar}>
-                            Book My Free Call
+                            Book a strategy call
                         </FancyButton>
                         <div className="mt-8 flex items-center justify-center gap-2">
                             <span className="relative flex h-2 w-2">
