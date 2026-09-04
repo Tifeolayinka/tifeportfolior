@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Book a Strategy Call | Tife Olayinka",
     description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
-    url: "https://tifeolayinka.com",
+    url: "https://www.tifeolayinka.com",
     images: [
       {
-        url: "/opengraph-image.png?v=3",
+        url: "https://www.tifeolayinka.com/opengraph-image.png",
         width: 1024,
         height: 523,
         alt: "Book a strategy call - Tife Olayinka",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Book a Strategy Call | Tife Olayinka",
     description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
-    images: ["/opengraph-image.png?v=3"],
+    images: ["https://www.tifeolayinka.com/opengraph-image.png"],
   },
 };
 

@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tifeolayinka.com"),
+  metadataBase: new URL("https://www.tifeolayinka.com"),
   title: {
     default: "Tife Olayinka | Product Designer & Engineer",
     template: "%s | Tife Olayinka",
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Book a Strategy Call | Tife Olayinka",
     description: "Strategy, design, and development from one person who stays through launch. Helping founders get their messy ideas to working products.",
-    url: "https://tifeolayinka.com",
+    url: "https://www.tifeolayinka.com",
     siteName: "Tife Olayinka Portfolio",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png?v=3",
+        url: "https://www.tifeolayinka.com/opengraph-image.png",
         width: 1024,
         height: 523,
         alt: "Book a strategy call - Tife Olayinka",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Book a Strategy Call | Tife Olayinka",
     description: "Strategy, design, and development from one person who stays through launch. Helping founders get their messy ideas to working products.",
     creator: "@tifeolayinka",
-    images: ["/opengraph-image.png?v=3"],
+    images: ["https://www.tifeolayinka.com/opengraph-image.png"],
   },
   verification: {
     google: "VlpR3b9-_aZEDxrjt2t-OECVWCMRdjUkQAWdgrJPZ08",

@@ -10,16 +10,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Custom Internal Applications | Tife Olayinka",
     description: "Replace chaotic spreadsheets and duct-taped tools with custom internal applications tailored to your business operations. Ready in 2-4 weeks.",
-    url: "https://tifeolayinka.com/apps",
+    url: "https://www.tifeolayinka.com/apps",
     siteName: "Tife Olayinka Portfolio",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png?v=2",
+        url: "https://www.tifeolayinka.com/opengraph-image.png",
         width: 1024,
         height: 523,
-        alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
+        alt: "Book a strategy call - Tife Olayinka",
       },
     ],
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Custom Internal Applications | Tife Olayinka",
     description: "Replace chaotic spreadsheets and duct-taped tools with custom internal applications tailored to your business operations. Ready in 2-4 weeks.",
-    images: ["/opengraph-image.png?v=2"],
+    images: ["https://www.tifeolayinka.com/opengraph-image.png"],
   },
 };
 
