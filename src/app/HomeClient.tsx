@@ -1305,7 +1305,7 @@ export default function HomeClient() {
                         <ul className="flex flex-col gap-2">
                             <li><a href="https://twitter.com/tife_olayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Twitter</a></li>
                             <li><a href="https://github.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Github</a></li>
-                            <li><a href="https://linkedin.com/in/olayinka-boluwatife-" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">LinkedIn</a></li>
+                            <li><a href="https://www.linkedin.com/in/tife-olayinka/" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">LinkedIn</a></li>
                             <li><a href="https://dribbble.com/tifeolayinka" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Dribbble</a></li>
                         </ul>
                     </div>

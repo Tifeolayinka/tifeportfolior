@@ -27,7 +27,7 @@ const socialLinks = [
         icon: <Linkedin size={18} />,
         title: "Linkedin",
         handle: "@tife_olayinka",
-        href: "https://linkedin.com/in/tife-olayinka",
+        href: "https://www.linkedin.com/in/tife-olayinka/",
     },
     {
         icon: <Mail size={18} />,

@@ -78,7 +78,7 @@ export default function RootLayout({
     "sameAs": [
       "https://twitter.com/tife_olayinka",
       "https://github.com/tifeolayinka",
-      "https://linkedin.com/in/olayinka-boluwatife-",
+      "https://www.linkedin.com/in/tife-olayinka/",
       "https://dribbble.com/tifeolayinka"
     ],
     "description": "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
