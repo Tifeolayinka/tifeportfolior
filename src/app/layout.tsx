@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/opengraph-image.png?v=2",
         width: 1024,
         height: 523,
         alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Tife Olayinka | Product Designer & Engineer",
     description: "Strategy, design, and development from one person who stays through launch. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.",
     creator: "@tifeolayinka",
-    images: ["/opengraph-image.png"],
+    images: ["/opengraph-image.png?v=2"],
   },
   verification: {
     google: "VlpR3b9-_aZEDxrjt2t-OECVWCMRdjUkQAWdgrJPZ08",

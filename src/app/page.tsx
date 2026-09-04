@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://tifeolayinka.com",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/opengraph-image.png?v=2",
         width: 1024,
         height: 523,
         alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tife Olayinka | Product Designer & Engineer",
     description: "I help founders and businesses build the right product, the right way — strategy, design, and development.",
-    images: ["/opengraph-image.png"],
+    images: ["/opengraph-image.png?v=2"],
   },
 };
 

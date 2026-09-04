@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/opengraph-image.png?v=2",
         width: 1024,
         height: 523,
         alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Tife Olayinka | Product Designer & Engineer",
     description: "Learn about Tife's experience as a Senior Product Engineer and UI/UX Designer, offering MBA-level procurement insight and Bubble development.",
-    images: ["/opengraph-image.png"],
+    images: ["/opengraph-image.png?v=2"],
   },
 };
 
