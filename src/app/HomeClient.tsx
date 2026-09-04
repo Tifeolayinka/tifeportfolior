@@ -352,7 +352,7 @@ export default function HomeClient() {
                     {/* Actions Row */}
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
                         <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
-                            Book a strategy call
+                            Book a free 30-min discovery call
                         </FancyButton>
 
                         <FancyButton href="#work" variant="ghost" icon={Layers}>
@@ -808,11 +808,11 @@ export default function HomeClient() {
                                 <HelpCircle className="text-orange-500" size={20} /> Not Sure Which Path Fits?
                             </h3>
                             <p className="text-[15px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                                Book a strategy call and I'll help you figure out the best approach based on your budget, timeline, existing assets, technical requirements, and business goals.
+                                Book a free 30-minute discovery call and I'll help you figure out the best approach based on your budget, timeline, existing assets, technical requirements, and business goals.
                             </p>
                         </div>
                         <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="shrink-0 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 md:w-auto w-full justify-center whitespace-nowrap">
-                            Book a strategy call
+                            Schedule Discovery Call
                         </FancyButton>
                     </motion.div>
 
@@ -1261,7 +1261,7 @@ export default function HomeClient() {
 
                     <div className="flex items-center gap-4 mt-6">
                         <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
-                            Book a strategy call
+                            Book a free 30-min discovery call
                         </FancyButton>
                         <a href="#teardown" className="text-[14px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors underline underline-offset-4">
                             Or get a free teardown first
@@ -1295,7 +1295,8 @@ export default function HomeClient() {
                         <h4 className="text-[12px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Connect</h4>
                         <ul className="flex flex-col gap-2">
                             <li><a href="mailto:hello@tifeolayinka.com" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Email</a></li>
-                            <li><a href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Book a strategy call</a></li>
+                            <li><a href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Schedule Call</a></li>
+                            <li><a href="#contact" className="text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Book Consultation</a></li>
                         </ul>
                     </div>
 
