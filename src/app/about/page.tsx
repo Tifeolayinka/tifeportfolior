@@ -14,6 +14,20 @@ export const metadata: Metadata = {
     siteName: "Tife Olayinka Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1024,
+        height: 523,
+        alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Tife Olayinka | Product Designer & Engineer",
+    description: "Learn about Tife's experience as a Senior Product Engineer and UI/UX Designer, offering MBA-level procurement insight and Bubble development.",
+    images: ["/opengraph-image.png"],
   },
 };
 

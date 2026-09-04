@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Tife Olayinka Portfolio",
+        width: 1024,
+        height: 523,
+        alt: "Helping founders get their messy ideas to working products - Tife Olayinka",
       },
     ],
   },
