@@ -18,10 +18,7 @@ import { PROJECTS } from "@/lib/projects";
 import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/animations";
 import { LazyBookingCalendar } from "@/components/LazyBookingCalendar";
 
-const FallingWords = dynamic(
-    () => import("@/components/FallingWords").then((module) => module.FallingWords),
-    { ssr: false },
-);
+
 
 const SERVICE_CARDS = [
     {
@@ -1273,10 +1270,7 @@ export default function HomeClient() {
 
             {/* Redesigned Footer Section */}
             <footer className="px-6 md:px-12 max-w-4xl mx-auto pt-12 pb-36 md:pb-12">
-                {/* Interactive Falling Word Blocks */}
-                <div className="mb-24 rounded-[24px] bg-zinc-50 dark:bg-[#111] border border-zinc-200 dark:border-white/5 overflow-hidden">
-                    <FallingWords />
-                </div>
+
 
                 {/* Footer Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24 border-t border-zinc-200 dark:border-white/5 pt-12">
