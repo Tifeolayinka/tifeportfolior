@@ -25,58 +25,57 @@ const FallingWords = dynamic(
 
 const SERVICE_CARDS = [
     {
-        title: <>Product Consulting <br />& Build</>,
+        title: <>0-1 Full Product Build <br />(Design & Dev)</>,
         popular: true,
         features: [
-            "End-to-end product design (user research, flows, wireframes, high-fidelity UI)",
-            "Production-ready Bubble development (scalable, responsive, properly architected)",
-            "One person who owns both design and implementation — no handoff gaps"
+            "End-to-end product creation (strategy, user research, wireframes, high-fidelity UI)",
+            "Full-stack production engineering (Next.js & Supabase, Bubble, or AI-assisted code)",
+            "Single builder owning problem definition through live launch — zero handoff gaps"
         ],
         bestFor: [
-            "Founders launching MVPs in Bubble",
-            "Startups building v1 web applications",
-            "Businesses automating internal operations",
-            "Projects that need speed without sacrificing quality"
+            "Founders launching v1 web or mobile applications",
+            "Early-stage startups needing speed without sacrificing code quality",
+            "Businesses automating complex internal operations",
+            "Projects that require both product design and engineering execution"
         ],
-        quote: "End-to-end engagement — from understanding the problem to shipping the product. I assess your needs, recommend the right approach, and execute it. Could be Bubble, could be Next.js and Supabase, could be a hybrid. You get one person who thinks and builds.",
-        timeline: "4-8 weeks for most MVPs",
+        quote: "From blank canvas to live URL. I take your idea, design the full user experience, architect the system logic, and write the production code to ship it.",
+        timeline: "4-8 weeks for most 0-1 MVPs",
         bgClass: "bg-zinc-900",
         darkBgClass: "dark:bg-zinc-900"
     },
     {
-        title: "UI/UX Design Only",
+        title: "Product Redesign & Rebuild",
+        features: [
+            "Full UX & workflow audit to eliminate user friction and drop-offs",
+            "Complete visual redesign & modernized component design system",
+            "Frontend and backend rebuild/optimization (Next.js, Supabase, Bubble, or hybrid)"
+        ],
+        bestFor: [
+            "Existing products that look outdated or suffer from usability friction",
+            "Startups whose v1 MVP needs a complete structural overhaul",
+            "Apps scaling beyond initial prototype limitations",
+            "Teams needing both visual design elevation and tech stack upgrade"
+        ],
+        quote: "If your v1 product is clunky, hard to use, or failing to convert, I restructure the user experience, redesign the UI, and rebuild the technical foundation.",
+        timeline: "4-6 weeks depending on scope",
+        bgClass: "bg-zinc-900",
+        darkBgClass: "dark:bg-zinc-900"
+    },
+    {
+        title: "UI/UX Architecture & Design",
         features: [
             "Conversion-focused product design (user flows, wireframes, high-fidelity mockups, prototypes)",
-            "Design systems and component libraries",
-            "Developer-ready handoff files (Figma with specs, annotations, style guide)"
+            "Scalable design systems and component libraries in Figma",
+            "Developer-ready handoff files built with real technical constraints in mind"
         ],
         bestFor: [
-            "Teams with in-house or contracted developers (any tech stack)",
-            "Products being built in custom code, React, Flutter, etc.",
-            "Companies that need expert UI/UX without development",
-            "Agencies white-labeling design work"
+            "Companies with dedicated in-house or contracted developers",
+            "Products being built in custom code stacks (React, React Native, Flutter, Next.js)",
+            "Startups that need expert product design leadership before coding",
+            "Founders needing a high-fidelity prototype to pitch investors"
         ],
-        quote: "Even when I'm not building it, I design with implementation in mind. My development background means I design interfaces that are technically feasible, performance-optimized, and developer-friendly.",
+        quote: "Because I build production software, I design interfaces that are technically feasible, performance-optimized, and seamless for engineering teams to implement.",
         timeline: "2-4 weeks depending on scope",
-        bgClass: "bg-zinc-900",
-        darkBgClass: "dark:bg-zinc-900"
-    },
-    {
-        title: "Development Only",
-        features: [
-            "Clean, scalable Bubble implementation of existing designs",
-            "Proper database architecture, workflows, and API integrations",
-            "Responsive layouts that match your mockups pixel-perfect",
-            "Performance optimization and Bubble best practices"
-        ],
-        bestFor: [
-            "Projects with finalized designs that need expert Bubble execution",
-            "Teams whose Bubble developer left mid-project",
-            "Agencies outsourcing Bubble builds",
-            "Startups wanting to rebuild/optimize existing Bubble apps"
-        ],
-        quote: "You have designs, I'll build them. Bubble, custom code, or both. Clean architecture, proper workflows, no shortcuts.",
-        timeline: "3-6 weeks depending on complexity",
         bgClass: "bg-zinc-900",
         darkBgClass: "dark:bg-zinc-900"
     }
@@ -116,31 +115,31 @@ const TESTIMONIALS = [
 const FAQ_DATA = [
     {
         question: "Do you have a preferred technology stack?",
-        answer: "No — and that's intentional. Bubble is the right call for fast MVPs, internal tools, and marketplaces. Custom code (Next.js, Supabase, React) is right when you need AI integrations, complex logic, or a specific infrastructure. I make that recommendation during Discovery, based on your budget, timeline, and product requirements. You're never getting a solution shaped around my preferences."
+        answer: "No — and that's intentional. Bubble is great for fast MVPs, internal tools, and rapid prototyping. Custom code (Next.js, Supabase, React) is right when you need full infrastructure ownership, AI integrations, or complex custom logic. I make that recommendation during Discovery based on your budget, timeline, and long-term product requirements."
     },
     {
         question: "Do I need to choose between design-only or design+development?",
-        answer: "No. We start with discovery and I'll recommend the best approach based on your needs, timeline, and budget. Many clients start with design-only and move to development once we've validated the direction."
+        answer: "No. We start with discovery and I'll recommend the best approach based on your needs, timeline, and budget. Many clients start with full 0-1 builds, while others start with design architecture before entering development."
     },
     {
         question: "How long does a typical project take?",
-        answer: "Design-only: 2-4 weeks | Design + Development (MVP): 4-8 weeks | Complex platforms: 8-12+ weeks. We'll scope this during discovery."
+        answer: "UI/UX Design Architecture: 2-4 weeks | 0-1 Full Product MVP Build: 4-8 weeks | Complex Redesign & Rebuild: 6-12+ weeks. We scope exact milestones during discovery."
     },
     {
         question: "What if I already have designs?",
-        answer: "I can build from existing designs, but I'll review them first to flag anything difficult or expensive to implement in Bubble. This saves headaches later."
+        answer: "I review existing designs from an engineering standpoint to flag usability issues or technical complexities before building. Whether we're building in Next.js, Supabase, or Bubble, this prevents costly rework down the line."
     },
     {
-        question: "Do you only work on Bubble projects?",
-        answer: "No. I offer:\n- Design + Development → Bubble-only (full-stack delivery)\n- Design-Only → Any platform (web, mobile, custom code)\n- Development-Only → Bubble-only (implementing existing designs)"
+        question: "Do you only build in Bubble?",
+        answer: "No. I am a 0-1 product builder using whatever tech stack best fits your product requirements. I build custom web and mobile applications with Next.js, Supabase, React, and Tailwind, as well as rapid builds in Bubble. We evaluate your scale, performance needs, and long-term vision during discovery to select the right stack."
     },
     {
         question: "Can you help with existing projects?",
-        answer: "Absolutely. Whether you need a UI overhaul, new features in Bubble, or scaling your digital strategy, I can jump in and add value to your current ecosystem."
+        answer: "Absolutely. Whether you need a product redesign, UX audit, new feature engineering, or a complete stack rebuild, I can jump in and elevate your existing product."
     },
     {
         question: "How do you handle project communication?",
-        answer: "I use Slack for daily async updates and Loom for walkthroughs. We'll also have weekly milestone syncs to ensure we're perfectly aligned on the vision."
+        answer: "I use Slack for daily async updates and Loom for video walkthroughs. We also have weekly milestone syncs to keep us perfectly aligned on vision and progress."
     },
     {
         question: "What happens after launch?",
@@ -322,7 +321,7 @@ export default function HomeClient() {
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
-                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">Product Designer & Engineer</p>
+                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">0-1 Product Builder & Designer</p>
                         </div>
                     </div>
 
@@ -332,11 +331,11 @@ export default function HomeClient() {
                         variants={textReveal}
                     >
                         <div className="text-[21px] leading-[1.6] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight font-sans font-normal">
-                            I help founders <span className="font-semibold font-sans">ship products that work,</span> in weeks, not quarters.
+                            I design & ship <span className="font-semibold font-sans">products from 0 to 1.</span> In weeks, not quarters.
                         </div>
 
                         <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
-                            Strategy, design, and development from one person who stays through launch. Bubble, custom code, or AI-assisted, chosen for your product, not my convenience. 10+ products shipped for clients across the UK, US, Canada, UAE, Australia, and Nigeria.
+                            Strategy, UI/UX design, and full-stack engineering from one person who owns your product through launch. Built in Next.js, Supabase, Bubble, or AI-assisted workflows — chosen for your product goals, not my convenience. 10+ products shipped across UK, US, Canada, UAE, Australia & Nigeria.
                         </p>
                     </motion.div>
 
@@ -723,7 +722,7 @@ export default function HomeClient() {
                 <div className="grid grid-cols-1 md:grid-cols-[280px_1fr_1fr] gap-10 md:gap-12 items-start">
                     {/* Left: display heading */}
                     <h2 className="font-serif text-[32px] md:text-[38px] leading-[1.15] font-normal text-zinc-900 dark:text-zinc-100 tracking-tight">
-                        Designer who builds.<br className="hidden md:block" /> Engineer who designs.
+                        Designer who ships.<br className="hidden md:block" /> 0-1 product builder.
                     </h2>
 
                     {/* Middle column */}
@@ -971,7 +970,7 @@ export default function HomeClient() {
                                 <h4 className="text-[13px] font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">What happens</h4>
                                 <ul className="flex flex-col gap-2">
                                     {[
-                                        "Build in Bubble with clean database structure and workflows",
+                                        "Build in your optimal stack (Next.js & Supabase, Bubble, or custom code)",
                                         "Implement responsive design, edge cases, and performance",
                                         "Testing, revisions, and deployment to live environment"
                                     ].map((item, i) => (

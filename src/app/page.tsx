@@ -2,28 +2,28 @@ import HomeClient from "./HomeClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tife Olayinka | Product Designer & Engineer",
-  description: "I help founders and businesses build the right product, the right way — strategy, design, and development.",
+  title: "Tife Olayinka | 0-1 Product Builder & Designer",
+  description: "I design and ship products from 0 to 1 — strategy, UI/UX design, and full-stack development with zero handoff gaps.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Book a Strategy Call | Tife Olayinka",
-    description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
+    title: "Tife Olayinka | 0-1 Product Builder & Designer",
+    description: "I design and ship products from 0 to 1 — strategy, UI/UX design, and full-stack development with zero handoff gaps.",
     url: "https://www.tifeolayinka.com",
     images: [
       {
         url: "https://www.tifeolayinka.com/opengraph-image.png",
         width: 1024,
         height: 523,
-        alt: "Book a strategy call - Tife Olayinka",
+        alt: "Tife Olayinka - 0-1 Product Builder & Designer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Book a Strategy Call | Tife Olayinka",
-    description: "Helping founders get their messy ideas to working products — strategy, design, and development.",
+    title: "Tife Olayinka | 0-1 Product Builder & Designer",
+    description: "I design and ship products from 0 to 1 — strategy, UI/UX design, and full-stack development with zero handoff gaps.",
     images: ["https://www.tifeolayinka.com/opengraph-image.png"],
   },
 };
