@@ -19,29 +19,36 @@ export function AppCard({ title, description, className, image, href = "#" }: Ap
     const { ref, position, handleMouseMove, handleMouseLeave } = useMagneticEffect(0.15);
 
     return (
-        <Link
-            href={href}
-            className="block w-full"
+        <motion.div
+            variants={{
+                hidden: { opacity: 0, y: 35, filter: "blur(4px)" },
+                visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+            }}
+            className="w-full"
         >
-            <motion.div
-                ref={ref}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                animate={{ x: position.x, y: position.y }}
-                transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-                className={cn(
-                    "group flex flex-col items-start text-left gap-2 w-full",
-                    "p-[6px] pb-4",
-                    "rounded-[28px]",
-                    "bg-white dark:bg-[#1a1a1a]",
-                    "border border-zinc-200 dark:border-white/5",
-                    "transition-all duration-300 ease-out",
-                    "hover:shadow-2xl hover:shadow-zinc-900/10 dark:hover:shadow-black/40",
-                    className
-                )}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+            <Link
+                href={href}
+                className="block w-full"
             >
+                <motion.div
+                    ref={ref}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    animate={{ x: position.x, y: position.y }}
+                    transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+                    className={cn(
+                        "group flex flex-col items-start text-left gap-2 w-full",
+                        "p-[6px] pb-4",
+                        "rounded-[28px]",
+                        "bg-white dark:bg-[#1a1a1a]",
+                        "border border-zinc-200 dark:border-white/5",
+                        "transition-all duration-300 ease-out",
+                        "hover:shadow-2xl hover:shadow-zinc-900/10 dark:hover:shadow-black/40",
+                        className
+                    )}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                >
                 {/* Image Container */}
                 <div className={cn(
                     "relative w-full aspect-[4/3] rounded-[22px] overflow-hidden mb-1",
@@ -95,6 +102,7 @@ export function AppCard({ title, description, className, image, href = "#" }: Ap
                 </div>
             </motion.div>
         </Link>
+        </motion.div>
     );
 }
 

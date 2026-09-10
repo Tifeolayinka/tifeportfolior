@@ -296,13 +296,22 @@ export default function HomeClient() {
 
                 {/* Left Side: Hero Group */}
                 <motion.div
-                    initial={false}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.15,
+                                delayChildren: 0.1
+                            }
+                        }
+                    }}
                     className="flex flex-col gap-6 max-w-[500px]"
                 >
                     {/* Identity Row */}
-                    <div className="flex items-center gap-4">
+                    <motion.div variants={fadeInUp} className="flex items-center gap-4">
                         <div className="relative group p-[2px] rounded-full overflow-hidden">
                             <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-60 blur-[2px]" />
                             <div className="relative w-12 h-12 rounded-full bg-white dark:bg-zinc-900 overflow-hidden border border-white/20">
@@ -320,12 +329,12 @@ export default function HomeClient() {
                             <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
                             <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">0-1 Product Builder & Designer</p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Text Group */}
                     <motion.div
                         className="flex flex-col gap-3"
-                        variants={textReveal}
+                        variants={fadeInUp}
                     >
                         <div className="text-[21px] leading-[1.6] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight font-sans font-normal">
                             I design & ship <span className="font-semibold font-sans">products from 0 to 1.</span> In weeks, not quarters.
@@ -337,16 +346,16 @@ export default function HomeClient() {
                     </motion.div>
 
                     {/* Availability Badge */}
-                    <div className="inline-flex items-center gap-2 mt-4">
+                    <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 mt-4">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
                         <span className="text-[14px] font-medium text-zinc-600 dark:text-zinc-400">Available for projects</span>
-                    </div>
+                    </motion.div>
 
                     {/* Actions Row */}
-                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
+                    <motion.div variants={fadeInUp} className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
                         <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
                             Book a strategy call
                         </FancyButton>
@@ -354,7 +363,7 @@ export default function HomeClient() {
                         <FancyButton href="#work" variant="ghost" icon={Layers}>
                             See the work
                         </FancyButton>
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Right Side: Top Controls */}
@@ -591,18 +600,25 @@ export default function HomeClient() {
                         <p className="text-[14px] text-zinc-500 dark:text-zinc-400">A selection of recent design & dev work.</p>
                     </div>
 
-                    <div className="flex p-1 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5">
+                    <div className="flex p-1 rounded-full bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-white/5 relative">
                         {['All', 'Design', 'Dev'].map((filter) => (
                             <button
                                 key={filter}
                                 onClick={() => setFilter(filter as any)}
                                 className={cn(
-                                    "px-4 py-1.5 rounded-full text-[12px] font-medium transition-all duration-200",
+                                    "relative px-4 py-1.5 rounded-full text-[12px] font-medium transition-colors duration-200 z-10",
                                     activeFilter === filter
-                                        ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm ring-1 ring-zinc-200 dark:ring-white/10"
+                                        ? "text-zinc-900 dark:text-white"
                                         : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
                                 )}
                             >
+                                {activeFilter === filter && (
+                                    <motion.div
+                                        layoutId="activeFilterTab"
+                                        className="absolute inset-0 bg-white dark:bg-zinc-700 rounded-full shadow-sm ring-1 ring-zinc-200 dark:ring-white/10 -z-10"
+                                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                                    />
+                                )}
                                 {filter}
                             </button>
                         ))}
@@ -620,48 +636,56 @@ export default function HomeClient() {
                         />
                     ))}
 
-                    <div id="teardown" className={cn(
-                        "group relative flex flex-col justify-between gap-6 w-full",
-                        "p-8",
-                        "rounded-[28px]",
-                        "bg-white dark:bg-[#1a1a1a]",
-                        "border border-zinc-200 dark:border-white/5",
-                        "transition-all duration-500 overflow-hidden shadow-sm",
-                        "hover:shadow-xl hover:scale-[1.01]"
-                    )}>
-                        {/* Moving Gradient Mesh */}
-                        <motion.div
-                            animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-1/2 -right-1/2 w-full h-full bg-zinc-500/5 dark:bg-zinc-500/10 rounded-full blur-[80px] pointer-events-none"
-                        />
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, y: 35, filter: "blur(4px)" },
+                            visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+                        }}
+                        className="w-full"
+                    >
+                        <div id="teardown" className={cn(
+                            "group relative flex flex-col justify-between gap-6 w-full h-full",
+                            "p-8",
+                            "rounded-[28px]",
+                            "bg-white dark:bg-[#1a1a1a]",
+                            "border border-zinc-200 dark:border-white/5",
+                            "transition-all duration-500 overflow-hidden shadow-sm",
+                            "hover:shadow-xl hover:scale-[1.01]"
+                        )}>
+                            {/* Moving Gradient Mesh */}
+                            <motion.div
+                                animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
+                                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -top-1/2 -right-1/2 w-full h-full bg-zinc-500/5 dark:bg-zinc-500/10 rounded-full blur-[80px] pointer-events-none"
+                            />
 
-                        <div className="relative z-10 flex flex-col gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 flex items-center justify-center">
-                                <Search className="text-zinc-500 dark:text-zinc-400" size={18} />
+                            <div className="relative z-10 flex flex-col gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/5 flex items-center justify-center">
+                                    <Search className="text-zinc-500 dark:text-zinc-400" size={18} />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <span className="text-[15px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
+                                        Not ready for a project?<br />Get a free teardown.
+                                    </span>
+                                    <p className="text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                        Send me your app or landing page and I'll record a 10-minute video audit — what's costing you users, and what I'd fix first. No call, no pitch.
+                                    </p>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-2">
-                                <span className="text-[15px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
-                                    Not ready for a project?<br />Get a free teardown.
-                                </span>
-                                <p className="text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                                    Send me your app or landing page and I'll record a 10-minute video audit — what's costing you users, and what I'd fix first. No call, no pitch.
-                                </p>
+
+                            <div className="relative z-10">
+                                <a
+                                    href="mailto:hello@tifeolayinka.com?subject=Free%20teardown%20request"
+                                    className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-zinc-100 hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors group/link"
+                                >
+                                    Get a free teardown
+                                    <ArrowRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
+                                </a>
                             </div>
-                        </div>
 
-                        <div className="relative z-10">
-                            <a
-                                href="mailto:hello@tifeolayinka.com?subject=Free%20teardown%20request"
-                                className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-900 dark:text-zinc-100 hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors group/link"
-                            >
-                                Get a free teardown
-                                <ArrowRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
-                            </a>
+                            <div className="absolute inset-2 rounded-[22px] border border-dashed border-zinc-200 dark:border-white/5 pointer-events-none" />
                         </div>
-
-                        <div className="absolute inset-2 rounded-[22px] border border-dashed border-zinc-200 dark:border-white/5 pointer-events-none" />
-                    </div>
+                    </motion.div>
                 </AppGrid>
             </section>
 
@@ -1065,15 +1089,20 @@ export default function HomeClient() {
                 </div>
                 <div className="flex flex-col divide-y divide-zinc-100 dark:divide-white/5 rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm overflow-hidden">
                     {[
-                        { tool: "Bubble", when: "When speed to market matters more than infrastructure control. Most MVPs." },
-                        { tool: "Next.js + Supabase", when: "When you need custom logic, scale, or own your stack from day one." },
-                        { tool: "AI-assisted (Cursor, Claude Code)", when: "To compress build timelines on custom work without cutting corners." },
-                        { tool: "Hybrid", when: "When the right answer is Bubble for the app and custom code for the heavy lifting." },
+                        { tool: "Next.js + Supabase", when: "When you need custom logic, scalability, or complete ownership of your infrastructure from day one." },
+                        { tool: "Bubble", when: "When speed to market is paramount for rapid MVPs, internal SaaS tools, and fast validation." },
+                        { tool: "AI-assisted (Cursor, Claude Code)", when: "To compress custom software development timelines without compromising code architecture or quality." },
+                        { tool: "Hybrid Stack", when: "Combining no-code speed for web interfaces with custom backend APIs or AI services for complex tasks." },
                     ].map((row, i) => (
-                        <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-1 md:gap-6 px-8 py-5">
+                        <motion.div
+                            key={i}
+                            whileHover={{ x: 6 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-1 md:gap-6 px-8 py-5 hover:bg-zinc-50/80 dark:hover:bg-zinc-800/40 transition-colors cursor-default"
+                        >
                             <span className="text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">{row.tool}</span>
                             <span className="text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{row.when}</span>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </motion.section>
@@ -1085,10 +1114,22 @@ export default function HomeClient() {
                     <p className="text-[14px] text-zinc-500 dark:text-zinc-400">Everything you need to know about working with me.</p>
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <motion.div
+                    className="flex flex-col gap-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOptions}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+                    }}
+                >
                     {FAQ_DATA.map((faq, idx) => (
-                        <div
+                        <motion.div
                             key={idx}
+                            variants={fadeInUp}
+                            whileHover={{ y: -2 }}
+                            transition={{ duration: 0.2 }}
                             className="rounded-[24px] bg-white dark:bg-[#1a1a1a] border border-zinc-200 dark:border-white/5 shadow-sm overflow-hidden"
                         >
                             <button
@@ -1122,9 +1163,9 @@ export default function HomeClient() {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </section>
 
             {/* Testimonials Section: Founders Who Scaled */}
