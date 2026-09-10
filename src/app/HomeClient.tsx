@@ -267,18 +267,34 @@ export default function HomeClient() {
     const scale1 = useTransform(scroll2, [0, 1], [1, 0.9]);
     const scale2 = useTransform(scroll3, [0, 1], [1, 0.9]);
 
-    const [introStage, setIntroStage] = useState<'photo' | 'name' | 'heroText' | 'complete'>('photo');
+    const HERO_TEXT_FULL = "I design & ship products from 0 to 1. In weeks, not quarters.";
 
+    const [introStep, setIntroStep] = useState<number>(0);
+    const [typedText, setTypedText] = useState<string>("");
+
+    // Intro Sequence Timing: 0 = photo, 1 = name, 2 = typewriter, 3 = settled
     useEffect(() => {
-        const timer1 = setTimeout(() => setIntroStage('name'), 700);
-        const timer2 = setTimeout(() => setIntroStage('heroText'), 1500);
-        const timer3 = setTimeout(() => setIntroStage('complete'), 2800);
-        return () => {
-            clearTimeout(timer1);
-            clearTimeout(timer2);
-            clearTimeout(timer3);
-        };
+        const t1 = setTimeout(() => setIntroStep(1), 500);
+        const t2 = setTimeout(() => setIntroStep(2), 1100);
+        return () => { clearTimeout(t1); clearTimeout(t2); };
     }, []);
+
+    // Keyboard typewriter effect
+    useEffect(() => {
+        if (introStep < 2) return;
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index <= HERO_TEXT_FULL.length) {
+                setTypedText(HERO_TEXT_FULL.slice(0, index));
+                index++;
+            } else {
+                clearInterval(interval);
+                // Pause briefly after typing finishes, then fluidly transition to full page layout
+                setTimeout(() => setIntroStep(3), 600);
+            }
+        }, 30);
+        return () => clearInterval(interval);
+    }, [introStep]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -301,183 +317,188 @@ export default function HomeClient() {
         if (videoRef.current) videoRef.current.muted = isMuted;
     }, [isMuted]);
 
+    const isSettled = introStep >= 3;
+
     return (
         <div id="hero" className="relative min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
-            {/* Atmospheric Shader Background */}
+            {/* Atmospheric Shader Background with Accessible Text Vignette */}
             <ShaderBackground />
 
-            {/* First-Interaction Cinematic Intro Sequence Overlay */}
-            <AnimatePresence>
-                {introStage !== 'complete' && (
-                    <motion.div
-                        initial={{ opacity: 1 }}
-                        exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        onClick={() => setIntroStage('complete')}
-                        className="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 bg-zinc-950/95 dark:bg-black/95 backdrop-blur-3xl cursor-pointer select-none overflow-hidden"
-                    >
-                        {/* Background glowing shader backdrop during intro */}
-                        <div className="absolute inset-0 pointer-events-none opacity-80">
-                            <Image
-                                src="/shader-bg.png"
-                                alt="Intro Shader"
-                                fill
-                                priority
-                                className="object-cover object-center filter brightness-110 contrast-125"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
-                        </div>
-
-                        <div className="relative flex flex-col items-center justify-center text-center max-w-lg mx-auto gap-6 z-10">
-                            {/* 1. Picture loads in the middle */}
-                            <motion.div
-                                initial={{ scale: 0.4, opacity: 0, filter: "blur(16px)" }}
-                                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                className="relative p-[3px] rounded-full overflow-hidden shadow-[0_0_60px_rgba(59,130,246,0.6)]"
-                            >
-                                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-80 blur-[2px]" />
-                                <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-zinc-900 overflow-hidden border-2 border-white/40 shadow-2xl">
-                                    <Image
-                                        src="https://piton-digital.s3.eu-north-1.amazonaws.com/Portfolio+Image.JPG"
-                                        alt="Tife Olayinka"
-                                        fill
-                                        priority
-                                        sizes="144px"
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </motion.div>
-
-                            {/* 2. Name & Title badge reveal */}
-                            {(introStage === 'name' || introStage === 'heroText') && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                    className="flex flex-col items-center gap-2"
-                                >
-                                    <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-                                        Tife Olayinka
-                                    </h1>
-                                    <span className="text-xs md:text-sm font-semibold text-blue-400 tracking-wider uppercase px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-md">
-                                        0-1 Product Builder & Designer
-                                    </span>
-                                </motion.div>
-                            )}
-
-                            {/* 3. Hero Text reveals */}
-                            {introStage === 'heroText' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                                    className="text-lg md:text-xl font-medium text-zinc-200 leading-relaxed tracking-tight max-w-md"
-                                >
-                                    I design & ship <span className="text-white font-bold underline decoration-blue-500 underline-offset-4">products from 0 to 1.</span><br />In weeks, not quarters.
-                                </motion.div>
-                            )}
-                        </div>
-
-                        {/* Tap to enter hint */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.6 }}
-                            transition={{ delay: 1 }}
-                            className="absolute bottom-8 text-[11px] text-zinc-400 font-mono tracking-widest uppercase flex items-center gap-2"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
-                            Tap anywhere to enter
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
             <BottomNav />
 
-            {/* Unified Header & Hero Wrapper */}
-            <div className="pt-10 md:pt-20 pb-12 px-6 md:px-12 max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between items-start relative gap-8 md:gap-0">
-
-                {/* Left Side: Hero Group */}
+            {/* Continuous Fluid Hero & Intro Morph Container */}
+            <motion.div
+                layout
+                transition={{ type: "spring", stiffness: 170, damping: 24 }}
+                onClick={() => {
+                    if (!isSettled) {
+                        setIntroStep(3);
+                        setTypedText(HERO_TEXT_FULL);
+                    }
+                }}
+                className={cn(
+                    "px-6 md:px-12 max-w-4xl mx-auto relative z-10 transition-all duration-700 select-none",
+                    !isSettled
+                        ? "min-h-[82vh] flex flex-col justify-center items-center text-center cursor-pointer pt-12"
+                        : "pt-10 md:pt-20 pb-12 flex flex-col md:flex-row md:justify-between items-start gap-8 md:gap-0"
+                )}
+            >
+                {/* Hero Main Content */}
                 <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: {
-                            opacity: 1,
-                            transition: {
-                                staggerChildren: 0.15,
-                                delayChildren: 0.1
-                            }
-                        }
-                    }}
-                    className="flex flex-col gap-6 max-w-[500px]"
+                    layout
+                    transition={{ type: "spring", stiffness: 170, damping: 24 }}
+                    className={cn(
+                        "flex flex-col gap-6 max-w-[520px] w-full",
+                        !isSettled ? "items-center" : "items-start"
+                    )}
                 >
-                    {/* Identity Row */}
-                    <motion.div variants={fadeInUp} className="flex items-center gap-4">
-                        <div className="relative group p-[2px] rounded-full overflow-hidden">
-                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-60 blur-[2px]" />
-                            <div className="relative w-12 h-12 rounded-full bg-white dark:bg-zinc-900 overflow-hidden border border-white/20">
+                    {/* Identity Row (Photo + Name) */}
+                    <motion.div
+                        layout
+                        transition={{ type: "spring", stiffness: 170, damping: 24 }}
+                        className={cn(
+                            "flex items-center gap-4",
+                            !isSettled && "flex-col text-center"
+                        )}
+                    >
+                        {/* Profile Photo */}
+                        <motion.div
+                            layoutId="hero-avatar"
+                            initial={{ scale: 0.5, opacity: 0, filter: "blur(16px)" }}
+                            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative group p-[2px] rounded-full overflow-hidden shrink-0 shadow-[0_0_35px_rgba(59,130,246,0.35)]"
+                        >
+                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-75 blur-[2px]" />
+                            <div className={cn(
+                                "relative rounded-full bg-white dark:bg-zinc-900 overflow-hidden border border-white/20 transition-all duration-500",
+                                !isSettled ? "w-28 h-28 md:w-36 md:h-36" : "w-12 h-12"
+                            )}>
                                 <Image
                                     src="https://piton-digital.s3.eu-north-1.amazonaws.com/Portfolio+Image.JPG"
                                     alt="Tife Olayinka"
                                     fill
                                     priority
-                                    sizes="48px"
+                                    sizes="144px"
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                                 />
                             </div>
-                        </div>
-                        <div className="flex flex-col">
-                            <h3 className="text-[15px] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">Tife Olayinka</h3>
-                            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 font-normal leading-tight">0-1 Product Builder & Designer</p>
-                        </div>
+                        </motion.div>
+
+                        {/* Name & Title Badge */}
+                        {introStep >= 1 && (
+                            <motion.div
+                                layoutId="hero-identity-text"
+                                initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                className={cn("flex flex-col", !isSettled && "items-center")}
+                            >
+                                <h3 className={cn(
+                                    "font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight transition-all duration-500",
+                                    !isSettled ? "text-2xl md:text-3xl font-bold" : "text-[15px]"
+                                )}>
+                                    Tife Olayinka
+                                </h3>
+                                <p className={cn(
+                                    "text-zinc-600 dark:text-zinc-400 font-normal leading-tight transition-all duration-500",
+                                    !isSettled ? "text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mt-1 px-3 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20" : "text-[14px]"
+                                )}>
+                                    0-1 Product Builder & Designer
+                                </p>
+                            </motion.div>
+                        )}
                     </motion.div>
 
-                    {/* Text Group */}
-                    <motion.div
-                        className="flex flex-col gap-3"
-                        variants={fadeInUp}
-                    >
-                        <div className="text-[21px] leading-[1.6] font-medium text-zinc-900 dark:text-zinc-100 tracking-tight font-sans font-normal">
-                            I design & ship <span className="font-semibold font-sans">products from 0 to 1.</span> In weeks, not quarters.
-                        </div>
+                    {/* Hero Headline with Typewriter Keyboard Effect */}
+                    {introStep >= 2 && (
+                        <motion.div
+                            layout
+                            layoutId="hero-text-group"
+                            initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className={cn("flex flex-col gap-3 w-full", !isSettled && "items-center text-center")}
+                        >
+                            <div className={cn(
+                                "font-medium text-zinc-900 dark:text-zinc-100 tracking-tight font-sans leading-[1.5] transition-all duration-500",
+                                !isSettled ? "text-xl md:text-2xl max-w-lg font-semibold" : "text-[21px]"
+                            )}>
+                                {typedText}
+                                {!isSettled && (
+                                    <span className="inline-block w-2 h-5 ml-1 bg-blue-500 animate-pulse font-mono align-middle rounded-sm" />
+                                )}
+                            </div>
 
-                        <p className="text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-[500px]">
-                            Strategy, UI/UX design, and full-stack engineering from one person who owns your product through launch. Built in Next.js, Supabase, Bubble, or AI-assisted workflows — chosen for your product goals, not my convenience. 10+ products shipped across UK, US, Canada, UAE, Australia & Nigeria.
-                        </p>
-                    </motion.div>
+                            {/* Subtitle paragraph (reveals when settled) */}
+                            {isSettled && (
+                                <motion.p
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.15 }}
+                                    className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-[500px]"
+                                >
+                                    Strategy, UI/UX design, and full-stack engineering from one person who owns your product through launch. Built in Next.js, Supabase, Bubble, or AI-assisted workflows — chosen for your product goals, not my convenience. 10+ products shipped across UK, US, Canada, UAE, Australia & Nigeria.
+                                </motion.p>
+                            )}
+                        </motion.div>
+                    )}
 
-                    {/* Availability Badge */}
-                    <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 mt-4">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span className="text-[14px] font-medium text-zinc-600 dark:text-zinc-400">Available for projects</span>
-                    </motion.div>
+                    {/* Availability Badge & CTAs (Fades in when settled) */}
+                    {isSettled && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.25 }}
+                            className="flex flex-col gap-4 w-full"
+                        >
+                            <div className="inline-flex items-center gap-2 mt-2">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                <span className="text-[14px] font-medium text-zinc-600 dark:text-zinc-400">Available for projects</span>
+                            </div>
 
-                    {/* Actions Row */}
-                    <motion.div variants={fadeInUp} className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-6">
-                        <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
-                            Book a strategy call
-                        </FancyButton>
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
+                                <FancyButton href="https://cal.com/tifeolayinka/free-app-consultation-business" target="_blank" icon={Calendar}>
+                                    Book a strategy call
+                                </FancyButton>
 
-                        <FancyButton href="#work" variant="ghost" icon={Layers}>
-                            See the work
-                        </FancyButton>
-                    </motion.div>
+                                <FancyButton href="#work" variant="ghost" icon={Layers}>
+                                    See the work
+                                </FancyButton>
+                            </div>
+                        </motion.div>
+                    )}
                 </motion.div>
 
-                {/* Right Side: Top Controls */}
-                <div className="hidden md:block">
-                    <TopNav />
-                </div>
-
-                <div className="md:hidden absolute top-8 right-6">
-                    <TopNav />
-                </div>
-            </div>
+                {/* Right Side: Top Controls (Visible when settled) */}
+                {isSettled ? (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        <div className="hidden md:block">
+                            <TopNav />
+                        </div>
+                        <div className="md:hidden absolute top-8 right-6">
+                            <TopNav />
+                        </div>
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.6 }}
+                        transition={{ delay: 1 }}
+                        className="absolute bottom-10 text-[11px] text-zinc-400 font-mono tracking-widest uppercase flex items-center gap-2"
+                    >
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
+                        Tap anywhere to enter
+                    </motion.div>
+                )}
+            </motion.div>
 
             {/* Scrollable Visuals Gallery (Above the fold visual showcase - infinite marquee) */}
             <div className="w-full overflow-hidden py-4 select-none mb-12 relative z-10">
