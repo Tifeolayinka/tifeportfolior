@@ -16,6 +16,7 @@ import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import { PROJECTS } from "@/lib/projects";
 import { fadeInUp, fadeIn, scaleIn, viewportOptions, textReveal } from "@/lib/animations";
+import { ShaderBackground } from "@/components/ShaderBackground";
 import { LazyBookingCalendar } from "@/components/LazyBookingCalendar";
 
 
@@ -266,6 +267,19 @@ export default function HomeClient() {
     const scale1 = useTransform(scroll2, [0, 1], [1, 0.9]);
     const scale2 = useTransform(scroll3, [0, 1], [1, 0.9]);
 
+    const [introStage, setIntroStage] = useState<'photo' | 'name' | 'heroText' | 'complete'>('photo');
+
+    useEffect(() => {
+        const timer1 = setTimeout(() => setIntroStage('name'), 700);
+        const timer2 = setTimeout(() => setIntroStage('heroText'), 1500);
+        const timer3 = setTimeout(() => setIntroStage('complete'), 2800);
+        return () => {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+            clearTimeout(timer3);
+        };
+    }, []);
+
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
@@ -288,7 +302,96 @@ export default function HomeClient() {
     }, [isMuted]);
 
     return (
-        <div id="hero" className="min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
+        <div id="hero" className="relative min-h-screen pb-32 selection:bg-zinc-200 selection:text-zinc-900 dark:selection:bg-zinc-700 dark:selection:text-white">
+            {/* Atmospheric Shader Background */}
+            <ShaderBackground />
+
+            {/* First-Interaction Cinematic Intro Sequence Overlay */}
+            <AnimatePresence>
+                {introStage !== 'complete' && (
+                    <motion.div
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        onClick={() => setIntroStage('complete')}
+                        className="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 bg-zinc-950/95 dark:bg-black/95 backdrop-blur-3xl cursor-pointer select-none overflow-hidden"
+                    >
+                        {/* Background glowing shader backdrop during intro */}
+                        <div className="absolute inset-0 pointer-events-none opacity-80">
+                            <Image
+                                src="/shader-bg.png"
+                                alt="Intro Shader"
+                                fill
+                                priority
+                                className="object-cover object-center filter brightness-110 contrast-125"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
+                        </div>
+
+                        <div className="relative flex flex-col items-center justify-center text-center max-w-lg mx-auto gap-6 z-10">
+                            {/* 1. Picture loads in the middle */}
+                            <motion.div
+                                initial={{ scale: 0.4, opacity: 0, filter: "blur(16px)" }}
+                                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                className="relative p-[3px] rounded-full overflow-hidden shadow-[0_0_60px_rgba(59,130,246,0.6)]"
+                            >
+                                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff0000,#ff8800,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000)] animate-[spin_4s_linear_infinite] opacity-80 blur-[2px]" />
+                                <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-zinc-900 overflow-hidden border-2 border-white/40 shadow-2xl">
+                                    <Image
+                                        src="https://piton-digital.s3.eu-north-1.amazonaws.com/Portfolio+Image.JPG"
+                                        alt="Tife Olayinka"
+                                        fill
+                                        priority
+                                        sizes="144px"
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </motion.div>
+
+                            {/* 2. Name & Title badge reveal */}
+                            {(introStage === 'name' || introStage === 'heroText') && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                    className="flex flex-col items-center gap-2"
+                                >
+                                    <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                                        Tife Olayinka
+                                    </h1>
+                                    <span className="text-xs md:text-sm font-semibold text-blue-400 tracking-wider uppercase px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-md">
+                                        0-1 Product Builder & Designer
+                                    </span>
+                                </motion.div>
+                            )}
+
+                            {/* 3. Hero Text reveals */}
+                            {introStage === 'heroText' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                                    className="text-lg md:text-xl font-medium text-zinc-200 leading-relaxed tracking-tight max-w-md"
+                                >
+                                    I design & ship <span className="text-white font-bold underline decoration-blue-500 underline-offset-4">products from 0 to 1.</span><br />In weeks, not quarters.
+                                </motion.div>
+                            )}
+                        </div>
+
+                        {/* Tap to enter hint */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.6 }}
+                            transition={{ delay: 1 }}
+                            className="absolute bottom-8 text-[11px] text-zinc-400 font-mono tracking-widest uppercase flex items-center gap-2"
+                        >
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
+                            Tap anywhere to enter
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <BottomNav />
 
             {/* Unified Header & Hero Wrapper */}
